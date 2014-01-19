@@ -19,5 +19,6 @@ group :test do
   gem 'capybara-webkit'
   gem 'factory_girl_rails'
   gem 'ansi', "~> 1.4.3" #required by factory_girl_rails
+  gem 'turn'
 end
 
