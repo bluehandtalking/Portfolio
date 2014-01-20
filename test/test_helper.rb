@@ -5,7 +5,9 @@ require "minitest/rails"
 require "minitest/rails/capybara"
 require "turn/autorun"
 
-class ShowPosts
+Capybara.default_driver = :webkit
+
+class IndexPosts
   include Capybara::DSL
   def visit_page
     visit '/posts'
@@ -19,6 +21,10 @@ class NewPostPage
     visit '/posts/new'
     self
   end
+  def visit_index_page
+    visit '/posts'
+    self
+  end
   def build_post
     fill_in 'post_title', with: 'Code Rails'
     fill_in 'post_description', with: 'The Amazing Life of Web Developers'
@@ -28,14 +34,6 @@ end
 
 class EditPostPage
   include Capybara::DSL
-  def visit_index_page
-    visit '/posts'
-    self
-  end
-  def visit_show_page
-    visit '/posts/1'
-    self
-  end    
   def fill_fields
     fill_in "post_title", with: "Fishing for Blackmouth"
     fill_in "post_description", with: "How to hook the big ones"

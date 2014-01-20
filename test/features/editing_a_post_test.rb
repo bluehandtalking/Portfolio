@@ -9,7 +9,7 @@ feature "Editing A Post" do
     new_post.build_post
     click_on 'Create Post'
     #When we show a list of posts
-    edit_post.visit_index_page
+    new_post.visit_index_page
     #Then confirm we have visited the correct post 
     page.must_have_content "spherical skeg"
     page.wont_have_content "Dutchman's Holiday"
