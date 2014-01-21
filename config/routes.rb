@@ -1,7 +1,8 @@
 Portfolio::Application.routes.draw do
   resources :posts
 
-  # The priority is based upon order of creation: first created -> highest priority.
+  resources :projects
+  # The priority is based upon order of creation: fiorst created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
