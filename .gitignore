@@ -21,3 +21,6 @@ app/views/posts/*.swp
 app/views/projects/*.swp
 test/features/posts/*.swp
 test/features/projects/*.swp
+.Gemfile.swp
+Guardfile
+test/features/projects/Guardfile

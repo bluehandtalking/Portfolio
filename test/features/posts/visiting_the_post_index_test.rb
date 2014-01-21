@@ -5,11 +5,11 @@ feature "VisitingThePostIndex" do
   let(:index_posts) {IndexPosts.new}
   scenario "with existing post, show list"  do
       #Given existing posts --provided by  ActiveSupport::TestCase ---fixtures :all
-    new_post.visit_page
-    new_post.build_post
+    visit '/posts/new'
+    new_post.fill_post
     click_on 'Create Post'
     #When I visit/posts
-    index_posts.visit_page
+    visit '/posts'
     #Then the exiisting post should exist, confirmed by content
     page.must_have_content "Amazing Life of Web"
     #Then the existing post should be confirmed by content absent
