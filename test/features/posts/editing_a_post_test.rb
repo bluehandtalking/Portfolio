@@ -5,11 +5,11 @@ feature "Editing A Post" do
   let(:edit_post) {EditPostPage.new}
   scenario "submit updates to an existing post" do
     #Given a post exists
-    new_post.visit_page
-    new_post.build_post
+    visit '/posts/new'
+    new_post.fill_post
     click_on 'Create Post'
     #When we show a list of posts
-    new_post.visit_index_page
+    visit '/posts'
     #Then confirm we have visited the correct post 
     page.must_have_content "Code Fellows Portfolio"
     page.wont_have_content "Dutchman's Holiday"

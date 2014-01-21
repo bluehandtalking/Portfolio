@@ -25,8 +25,8 @@ class NewPostPage
     visit '/posts'
     self
   end
-  def build_post
-    fill_in 'post_title', with: 'Code Rails'
+  def fill_post
+    fill_in 'post_title', with: 'Code Fellows Portfolio'
     fill_in 'post_description', with: 'The Amazing Life of Web Developers'
     fill_in 'post_content', with: 'This is an example of how I merged with the goodness of Rails'
   end
