@@ -39,7 +39,11 @@ class EditPostPage
     fill_in "post_description", with: "How to hook the big ones"
     fill_in "post_content", with: "Winter fishing for blackmouth is a great sport in th Pacific Northwest"
   end
+  def visit_index_page
+    visit '/posts'
+  end
 end
+
 
 class NewProjectPage
   include Capybara::DSL
@@ -51,6 +55,17 @@ class NewProjectPage
     fill_in 'project_name', with: "Code Fellows Portfolio" 
   end
 end
+
+class EditProjectPage
+  include Capybara::DSL
+  def fill_fields
+    fill_in "project_name", with: "Whidbey Island Watershed stewards"
+  end
+  def visit_index_page
+    visit '/projects'
+  end
+end
+
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
