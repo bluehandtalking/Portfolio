@@ -16,3 +16,8 @@
 /tmp
 test/**/*.swp
 test/*.swp
+app/**/*.swp
+app/views/posts/*.swp
+app/views/projects/*.swp
+test/features/posts/*.swp
+test/features/projects/*.swp

@@ -28,6 +28,21 @@ class ProjectsController < ApplicationController
     end
   end
 
+  # PATCH/PUT /projects/1
+  # PATCH/PUT /projects/1.json
+  def update
+    respond_to do |format|
+      if @project.update(project_params)
+        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @project.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
   def destroy
     @project.destroy
     respond_to do |format|
@@ -35,6 +50,7 @@ class ProjectsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 
 
   private
