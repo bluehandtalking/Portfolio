@@ -41,6 +41,17 @@ class EditPostPage
   end
 end
 
+class NewProjectPage
+  include Capybara::DSL
+  def visit_page
+    visit '/projects/new'
+    self
+  end
+  def build_project
+    fill_in 'project_name', with: "Code Fellows Portfolio" 
+  end
+end
+
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
   fixtures :all
