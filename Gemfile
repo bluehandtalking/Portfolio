@@ -8,8 +8,19 @@ gem 'coffee-rails', '~> 4.0.0' # Use CoffeeScript for .js.coffee assets and view
 gem 'jquery-rails' # Use jquery as the JavaScript library 
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder 
+gem 'rack-contrib', '1.1.0'
+
+gem 'bcrypt-ruby', '~>3.0.0'
+gem "foundation-rails", github: "codefellows/foundation-rails"
+
 group :doc do
   gem 'sdoc', require: false # bundle exec rake doc:rails generates the API under doc/api. 
+end
+
+group :development do
+  gem 'binding_of_caller', github: "banister/binding_of_caller" # This needs to go in before better_errors
+  gem 'better_errors'
+  gem 'meta_request', '0.2.1'
 end
 
 group :test do 
