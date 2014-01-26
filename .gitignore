@@ -28,3 +28,11 @@ app/assets/stylesheets/.my_style.css.scss.swp
 app/views/welcome/.index.html.erb.swp
 app/assets/stylesheets/.my_style.css.scss.swp
 app/views/welcome/.index.html.erb.swp
+app/views/**/*.swp
+app/assets/**/*.swp
+app/assets/stylesheets/.my_style.css.scss.swp app/assets/stylesheets/.welcome.css.scss.swp app/views/layouts/.application.html.erb.swp app/views/welcome/.index.html.erb.swp
+app/assets/stylesheets/.my_style.css.scss.sw
+app/assets/stylesheets/.my_style.css.scss.swp
+app/assets/stylesheets/.welcome.css.scss.swp
+app/views/layouts/.application.html.erb.swp
+app/views/welcome/.index.html.erb.swp
