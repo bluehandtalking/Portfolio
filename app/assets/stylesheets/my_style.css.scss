@@ -76,11 +76,16 @@ div.large-4.columns {
         line-height: 1.4em;	
 	color: #FFF; 
     }
+    div.about-us {
+        position: relative;
+	padding-top: 2.4em; 
+    } 
+     
 }
 
 .row {
    max-width: 92.5rem;
-   padding-top: 2.4rem;
+   padding-top: rem;
 }
 
 div.jerry {
