@@ -24,3 +24,7 @@ test/features/projects/*.swp
 .Gemfile.swp
 Guardfile
 test/features/projects/Guardfile
+app/assets/stylesheets/.my_style.css.scss.swp
+app/views/welcome/.index.html.erb.swp
+app/assets/stylesheets/.my_style.css.scss.swp
+app/views/welcome/.index.html.erb.swp
