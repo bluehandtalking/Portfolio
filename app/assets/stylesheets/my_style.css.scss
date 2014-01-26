@@ -1,8 +1,107 @@
-#header, #footer {
-width: 100%;
-margin-left: auto;
-margin-right: auto;
-margin-top: 0;
-margin-bottom: 0;
-max-width: 62.5rem;
+.top-bar {
+   height: 60px;
+   h1 
+   {
+      padding-top: 10px;
+
+      a {
+	 font-size: 2.0em;
+	 font-size: 2.0rem;	
+
+      }	       
+   }
+}
+
+div.large-8.columns {
+   h1 {
+      position: relative;
+      font-size: 8.0em;
+      font-size: 8.0rem;	
+      left: -80px;
+      color: #FFF;
+
+   }
+   h2 {
+      font-size: 4.0em;
+      font-size: 4.0rem;	
+	color: #FFF;
+
+   }
+   h3 {
+      font-size: 3.5em;
+      font-size: 3.5rem;	
+	color: #FFF;
+
+   }
+   div.intro-1 {
+      position: relative;
+      width: 70%;
+      clear: both;
+      float: right;
+      p.welcome-1 {
+	 font-size: 1.5em;
+	 font-size: 1.5rem;
+	 color: #FFF; 
+	 line-height: 1.75em;
+	 line-height: 1.75rem;	
+	 padding-bottom: 2.0rem;
+      }
+   }
+   div.intro-2 {
+      position: relative;
+      width: 70%;
+      clear: both;
+      float: left;
+      p.welcome-2 {
+	 font-size: 1.5em;
+	 font-size: 1.5rem;
+	 color: #FFF; 
+	 line-height: 1.75em;
+	 line-height: 1.75rem;	
+      }
+
+   }
+}
+
+div.large-4.columns {
+    padding-bottom: 2.0em;
+    h1, h2, h3 {
+	color: #FFF;     
+    } 
+    p {
+	font-size: 1.2em;
+        line-height: 1.4em;	
+	color: #FFF; 
+    }
+}
+
+.row {
+   max-width: 92.5rem;
+   padding-top: 2.4rem;
+}
+
+div.jerry {
+   position: relative;
+   left: 220px;
+}
+body {
+    background-image: url( "hand_boson-4.jpg" );
+    // background-repeat: no-repeat;
+-webkit-background-size: 100% 100%;           /* Safari 3.0 */
+     -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
+       -o-background-size: 100% 100%;           /* Opera 9.5 */
+          background-size: 100% 100%;           /* Gecko 2.0 (Firefox 4.0) and other CSS3-compliant browsers */
+
+  -moz-border-image: url(hand_boson-4.jpg) 0;    /* Gecko 1.9.1 (Firefox 3.5) */
+
+}
+div.contact {
+    position: absolute;
+}
+span.done {
+    position: relative;
+    top: .4em;
+    left: 8em;
+    font-size: 2.4em;
+    width: 420px;
 }
