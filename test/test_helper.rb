@@ -3,8 +3,8 @@ require File.expand_path("../../config/environment", __FILE__)
 require "rails/test_help"
 require "minitest/rails"
 require "minitest/rails/capybara"
+require "capybara-webkit"
 require "turn/autorun"
-
 Capybara.default_driver = :webkit
 
 class IndexPosts
@@ -66,12 +66,8 @@ class EditProjectPage
   end
 end
 
-
 class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
   fixtures :all
-
-  # Add more helper methods to be used by all tests here...
 end
 
 class IntegrationTest < MiniTest::Spec
