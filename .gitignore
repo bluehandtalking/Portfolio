@@ -37,3 +37,4 @@ app/assets/stylesheets/.welcome.css.scss.swp
 app/views/layouts/.application.html.erb.swp
 app/views/welcome/.index.html.erb.swp
 config/.database.yml.swp
+config/.unicorn.rb.swp

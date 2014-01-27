@@ -6,6 +6,7 @@
 development:
   adapter: postgresql
   database: portfolio
+  encoding: unicode 
   password: 
   pool: 5
   timeout: 5000
