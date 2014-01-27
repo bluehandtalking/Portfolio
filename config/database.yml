@@ -6,7 +6,6 @@
 development:
   adapter: postgresql
   database: portfolio
-  user:    portfolio 
   password: 
   pool: 5
   timeout: 5000
@@ -25,7 +24,6 @@ test:
 production:
   adapter: postresql
   database: portfolio
-  user:     portfolio
   passwrd:  
   pool: 5
   timeout: 5000
