@@ -34,9 +34,4 @@ ActiveRecord::Schema.define(version: 20140123173513) do
     t.datetime "updated_at"
   end
 
-  create_table "welcomes", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
 end
