@@ -17,8 +17,10 @@ group :doc do
   gem 'sdoc', require: false # bundle exec rake doc:rails generates the API under doc/api. 
 end
 
-gem 'rails_12factor'
-gem 'unicorn'
+group :production do
+  gem 'rails_12factor', github: "heroku/rails_12factor"
+  gem 'unicorn'
+end
 
 group :development do
   gem 'binding_of_caller', github: "banister/binding_of_caller" # This needs to go in before better_errors
