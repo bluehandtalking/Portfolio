@@ -92,9 +92,10 @@ div.jerry {
    position: relative;
    left: 220px;
 }
-body {
-   // width: 100%;
-   // margin: 0 auto;
+.wrapper {
+   width: 960px;
+   height: 820px;
+   margin: 0 auto;
    background: url(https://s3.amazonaws.com/jetwhidbey/hand_boson-4.jpg); 
    background-repeat:no-repeat;
 }
