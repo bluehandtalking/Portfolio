@@ -17,6 +17,7 @@ group :doc do
   gem 'sdoc', require: false # bundle exec rake doc:rails generates the API under doc/api. 
 end
 
+gem 'rails_12factor'
 gem 'unicorn'
 
 group :development do
@@ -32,6 +33,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'ansi', "~> 1.4.3" #required by factory_girl_rails
   gem 'turn'
+  
   # gem 'guard'
   # gem 'guard-rspec'
   # gem 'guard-minitest'
