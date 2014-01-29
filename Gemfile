@@ -17,8 +17,11 @@ group :doc do
   gem 'sdoc', require: false # bundle exec rake doc:rails generates the API under doc/api. 
 end
 
+group :production do
+  gem 'unicorn'
+end
+
 group :development do
-  # gem 'unicorn'
   gem 'sqlite3'
   gem 'binding_of_caller', github: "banister/binding_of_caller" # This needs to go in before better_errors
   gem 'better_errors'
