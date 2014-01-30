@@ -6,9 +6,6 @@ require "minitest/rails/capybara"
 require "capybara-webkit"
 require "turn/autorun"
 
-# below for ping test
-require 'timeout'
-require 'socket'
 
 
 Capybara.default_driver = :webkit
@@ -80,21 +77,6 @@ class IntegrationTest < MiniTest::Spec
   include Rails.application.routes.url_helpers
   include Capybara::DSL
   register_spec_type(/integration$/, self)
-end
-
-
-def ping(host)
-  begin
-    Timeout.timeout(5) do 
-      s = TCPSocket.new(host, 'echo')
-      s.close
-      return true
-    end
-  rescue Errno::ECONNREFUSED
-    return true
-  rescue Timeout::Error
-    return false
-  end
 end
 
 Turn.config.format = :outline
