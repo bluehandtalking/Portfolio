@@ -9,9 +9,10 @@ gem 'jquery-rails' # Use jquery as the JavaScript library
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder 
 gem 'rack-contrib', '1.1.0'
-
+gem 'devise'
 gem 'bcrypt-ruby', '~>3.1.2'
 gem "foundation-rails", github: "codefellows/foundation-rails"
+gem 'pundit'
 
 group :doc do
   gem 'sdoc', require: false # bundle exec rake doc:rails generates the API under doc/api. 
