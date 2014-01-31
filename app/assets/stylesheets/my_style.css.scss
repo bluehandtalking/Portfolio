@@ -18,19 +18,19 @@ div.large-8.columns {
       font-size: 8.0em;
       font-size: 8.0rem;	
       left: -80px;
-      color: #FFF;
+      color: #000;
 
    }
    h2 {
       font-size: 4.0em;
       font-size: 4.0rem;	
-      color: #FFF;
+      color: #000;
 
    }
    h3 {
       font-size: 3.5em;
       font-size: 3.5rem;	
-      color: #FFF;
+      color: #000;
 
    }
    div.intro-1 {
@@ -41,7 +41,7 @@ div.large-8.columns {
       p.welcome-1 {
 	 font-size: 1.5em;
 	 font-size: 1.5rem;
-	 color: #FFF; 
+	 color: #000; 
 	 line-height: 1.75em;
 	 line-height: 1.75rem;	
 	 padding-bottom: 2.0rem;
@@ -55,11 +55,11 @@ div.large-8.columns {
       p.welcome-2 {
 	 font-size: 1.5em;
 	 font-size: 1.5rem;
-	 color: #FFF; 
+	 color: #000; 
 	 line-height: 1.75em;
 	 line-height: 1.75rem;	
 	 a {
-	    color: #FFF; 
+	    color: #000; 
 	 }
       }
 
@@ -69,12 +69,12 @@ div.large-8.columns {
 div.large-4.columns {
    padding-bottom: 2.0em;
    h1, h2, h3 {
-      color: #FFF;     
+      color: #000;     
    } 
    p {
       font-size: 1.2em;
       line-height: 1.4em;	
-      color: #FFF; 
+      color: #000; 
    }
    div.about-us {
       position: relative;
@@ -93,7 +93,7 @@ div.jerry {
    left: 220px;
 }
 body {
-   background-image: url( "hand_boson-4.jpg" );
+   // background-image: url( "hand_boson-4.jpg" );
    background-repeat: no-repeat;
    -webkit-background-size: 100% 100%;           /* Safari 3.0 */
    -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
