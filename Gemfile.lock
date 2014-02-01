@@ -74,11 +74,6 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.0.2)
-    factory_girl (4.3.0)
-      activesupport (>= 3.0.0)
-    factory_girl_rails (4.3.0)
-      factory_girl (~> 4.3.0)
-      railties (>= 3.0.0)
     hike (1.2.3)
     i18n (0.6.9)
     jbuilder (1.5.3)
@@ -203,7 +198,6 @@ DEPENDENCIES
   capybara-webkit
   coffee-rails (~> 4.0.0)
   devise
-  factory_girl_rails
   foundation-rails!
   jbuilder (~> 1.2)
   jquery-rails

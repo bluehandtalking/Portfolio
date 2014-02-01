@@ -34,7 +34,7 @@ group :test do
   gem 'minitest-rails'
   gem 'minitest-rails-capybara'
   gem 'capybara-webkit'
-  gem 'factory_girl_rails'
+  # gem 'factory_girl_rails'
   gem 'ansi', "~> 1.4.3" #required by factory_girl_rails
   gem 'turn'
   # gem 'guard'
