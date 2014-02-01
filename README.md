@@ -5,6 +5,11 @@ CSS
 ---
 > Using Zurb Foundation:  http://foundation.zurb.com
 
+Devise Authentication
+---------------------
+
+> https://github.com/plataformatec/devise 
+
 Entry Page
 ==========
 
