@@ -5,9 +5,8 @@ require "minitest/rails"
 require "minitest/rails/capybara"
 require "capybara-webkit"
 require "turn/autorun"
-
-
-
+require 'devise'
+require 'capybara/dsl'
 Capybara.default_driver = :webkit
 
 class IndexPosts
@@ -73,11 +72,21 @@ class ActiveSupport::TestCase
   fixtures :all
 end
 
-class IntegrationTest < MiniTest::Spec
+
+class FeatureTest < MiniTest::Spec
   include Rails.application.routes.url_helpers
   include Capybara::DSL
   register_spec_type(/integration$/, self)
 end
+
+def log_in
+  visit root_path
+  click_link "Sign in"
+  fill_in 'Email', with: users(:chill).email
+  fill_in 'Password', with: 'secretpwd' 
+end     
+
+
 
 Turn.config.format = :outline
 

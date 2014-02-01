@@ -14,51 +14,61 @@
   <body>
     <nav class="top-bar">
       <ul class="title-area">
-        <li class="name">
-        <h1><%= link_to "Boson Foundry", root_path %></a></h1>
-      </li>
+        <li class="name"><h1><%= link_to "Boson Foundry", root_path %></h1></li> 
     </ul>
     <section class="top-bar-section">
-      <ul class="right">
-        <li class="divider"></li>
         <% if user_signed_in? %>
-          <li> Signed in as <%= current_user.email %> Not you? <%= link_to 'sign out', destroy_user_session_path, method: :delete %></li>
+      <ul >
+        <li> Signed in as </li>
+      </ul>
+      <ul>
+        <li><%= current_user.email %></li>
+      </ul>
+      <ul>
+          <li> Not you? </li>
+      </ul>
+      <ul>
+          <li> <%= link_to 'Sign out', destroy_user_session_path, method: :delete %> </li>
+      </ul>
         <% else %>
-        <li class="divider"></li>
-          <%= link_to 'Sign up', new_user_registration_path %> or <%= link_to 'sign in', new_user_session_path  %> </li> 
-        <li class="divider"></li>
+        <ul>
+          <li> <%= link_to 'Sign up', new_user_registration_path %> </li>
+        </ul>
+        <ul>
+          <li><%= link_to 'Sign in', new_user_session_path  %> </li> 
+        </ul>
         <% end %>
+      <ul class="right">
         <li><%= link_to "Posts", posts_path %></li>
-        <li class="divider"></li>
         <li><%= link_to "Prodjects List", projects_path%></li>
-        <li class="divider"></li>
         <li><%= link_to "Contact Us" %></li>
       </ul>
-    </div>
-  </nav>
-  <div class="row">
-    <div class="flash">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    </div>
-    <div class="large-8 columns"><%= yield %></div>
-    <div class="large-4 columns">
-      <div class="about-us">
-        <h2>
-          About Us
-        </h2>
-        <p>
-        I am a Ruby on Rails software developer who lives in the Pacific Northwest. Writing good software
-        that is clean, flexible, documented, and fast is a passion which I enjoy. Creating a UI that is easy
-        to navigate, draws a customer to a CTA or inspires a user to investigate further brings an immense degree
-        of satisfaction in my work. Creativity, clear communication, and working with others to make something
-        great is the most satifying thing in my life.
+    </section>
+  </div>
+</nav>
+<div class="row">
+  <div class="flash">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+  </div>
+  <div class="large-8 columns"><%= yield %></div>
+  <div class="large-4 columns">
+    <div class="about-us">
+      <h2>
+        About Us
+      </h2>
+      <p>
+      I am a Ruby on Rails software developer who lives in the Pacific Northwest. Writing good software
+      that is clean, flexible, documented, and fast is a passion which I enjoy. Creating a UI that is easy
+      to navigate, draws a customer to a CTA or inspires a user to investigate further brings an immense degree
+      of satisfaction in my work. Creativity, clear communication, and working with others to make something
+      great is the most satifying thing in my life.
 
-        </p> 
-      </div>
+      </p> 
     </div>
   </div>
+</div>
 
-  <%= javascript_include_tag "application" %>
+<%= javascript_include_tag "application" %>
 </body>
 </html>
