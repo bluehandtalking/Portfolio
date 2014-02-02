@@ -37,6 +37,8 @@ group :test do
   # gem 'factory_girl_rails'
   gem 'ansi', "~> 1.4.3" #required by factory_girl_rails
   gem 'turn'
+  gem 'simplecov', :require => false
+
   # gem 'guard'
   # gem 'guard-rspec'
   # gem 'guard-minitest'
