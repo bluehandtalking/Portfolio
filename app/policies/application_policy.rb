@@ -1,9 +1,10 @@
 class ApplicationPolicy
-  attr_reader :user, :record
+  attr_reader :user, :post
 
-  def initialize(user, record)
+  def initialize(user, post)
+    raise Pundit::NotAuthorizedError, "must be logged in" unless user 
     @user = user
-    @record = record
+    @post = post
   end
 
   def index?
@@ -11,7 +12,7 @@ class ApplicationPolicy
   end
 
   def show?
-    scope.where(:id => record.id).exists?
+    scope.where(:id => post.id).exists?
   end
 
   def create?
@@ -35,7 +36,6 @@ class ApplicationPolicy
   end
 
   def scope
-    Pundit.policy_scope!(user, record.class)
-  end
+    Pundit.policy_scope!(user, post.class)
+  end 
 end
-
