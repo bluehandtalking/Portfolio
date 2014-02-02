@@ -1,12 +1,27 @@
-class PostPolicy
-  attr_reader :user, :post
+class PostPolicy < ApplicationPolicy
+  class Scope < Struct.new(:user, :scope)
+    def resolve
+      if user.editor?
+        scope
+      else
+        scope.where(published: true)
+      end
+    end
+  end
 
-  def initialize(user, post)
-    @user = user
-    @post = post
+  def create? 
+    if user.present?
+      user.editor? || user.author? unless post.published
+    end
   end
 
   def update?
-    user.admin? or not post.published?
+    if user.present?
+      user.editor || (author.id == user.id) 
+    end
+  end
+
+  def destroy?  
+    user.editor?
   end
 end
