@@ -1,3 +1,6 @@
+require 'simplecov'
+SimpleCov.start 'rails'
+
 ENV["RAILS_ENV"] = "test"
 require File.expand_path("../../config/environment", __FILE__)
 require "rails/test_help"
@@ -7,6 +10,7 @@ require "capybara-webkit"
 require "turn/autorun"
 require 'devise'
 require 'capybara/dsl'
+
 Capybara.default_driver = :webkit
 
 class IndexPosts
