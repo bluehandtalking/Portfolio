@@ -83,6 +83,13 @@ class FeatureTest < MiniTest::Spec
   register_spec_type(/integration$/, self)
 end
 
+def sign_in(role = :editor)
+  visit '/users/sign_in'
+  fill_in "Email", with: users(role).email
+  fill_in "Password", with: 'secretpwd49'
+  page.all(:link,"Sign in")[0].click 
+end
+
 def log_in
   visit root_path
   click_link "Sign in"

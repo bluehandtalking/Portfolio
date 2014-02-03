@@ -35,6 +35,10 @@ class ApplicationPolicy
     false
   end
 
+  def published?
+    scope.where(:published => post.published == true)
+  end
+
   def scope
     Pundit.policy_scope!(user, post.class)
   end 
