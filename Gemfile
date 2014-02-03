@@ -38,6 +38,8 @@ group :test do
   gem 'ansi', "~> 1.4.3" #required by factory_girl_rails
   gem 'turn'
   gem 'simplecov', :require => false
+  gem 'debugger', "1.6.5"
+  gem 'pry-debugger', github: 'nixme/pry-debugger'
 
   # gem 'guard'
   # gem 'guard-rspec'
