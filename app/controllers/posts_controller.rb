@@ -2,11 +2,11 @@ class PostsController < ApplicationController
   # rescue_from Pundit::NotAuthorizedError, :with => :record_not_found
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :auth_post, only: [:update, :destroy]
-  before_filter :authenticate_user!, except: [:index]
+  # before_filter :authenticate_user!, except: [:index]
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = policy_scope(Post.scoped) 
   end
   # GET /posts/1
   # GET /posts/1.json
