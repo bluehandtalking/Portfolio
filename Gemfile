@@ -38,6 +38,7 @@ group :test do
   gem 'simplecov', :require => false
   gem 'debugger', "1.6.5"
   gem 'pry-debugger', github: 'nixme/pry-debugger'
+  gem 'pry-rescue'
 
   # gem 'guard'
   # gem 'guard-rspec'
