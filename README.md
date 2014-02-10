@@ -21,4 +21,8 @@ Entry Page
 ==========
 
 ![Boson Foundry Landing Page](app/assets/images/Boson_Foundry_Portfolio.png) 
-> 
+
+Copyright
+---------
+
+* [Copyright][http://jet.mit-license.org/] by Jerrold R Thompson 
