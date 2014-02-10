@@ -25,4 +25,4 @@ Entry Page
 Copyright
 ---------
 
-* [Copyright][http://jet.mit-license.org/] by Jerrold R Thompson 
+[Copyright][http://jet.mit-license.org/] by Jerrold R Thompson 
