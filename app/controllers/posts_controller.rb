@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   # rescue_from Pundit::NotAuthorizedError, :with => :record_not_found
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :auth_post, only: [:update, :destroy]
-  # before_filter :authenticate_user!, except: [:index]
+  before_filter :authenticate_user!, except: [:index]
   # GET /posts
   # GET /posts.json
   def index
@@ -24,12 +24,6 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
   end
-
-  def publish!
-    authorize @post, :update?
-    published = true
-    save!
-  end 
 
   # POST /posts
   # POST /posts.json
@@ -84,7 +78,7 @@ class PostsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
-    params.require(:post).permit(:title, :description, :content)
+    params.require(:post).permit(:title, :description, :content, :author_id,  (:published if PostPolicy.new(current_user, @post).publish?) )
   end
 
   def auth_post
