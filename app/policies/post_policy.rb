@@ -3,11 +3,9 @@ class PostPolicy < ApplicationPolicy
     def resolve
       if user.nil?
         scope.where(published: true)
-      elsif
-        user.editor?
+      elsif user.editor? 
           scope.all
-      elsif
-        user.author?
+      elsif user.author? 
           scope.where(:author_id ==  :user_id)
       end
     end
@@ -15,13 +13,13 @@ class PostPolicy < ApplicationPolicy
 
   def create? 
     if user.present?
-      user.editor? || user.author? # unless post.published
+      user.editor? || user.author? unless post.published
     end
   end
 
   def update?
     if user.present?
-      user.editor? || (:author_id == :user_id) 
+       user.editor? || (:author_id == :user_id) 
     end
   end
 
