@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   # after_action :verify_policy_scoped, :only => :index 
 
   # jet ---below causing major problem of recursive render!!
+
   # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized 
 
   # def user_not_authorized
