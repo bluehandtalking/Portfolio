@@ -5,7 +5,7 @@ feature "VisitingThePostIndex" do
   let(:index_posts) {IndexPosts.new}
   scenario "with existing post, show list"  do
       #Given existing posts --provided by  ActiveSupport::TestCase ---fixtures :all
-    visit '/posts/new'
+    visit '/posts'
     new_post.fill_post
     click_on 'Create Post'
     #When I visit/posts
