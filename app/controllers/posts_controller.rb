@@ -6,22 +6,24 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
 
+  def new
+    @post = Post.new
+  end
 
   def index
     @posts = policy_scope(Post.scoped) 
   end
 
   def show
-    @comment = @post.comments.build
+    @comment = Comment.new   # @post.comments.build
     @comments = @post.comments
   end
 
-  def new
-    @post = Post.new
-    @user = current_user
-  end
-
   def edit
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create
@@ -54,6 +56,7 @@ class PostsController < ApplicationController
       if @post.update(post_params)
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { head :no_content }
+        format.js
       else
         format.html { render action: 'edit' }
         format.json { render json: @post.errors, status: :unprocessable_entity }

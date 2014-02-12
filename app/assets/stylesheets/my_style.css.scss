@@ -12,7 +12,7 @@
    }
 }
 
-div.large-8.columns {
+div.large-8.columns.welcome {
    h1 {
       position: relative;
       font-size: 8.0em;
@@ -122,4 +122,13 @@ input#post_published  {
    font-size: 18px;
    height: 22px;
    width: 22px;
+}
+
+div#comment_msg h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+h1#edit-hdr {
+    display: none;    
 }
