@@ -12,13 +12,8 @@ class PostsController < ApplicationController
   end
 
   def show
-    @comment = @post.comments.build
+    @comment = Comment.new   # @post.comments.build
     @comments = @post.comments
-  end
-
-  def new
-    @post = Post.new
-    @user = current_user
   end
 
   def edit
