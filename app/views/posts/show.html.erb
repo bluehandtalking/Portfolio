@@ -1,37 +1,44 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
-  <%= @post.title %>
+<strong>Title:</strong>
+<%= @post.title %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+<strong>Description:</strong>
 </p>
 <p>
-  <%= @post.description %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-</p>
-<p>
-  <%= @post.content %>
-</p>
-<p>
-	<strong>Comments:</strong>	
+<%= @post.description %>
 </p>
 
 <p>
+<strong>Content:</strong>
+</p>
+<p>
+<%= @post.content %>
+</p>
+<p>
+<strong>Comments:</strong>	
+</p>
+<div class="row">
+  <div class="small-10 columns" id="blog_comments" >
   <% @comments.each do |comment| %>
-    <p><%= comment.comment %></p>
+  <p><%= comment.comment %></p>
   <%  end %>
-</p>
+  </div>
+</div>
+<div id="comment_msg">
+  <h3>
+    Leave a Comment!
+  </h3>
+</div>
+<div id='comments_form'  class="row">
+  <div  class="small-8 columns">
+    <%= link_to "New Comment" , new_post_comment_path(@post.id), id: 'new_link', remote: true %> 
+  </div>
+</div>
 
-<h3>
-  Leave a Comment!
-</h3>
-<%= render  "comments/form"%>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
