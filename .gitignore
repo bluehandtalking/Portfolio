@@ -44,3 +44,6 @@ config/.unicorn.rb.swp
 .ruby-version.01.26.2014-21:18:15
 coverage/*
 tags
+
+# Ignore application configuration
+/config/application.yml

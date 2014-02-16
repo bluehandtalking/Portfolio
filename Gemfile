@@ -13,6 +13,8 @@ gem 'devise'
 gem 'bcrypt-ruby', '~>3.1.2'
 gem "foundation-rails", github: "codefellows/foundation-rails"
 gem 'pundit'
+gem 'omniauth-twitter'
+gem 'figaro'
 
 group :doc do
   gem 'sdoc', require: false # bundle exec rake doc:rails generates the API under doc/api. 
