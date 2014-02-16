@@ -43,3 +43,4 @@ config/.unicorn.rb.swp
 .ruby-gemset.01.26.2014-21:18:15
 .ruby-version.01.26.2014-21:18:15
 coverage/*
+tags
