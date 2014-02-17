@@ -12,7 +12,7 @@
    }
 }
 
-div.large-8.columns {
+div.large-8.columns.welcome {
    h1 {
       position: relative;
       font-size: 8.0em;
@@ -102,16 +102,35 @@ body {
        -o-background-size: 100% 100%;           /* Opera 9.5 */
           background-size: 100% 100%;           /* Gecko 2.0 (Firefox 4.0) and other CSS3-compliant browsers */
 
-  -moz-border-image: url(hand_boson-4.jpg) 0;    /* Gecko 1.9.1 (Firefox 3.5) */
+   -moz-border-image: url(hand_boson-4.jpg) 0;    /* Gecko 1.9.1 (Firefox 3.5) */
 
 }
 div.contact {
-    position: absolute;
+   position: absolute;
 }
 span.done {
-    position: relative;
-    top: .4em;
-    left: 8em;
-    font-size: 2.4em;
-    width: 420px;
+   position: relative;
+   top: .4em;
+   left: 8em;
+   font-size: 2.4em;
+   width: 420px;
+}
+
+form#new_post {
+    width: 80%
+}
+input#post_published  {
+   line-height: 18px;
+   font-size: 18px;
+   height: 22px;
+   width: 22px;
+}
+
+div#comment_msg h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+h1#edit-hdr {
+    display: none;    
 }

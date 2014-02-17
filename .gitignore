@@ -28,13 +28,12 @@ app/assets/stylesheets/.my_style.css.scss.swp
 app/views/welcome/.index.html.erb.swp
 app/assets/stylesheets/.my_style.css.scss.swp 
 app/views/layouts/.application.html.erb.swp 
-app/views/welcome/.index.html.erb.swp
-app/assets/stylesheets/.my_style.css.scss.sw
 app/assets/stylesheets/.my_style.css.scss.swp
 app/assets/stylesheets/.welcome.css.scss.swp
 app/views/layouts/.application.html.erb.swp
 app/views/welcome/.index.html.erb.swp
 config/.database.yml.swp
+config/database.yml
 config/.unicorn.rb.swp
 .env
 .ruby-gemset.01.26.2014-21:18:15
@@ -47,4 +46,3 @@ config/database.yml
 #	app/controllers/.posts_controller.rb.swp
 #	app/models/.post.rb.swp
 #	app/policies/.post_policy.rb.swp
-#	app/views/comments/._comment.html.erb.swp

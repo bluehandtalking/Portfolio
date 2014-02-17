@@ -9,9 +9,12 @@ gem 'jquery-rails' # Use jquery as the JavaScript library
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder 
 gem 'rack-contrib', '1.1.0'
-
+gem 'devise'
 gem 'bcrypt-ruby', '~>3.1.2'
 gem "foundation-rails", github: "codefellows/foundation-rails"
+gem 'pundit'
+gem 'omniauth-twitter'
+gem 'figaro'
 
 group :doc do
   gem 'sdoc', require: false # bundle exec rake doc:rails generates the API under doc/api. 
@@ -22,20 +25,25 @@ group :production do
   gem 'unicorn'
 end
 
+
 group :development do
+  gem 'sqlite3'
   gem 'binding_of_caller', github: "banister/binding_of_caller" # This needs to go in before better_errors
   gem 'better_errors'
   gem 'meta_request', '0.2.1'
+  gem 'pry-rails'
 end
 
 group :test do 
   gem 'minitest-rails'
   gem 'minitest-rails-capybara'
   gem 'capybara-webkit'
-  gem 'factory_girl_rails'
-  gem 'ansi', "~> 1.4.3" #required by factory_girl_rails
   gem 'turn'
-  
+  gem 'simplecov', :require => false
+  gem 'debugger', "1.6.5"
+  gem 'pry-debugger', github: 'nixme/pry-debugger'
+  gem 'pry-rescue'
+
   # gem 'guard'
   # gem 'guard-rspec'
   # gem 'guard-minitest'

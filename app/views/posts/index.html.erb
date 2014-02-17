@@ -1,31 +1,41 @@
-<h1>Listing posts</h1>
-
+<h1 id="list-hdr">Listing posts</h1>
+<h1 id="edit-hdr">Edit Post</h1>
+<div id="edit_place"></div>
 <table>
   <thead>
     <tr>
       <th>Title</th>
       <th>Description</th>
-      <th>Content</th>
       <th></th>
       <th></th>
       <th></th>
+      <th>Publish</th>
     </tr>
   </thead>
-
   <tbody>
     <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.description %></td>
-        <td><%= post.content %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+      <tr id="<%= dom_id(post) %>">
+      <td><%= post.title %></td>
+      <td><%= post.description %></td>
+      <td><%= link_to 'Show', post %></td>
+      <% if current_user && policy(post).update? %>
+        <td><%= link_to 'Edit', edit_post_path(post), remote: true %></td>
+      <% end %>
+      <% if current_user && policy(post).destroy? %>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <% end %>
+      <% if current_user && policy(post).published? %>
+        <td><%= link_to 'Publish', edit_post_path(post) %></td> 
+      <% end %>
+    </tr>
+    <tr>
+    <td>
+      <% if current_user && policy(post).create? %>
+        <%= link_to 'New Post', new_post_path %>
+      <% end %>
+    </td>
+    </tr>     
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+    </table>
 
-<br>
-
-<%= link_to 'New Post', new_post_path %>

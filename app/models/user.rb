@@ -1,5 +1,14 @@
 class User < ActiveRecord::Base
-  has_secure_password
-  
-  validates_uniqueness_of :email
+  devise :database_authenticatable, :registerable,
+    :recoverable, :rememberable, :trackable, :validatable
+
+  has_many :posts, foreign_key: 'author_id'
+
+  def author?
+    role == 'author'
+  end
+
+  def editor?
+    role == 'editor'
+  end 
 end
