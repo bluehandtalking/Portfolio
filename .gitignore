@@ -42,6 +42,7 @@ coverage/.resultset.json
 test/features/integration/.visiting_site_test.rb.swp
 # below removed for heroku
 # config/database.yml
+#
 
 #	app/assets/stylesheets/.application.css.scss.swp
 #	app/controllers/.posts_controller.rb.swp
