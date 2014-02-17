@@ -40,7 +40,8 @@ config/.unicorn.rb.swp
 .ruby-version.01.26.2014-21:18:15
 coverage/.resultset.json
 test/features/integration/.visiting_site_test.rb.swp
-config/database.yml
+# below removed for heroku
+# config/database.yml
 
 #	app/assets/stylesheets/.application.css.scss.swp
 #	app/controllers/.posts_controller.rb.swp
