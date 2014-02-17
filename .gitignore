@@ -33,7 +33,7 @@ app/assets/stylesheets/.welcome.css.scss.swp
 app/views/layouts/.application.html.erb.swp
 app/views/welcome/.index.html.erb.swp
 config/.database.yml.swp
-config/database.yml
+# config/database.yml
 config/.unicorn.rb.swp
 .env
 .ruby-gemset.01.26.2014-21:18:15
@@ -42,7 +42,7 @@ coverage/.resultset.json
 test/features/integration/.visiting_site_test.rb.swp
 # below removed for heroku
 # config/database.yml
-#
+
 
 #	app/assets/stylesheets/.application.css.scss.swp
 #	app/controllers/.posts_controller.rb.swp
