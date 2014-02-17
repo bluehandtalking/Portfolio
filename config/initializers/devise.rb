@@ -213,8 +213,7 @@ Devise.setup do |config|
   # ==> Navigation configuration
   # Lists the formats that should be treated as navigational. Formats like
   # :html, should redirect to the sign in page when the user does not have
-  # access, but formats like :xml or :json, should return 401.
-  #
+  # access, but formats like :xml or :json, should return 401.  #
   # If you have any extra navigational formats, like :iphone or :mobile, you
   # should add them to the navigational formats lists.
   #
@@ -251,4 +250,5 @@ Devise.setup do |config|
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+  config.omniauth  :twitter, ENV["TWITTER_CONSUMER_KERY"], ENV["TWITTER_CONSUMER_SECRET"]
 end
