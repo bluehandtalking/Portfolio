@@ -2,5 +2,6 @@ development:
   adapter: postgresql
   database: portfolio
   user:    portfolio 
+  password: 0$car5fish
   host: localhost
 

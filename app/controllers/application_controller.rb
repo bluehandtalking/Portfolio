@@ -15,4 +15,18 @@ class ApplicationController < ActionController::Base
   #   redirect_to request.headers["Referer"] || root_path
   # end
 
+  private
+
+  def set_locale
+    I18n = params[locale] ||  I18n.default_locale
+  end
+
+  def default_url_options( options={} )
+    {:locale => I18n.locale}
+  end
+
+  def user_not_authorized
+    flash[:error] = "Unauthorized to perform this action."
+  end 
+
 end

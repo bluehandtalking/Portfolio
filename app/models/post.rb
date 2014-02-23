@@ -5,7 +5,7 @@ class Post < ActiveRecord::Base
   accepts_nested_attributes_for :comments, allow_destroy: true
 
   def publish!
-    published = true
+    self.published = true
     save!
   end 
 
