@@ -2,7 +2,7 @@ Portfolio::Application.routes.draw do
 
   resources :welcomes
 
-  devise_for :users
+  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   resources :posts do
     resources :comments
   end

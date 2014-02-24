@@ -12,7 +12,7 @@
    }
 }
 
-div.large-8.columns.welcome {
+div.small-8.columns.welcome {
    h1 {
       position: relative;
       font-size: 8.0em;
@@ -66,15 +66,15 @@ div.large-8.columns.welcome {
    }
 }
 
-div.large-4.columns {
+div.small-4.columns {
     padding-bottom: 2.0em;
     h1, h2, h3 {
-	color: #FFF;     
+	color: #000;     
     } 
     p {
 	font-size: 1.2em;
         line-height: 1.4em;	
-	color: #FFF; 
+	color: #000; 
     }
     div.about-us {
         position: relative;
@@ -95,7 +95,7 @@ div.jerry {
 body {
    width: 100%;
    margin: 0 auto;
-    background: url(https://s3.amazonaws.com/jetwhidbey/hand_boson-4.jpg); 
+    // background: url(https://s3.amazonaws.com/jetwhidbey/hand_boson-4.jpg); 
     background-repeat:no-repeat;
 -webkit-background-size: 100% 100%;           /* Safari 3.0 */
      -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */

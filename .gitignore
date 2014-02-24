@@ -48,3 +48,6 @@ test/features/integration/.visiting_site_test.rb.swp
 #	app/controllers/.posts_controller.rb.swp
 #	app/models/.post.rb.swp
 #	app/policies/.post_policy.rb.swp
+
+# Ignore application configuration
+config/application.yml
