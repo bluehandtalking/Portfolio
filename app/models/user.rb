@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
       user.provider = auth.provider
       user.uid = auth.uid
       user.name = auth.info.nickname
+      user.email = "#{user.nam}-CHANGEME@twitter.example.com"
     end
   end
 
@@ -27,6 +28,13 @@ class User < ActiveRecord::Base
         user.attributes = params
         user.valid?
       end
+    else
+      super
+    end
+  end
+  def update_with_password(params, *options)
+    if encrypted_password.blank?
+      update_attributes(params, *options)
     else
       super
     end
