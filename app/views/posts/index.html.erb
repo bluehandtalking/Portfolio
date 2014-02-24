@@ -13,20 +13,22 @@
     </tr>
   </thead>
   <tbody>
-    <% @posts.each do |post| %>
-      <tr id="<%= dom_id(post) %>">
-      <td><%= post.title %></td>
-      <td><%= post.description %></td>
-      <td><%= link_to 'Show', post %></td>
-      <% if current_user && policy(post).update? %>
-        <td><%= link_to 'Edit', edit_post_path(post), remote: true %></td>
+    <% unless  @posts.blank?%>
+      <% @posts.each do |post| %>
+        <tr id="<%= dom_id(post) %>">
+        <td><%= post.title %></td>
+        <td><%= post.description %></td>
+        <td><%= link_to 'Show', post %></td>
+        <% if current_user && policy(post).update? %>
+          <td><%= link_to 'Edit', edit_post_path(post), remote: true %></td>
+        <% end %>
+        <% if current_user && policy(post).destroy? %>
+          <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+        <% if current_user && policy(post).published? %>
+          <td><%= link_to 'Publish', edit_post_path(post) %></td> 
       <% end %>
-      <% if current_user && policy(post).destroy? %>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      <% end %>
-      <% if current_user && policy(post).published? %>
-        <td><%= link_to 'Publish', edit_post_path(post) %></td> 
-      <% end %>
+    <% end %>
     </tr>
     <tr>
     <td>
@@ -38,4 +40,3 @@
     <% end %>
     </tbody>
     </table>
-
