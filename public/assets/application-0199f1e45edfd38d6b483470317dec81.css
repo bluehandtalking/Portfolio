@@ -10,7 +10,7 @@
  *
 
 
-
+ *= 
 
  */
 meta.foundation-mq-small {
@@ -5148,55 +5148,55 @@ th.hide-for-touch {
       font-size: 2.0em;
       font-size: 2.0rem; }
 
-div.large-8.columns h1 {
+h1.welcome {
+  font-size: 3.75rem; }
+
+div.small-8.columns.welcome h1 {
   position: relative;
-  font-size: 8.0em;
   font-size: 8.0rem;
-  left: -80px;
+  left: 80px;
   color: #FFF; }
-div.large-8.columns h2 {
+div.small-8.columns.welcome h2 {
   font-size: 4.0em;
   font-size: 4.0rem;
   color: #FFF; }
-div.large-8.columns h3 {
+div.small-8.columns.welcome h3 {
   font-size: 3.5em;
   font-size: 3.5rem;
   color: #FFF; }
-div.large-8.columns div.intro-1 {
+div.small-8.columns.welcome div.small-6.intro-1 {
   position: relative;
-  width: 70%;
-  clear: both;
   float: right; }
-  div.large-8.columns div.intro-1 p.welcome-1 {
+  div.small-8.columns.welcome div.small-6.intro-1 p.welcome-1 {
     font-size: 1.5em;
     font-size: 1.5rem;
     color: #FFF;
     line-height: 1.75em;
     line-height: 1.75rem;
     padding-bottom: 2.0rem; }
-div.large-8.columns div.intro-2 {
+div.small-8.columns.welcome div.intro-2 {
   position: relative;
   width: 70%;
   clear: both;
   float: left; }
-  div.large-8.columns div.intro-2 p.welcome-2 {
+  div.small-8.columns.welcome div.intro-2 p.welcome-2 {
     font-size: 1.5em;
     font-size: 1.5rem;
     color: #FFF;
     line-height: 1.75em;
     line-height: 1.75rem; }
-    div.large-8.columns div.intro-2 p.welcome-2 a {
+    div.small-8.columns.welcome div.intro-2 p.welcome-2 a {
       color: #FFF; }
 
-div.large-4.columns {
+div.small-4.columns {
   padding-bottom: 2.0em; }
-  div.large-4.columns h1, div.large-4.columns h2, div.large-4.columns h3 {
-    color: #FFF; }
-  div.large-4.columns p {
+  div.small-4.columns h1, div.small-4.columns h2, div.small-4.columns h3 {
+    color: #000; }
+  div.small-4.columns p {
     font-size: 1.2em;
     line-height: 1.4em;
-    color: #FFF; }
-  div.large-4.columns div.about-us {
+    color: #000; }
+  div.small-4.columns div.about-us {
     position: relative;
     padding-top: 2.4em; }
 
@@ -5207,12 +5207,23 @@ div.large-4.columns {
 div.jerry {
   position: relative;
   left: 220px; }
+  div.jerry h1, div.jerry h2, div.jerry h3 {
+    color: #000; }
 
-div.wrapper {
+div.musings {
+  position: relative;
+  font-size: 2.5rem;
+  line-height: 2.75rem;
+  margin: auto;
   width: 100%;
-  margin: 0 auto;
-  background: url(https://s3.amazonaws.com/jetwhidbey/hand_boson-4.jpg);
-  background-repeat: no-repeat; }
+  clear: both; }
+
+div.muse {
+  position: relative;
+  float: none;
+  width: 70%;
+  left: 30%;
+  clear: both; }
 
 div.contact {
   position: absolute; }
@@ -5223,6 +5234,22 @@ span.done {
   left: 8em;
   font-size: 2.4em;
   width: 420px; }
+
+form#new_post {
+  width: 80%; }
+
+input#post_published {
+  line-height: 18px;
+  font-size: 18px;
+  height: 22px;
+  width: 22px; }
+
+div#comment_msg h3 {
+  font-size: 1.2rem;
+  font-weight: bold; }
+
+h1#edit-hdr {
+  display: none; }
 body {
   background-color: #fff;
   color: #333;
