@@ -11,20 +11,21 @@
       }	       
    }
 }
-
-div.large-8.columns.welcome {
+h1.welcome {
+    font-size: 3.75rem;
+}
+div.small-8.columns.welcome { 
    h1 {
       position: relative;
-      font-size: 8.0em;
       font-size: 8.0rem;	
-      left: -80px;
+      left: 80px;
       color: #FFF;
 
    }
    h2 {
       font-size: 4.0em;
       font-size: 4.0rem;	
-	color: #FFF;
+      color: #FFF;
 
    }
    h3 {
@@ -33,10 +34,8 @@ div.large-8.columns.welcome {
 	color: #FFF;
 
    }
-   div.intro-1 {
+   div.small-6.intro-1 {
       position: relative;
-      width: 70%;
-      clear: both;
       float: right;
       p.welcome-1 {
 	 font-size: 1.5em;
@@ -66,15 +65,15 @@ div.large-8.columns.welcome {
    }
 }
 
-div.large-4.columns {
+div.small-4.columns {
     padding-bottom: 2.0em;
     h1, h2, h3 {
-	color: #FFF;     
+	color: #000;     
     } 
     p {
 	font-size: 1.2em;
         line-height: 1.4em;	
-	color: #FFF; 
+	color: #000; 
     }
     div.about-us {
         position: relative;
@@ -91,20 +90,36 @@ div.large-4.columns {
 div.jerry {
    position: relative;
    left: 220px;
+   h1, h2, h3, {
+     color: #000; 
+   }
 }
-body {
-   width: 100%;
-   margin: 0 auto;
-    // background: url(https://s3.amazonaws.com/jetwhidbey/hand_boson-4.jpg); 
-    background-repeat:no-repeat;
--webkit-background-size: 100% 100%;           /* Safari 3.0 */
-     -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
-       -o-background-size: 100% 100%;           /* Opera 9.5 */
-          background-size: 100% 100%;           /* Gecko 2.0 (Firefox 4.0) and other CSS3-compliant browsers */
 
-   -moz-border-image: url(hand_boson-4.jpg) 0;    /* Gecko 1.9.1 (Firefox 3.5) */
-
+div.musings {
+    position: relative;
+    font-size: 2.5rem;
+    line-height: 2.75rem; 
+    margin: auto;
+    width: 100%;
+    clear: both;
 }
+div.muse {
+    position: relative;
+    float: none;
+    width: 70%;
+    left: 30%;
+    clear: both
+}
+
+
+// body { 
+//   background: url(https://s3.amazonaws.com/jetwhidbey/hand_boson-4.jpg) no-repeat center center fixed; 
+//   -webkit-background-size: cover;
+//   -moz-background-size: cover;
+//   -o-background-size: cover;
+//   background-size: cover;
+// }
+
 div.contact {
    position: absolute;
 }
