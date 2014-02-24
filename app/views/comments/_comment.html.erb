@@ -1,3 +1,5 @@
 <p>
-<%= @comment.comment %>
+<% unless @comment.blank? %>
+  <%= @comment.comment %>
+<% end %>
 </p>
