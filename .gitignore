@@ -54,3 +54,4 @@ config/application.yml
 config/initializers/devise.rb
 tags
 config/database.yml
+coverage/*
