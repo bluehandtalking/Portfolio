@@ -51,3 +51,4 @@ test/features/integration/.visiting_site_test.rb.swp
 
 # Ignore application configuration
 config/application.yml
+tags
