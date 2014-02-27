@@ -53,3 +53,4 @@ test/features/integration/.visiting_site_test.rb.swp
 config/application.yml
 config/initializers/devise.rb
 tags
+config/database.yml
