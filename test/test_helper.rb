@@ -7,9 +7,11 @@ require "rails/test_help"
 require "minitest/rails"
 require "minitest/rails/capybara"
 require "capybara-webkit"
-require "turn/autorun"
-require 'devise'
 require 'capybara/dsl'
+require 'devise'
+require "turn/autorun"
+
+
 
 Capybara.default_driver = :webkit
 
@@ -32,9 +34,9 @@ class NewPostPage
     self
   end
   def fill_post
-    fill_in 'post_title', with: 'Code Fellows Portfolio'
-    fill_in 'post_description', with: 'The Amazing Life of Web Developers'
-    fill_in 'post_content', with: 'This is an example of how I merged with the goodness of Rails'
+    fill_in 'Title', with: 'Code Fellows Portfolio'
+    fill_in 'Description', with: 'The Amazing Life of Web Developers'
+    fill_in 'Content', with: 'This is an example of how I merged with the goodness of Rails'
   end
 end
 
