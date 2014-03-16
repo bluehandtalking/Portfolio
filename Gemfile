@@ -32,6 +32,7 @@ group :development do
   gem 'better_errors'
   gem 'meta_request', '0.2.1'
   gem 'pry-rails'
+  gem 'thin'
 end
 
 group :test do 

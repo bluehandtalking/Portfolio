@@ -1,3 +1,7 @@
+.jet {
+   background-color: #000 
+}
+
 .top-bar {
    height: 60px;
    h1 
@@ -5,19 +9,49 @@
       padding-top: 10px;
 
       a {
-	 font-size: 2.0em;
 	 font-size: 2.0rem;	
-
       }	       
    }
 }
-h1.welcome {
-    font-size: 3.75rem;
+.top-bar-section li:not(.has-form) a:not(.button) {
+    padding: 0 10px
 }
+h1.welcome {
+   font-size: 3.75rem;
+   color: #FFF
+
+}
+
+.being-here {
+    position: relative;
+    left: 10%
+}
+.ok {
+   font-size: 1.25rem;
+   color: #BEBEBE; 
+   line-height: 1.5rem;	
+   padding-bottom: 2.0rem;
+   padding: 2.0rem 3.0rem;
+   width: 140%
+}
+.qualities {
+   font-size: 1.25rem;
+   color: #BEBEBE; 
+   line-height: 1.5rem;	
+   position: relative;
+   left: 30%; 
+   width: 140%
+}
+
+// div.qualities {
+//     position: relative;
+//     top: 8rem;
+// }
+
 div.small-8.columns.welcome { 
    h1 {
       position: relative;
-      font-size: 8.0rem;	
+      font-size: 2.2rem;	
       left: 80px;
       color: #FFF;
 
@@ -31,55 +65,26 @@ div.small-8.columns.welcome {
    h3 {
       font-size: 3.5em;
       font-size: 3.5rem;	
-	color: #FFF;
-
-   }
-   div.small-6.intro-1 {
-      position: relative;
-      float: right;
-      p.welcome-1 {
-	 font-size: 1.5em;
-	 font-size: 1.5rem;
-	 color: #FFF; 
-	 line-height: 1.75em;
-	 line-height: 1.75rem;	
-	 padding-bottom: 2.0rem;
-      }
-   }
-   div.intro-2 {
-      position: relative;
-      width: 70%;
-      clear: both;
-      float: left;
-      p.welcome-2 {
-	 font-size: 1.5em;
-	 font-size: 1.5rem;
-	 color: #FFF; 
-	 line-height: 1.75em;
-	 line-height: 1.75rem;	
-	 a {
-	    color: #FFF; 
-	 }
-      }
+      color: #FFF;
 
    }
 }
 
 div.small-4.columns {
-    padding-bottom: 2.0em;
-    h1, h2, h3 {
-	color: #000;     
-    } 
-    p {
-	font-size: 1.2em;
-        line-height: 1.4em;	
-	color: #000; 
-    }
-    div.about-us {
-        position: relative;
-	padding-top: 2.4em; 
-    } 
-     
+   padding-bottom: 2.0rem;
+   h1, h2, h3 {
+      color: #BEBEBE;     
+   } 
+   p {
+      font-size: 1.2rem;
+      line-height: 1.4rem;	
+      color: #BEBEBE; 
+   }
+   div.about-us {
+      position: relative;
+      padding-top: 5.2rem; 
+   } 
+
 }
 
 .row {
@@ -89,50 +94,53 @@ div.small-4.columns {
 
 div.jerry {
    position: relative;
-   left: 220px;
+   left: 13.2rem;
    h1, h2, h3, {
-     color: #000; 
+      color: #BEBEBE; 
    }
 }
 
 div.musings {
-    position: relative;
-    font-size: 2.5rem;
-    line-height: 2.75rem; 
-    margin: auto;
-    width: 100%;
-    clear: both;
+   position: relative;
+   font-size: 2.5rem;
+   line-height: 2.75rem; 
+   margin: auto;
+   width: 100%;
+   clear: both;
 }
 div.muse {
-    position: relative;
-    float: none;
-    width: 70%;
-    left: 30%;
-    clear: both
-}
-
-
-// body { 
-//   background: url(https://s3.amazonaws.com/jetwhidbey/hand_boson-4.jpg) no-repeat center center fixed; 
-//   -webkit-background-size: cover;
-//   -moz-background-size: cover;
-//   -o-background-size: cover;
-//   background-size: cover;
-// }
-
-div.contact {
-   position: absolute;
-}
-span.done {
    position: relative;
-   top: .4em;
-   left: 8em;
-   font-size: 2.4em;
-   width: 420px;
+   float: none;
+   width: 90%;
+   // left: 30%;
+   clear: both;
+   h2 {
+      padding-right: 10%;
+      color: #BEBEBE;
+      font-size: 2.0rem
+   }
+}
+
+.front_pg_img {
+   position: relative;
+   left: 30%
+}
+
+.contact {
+    position: relative;
+    top: 10.6rem;
+    a:link {color:#FFF} 
+    a:visited {color:#FFF}
+    a:hover {color:#AF3636}
+    a:active {color:#AF3636} 
+}
+.contact_btn {
+   font-size: 1.8rem;
+   font-color: #FFF
 }
 
 form#new_post {
-    width: 80%
+   width: 80%
 }
 input#post_published  {
    line-height: 18px;
@@ -142,10 +150,21 @@ input#post_published  {
 }
 
 div#comment_msg h3 {
-    font-size: 1.2rem;
-    font-weight: bold;
+   font-size: 1.2rem;
+   font-weight: bold;
 }
 
 h1#edit-hdr {
-    display: none;    
+   display: none;    
+}
+
+.drop_cap { 
+   float: left; 
+   color: #FFF; 
+   font-size: 3.0rem; 
+   line-height: 3.0rem; 
+   padding-top: 0px; 
+   margin-top: 0px;
+   padding-right: 8px; 
+   padding-left: 3px;
 }
