@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.2' # Bundle edge Rails instead: gem 'rails', github: 'rails/rails' 
-gem 'pg' # Use sqlite3 as the database for Active Record 
-gem 'sass-rails', '~> 4.0.0' # Use SCSS for stylesheets 
-gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets 
-gem 'coffee-rails', '~> 4.0.0' # Use CoffeeScript for .js.coffee assets and views 
-gem 'jquery-rails' # Use jquery as the JavaScript library 
+gem 'rails', '4.0.2'
+gem 'pg'  
+gem 'sass-rails', '~> 4.0.0'
+gem 'uglifier', '>= 1.3.0'  
+gem 'coffee-rails', '~> 4.0.0'
+gem 'jquery-rails'  
 gem 'turbolinks'
-gem 'jbuilder', '~> 1.2' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder 
+gem 'jbuilder', '~> 1.2'
 gem 'rack-contrib', '1.1.0'
 gem 'devise'
 gem 'bcrypt-ruby', '~>3.1.2'
@@ -32,21 +32,18 @@ group :development do
   gem 'better_errors'
   gem 'meta_request', '0.2.1'
   gem 'pry-rails'
+  gem 'thin'
 end
 
 group :test do 
   gem 'minitest-rails'
-  gem 'minitest-rails-capybara'
+  gem 'minitest-rails-capybara', github: "blowmage/minitest-rails-capybara"
   gem 'capybara-webkit'
   gem 'turn'
   gem 'simplecov', :require => false
   gem 'debugger', "1.6.5"
   gem 'pry-debugger', github: 'nixme/pry-debugger'
   gem 'pry-rescue'
-
-  # gem 'guard'
-  # gem 'guard-rspec'
-  # gem 'guard-minitest'
 end
 
 ruby "2.1.0"

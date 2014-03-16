@@ -52,5 +52,8 @@ test/features/integration/.visiting_site_test.rb.swp
 # Ignore application configuration
 config/application.yml
 tags
+<<<<<<< HEAD
+=======
 config/database.yml
 coverage/*
+>>>>>>> 7c2e137a4055559f463340fbbc6931036ba28c35
