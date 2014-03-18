@@ -4,23 +4,44 @@
 
 .top-bar {
    height: 60px;
-   h1 
-   {
+   h1  {
+   
       padding-top: 10px;
 
       a {
-	 font-size: 2.0rem;	
+	 font-size: 2.0rem
       }	       
    }
 }
+
 .top-bar-section li:not(.has-form) a:not(.button) {
-    padding: 0 10px
+    padding: 0 10px;
 }
+
+.top-bar-section li:not(.has-form) a:not(.button):hover {
+    background: #902727;
+}
+
+.top-bar .name h1 a:hover {
+    background: #902727;
+}
+
+h1, h2 {color: #FFF}
 h1.welcome {
    font-size: 3.75rem;
-   color: #FFF;
    margin-bottom: 2.0rem
 }
+
+label {
+    color: #FFF;
+    font-size: 1.0rem
+}
+
+.alert {
+    color: #FFF;
+    font-size: 0.875rem
+}
+
 
 .being-here {
     position: relative;
