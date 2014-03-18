@@ -17,10 +17,7 @@
         <li class="name"><h1><%= link_to "Boson Foundry", root_path %></h1></li> 
       </ul>
       <section class="top-bar-section">
-         
         <ul class="right">
-          <li><%= link_to "Blog", posts_path %></li>
-          <li><%= link_to "Projects", projects_path%></li>
         </ul>
 
         <% if user_signed_in? %>
@@ -63,10 +60,10 @@
 
         </p> 
       </div>
-      <div class="contact">  <a href="mailto:jet@whidby.com"><span class="contact_btn">Contact Me!</span></a></div> 
- 
-      
-    </div
+      <div class="contact">  
+        <a href="mailto:jet@whidby.com"><span class="contact_btn">Contact Me!</span></a>
+      </div> 
+    </div>
   </div>
 
   <%= javascript_include_tag "application" %>
