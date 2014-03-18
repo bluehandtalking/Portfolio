@@ -22,13 +22,13 @@
 
         <% if user_signed_in? %>
           <ul class="left" >
-          <li> Signed in as </li>
+          <li> Signed in as &nbsp; </li>
         </ul>
         <ul>
           <li><%= current_user.email %></li>
         </ul>
         <ul>
-          <li> Not you? </li>
+          <li>  &nbsp; Not you?  </li>
         </ul>
         <ul>
           <li> <%= link_to 'Sign out', destroy_user_session_path, method: :delete %> </li>
