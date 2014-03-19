@@ -54,3 +54,6 @@ config/application.yml
 tags
 config/database.yml
 coverage/*
+coverage/.last_run.json
+ coverage/.resultset.json
+coverage/index.html
