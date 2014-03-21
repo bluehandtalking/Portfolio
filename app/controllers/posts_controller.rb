@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   # rescue_from Pundit::NotAuthorizedError, :with => :record_not_found
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :auth_post, only: [:update, :destroy]
-  before_filter :authenticate_user!, except: [:index]
+  before_filter :authenticate_user!, except: [:index, :show]
   # GET /posts
   # GET /posts.json
 
@@ -15,6 +15,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find(params[:id])
     @comment = Comment.new   # @post.comments.build
     @comments = @post.comments
   end
