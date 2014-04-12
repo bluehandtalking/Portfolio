@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "Boson Foundry" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body class="jet">
+    <nav class="top-bar">
+      <ul class="title-area">
+        <li class="name"><h1><%= link_to "Boson Foundry", root_path %></h1></li> 
+      </ul>
+      <section class="top-bar-section">
+        <ul class="right">
+          <li><%= link_to "Blog", posts_path %></li>
+          <li><%= link_to "Projects", projects_path%></li>
+        </ul>
+
+        <% if user_signed_in? %>
+          <ul class="left" >
+          <li> Signed in as &nbsp; </li>
+        </ul>
+        <ul>
+          <li><%= current_user.email %></li>
+        </ul>
+        <ul>
+          <li>  &nbsp; Not you?  </li>
+        </ul>
+        <ul>
+          <li> <%= link_to 'Sign out', destroy_user_session_path, method: :delete %> </li>
+        </ul>
+      <% else %>
+          <ul class="left">
+          <li> <%= link_to 'Sign up', new_user_registration_path %> </li>
+          <li><%= link_to 'Sign in', new_user_session_path  %> </li> 
+          <li><%= link_to 'Twitter Sign In', user_omniauth_authorize_path(:twitter) %></li> 
+        </ul>
+      <% end %>
+      </section>
+    </div>
+  </nav>
+  <!-- Main Page Content and Sidebar -->
+
+  <div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns" role="content">
+      <ul class="example-orbit" data-orbit>
+        <li style="width:800px;height:424px">
+        <img src="/assets/cloudleather_sm.png" style="width:800px;height:424px" />
+        <div class="orbit-caption">
+          Caption One.
+        </div>
+        </li>
+        <li class="active">
+        <img src="/assets/padhouses_sm.png" style="width:800px;height:424px"  />
+        <div class="orbit-caption">
+          Caption Two.
+        </div>
+        </li>
+        <li>
+        <a href="http://inmylifevideo.com"><img src="/assets/inmylifevideo_sm.png" style="width:800px;height:424px" /></a>
+        <div class="orbit-caption">
+          Caption Three.
+        </div>
+        </li>
+      </ul>  
+
+    </div>
+
+    <!-- End Main Content -->
+
+
+    <!-- Sidebar -->
+
+    <aside class="large-3 columns">
+
+      <h5>Categories</h5>
+      <ul class="side-nav">
+        <li><a href="#">News</a></li>
+        <li><a href="#">Code</a></li>
+        <li><a href="#">Design</a></li>
+        <li><a href="#">Fun</a></li>
+        <li><a href="#">Weasels</a></li>
+      </ul>
+
+      <div class="panel">
+        <h5>Featured</h5>
+        <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow.</p>
+        <a href="#">Read More →</a>
+      </div>
+
+    </aside>
+
+    <!-- End Sidebar -->
+  </div>
+
+  <!-- End Main Content and Sidebar -->
+
+
+  <!-- Footer -->
+
+  <footer class="row">
+    <div class="large-12 columns">
+      <hr />
+      <div class="row">
+        <div class="large-6 columns">
+          <p>© Copyright no one at all. Go to town.</p>
+        </div>
+        <div class="large-6 columns">
+          <ul class="inline-list right">
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+            <li><a href="#">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <%= javascript_include_tag "application" %>
+</body>
+</html>
+
