@@ -7,7 +7,7 @@
     <title><%= content_for?(:title) ? yield(:title) : "Boson Foundry" %></title>
 
     <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "modernizr" %>
     <%= csrf_meta_tags %>
   </head>
 
@@ -48,13 +48,13 @@
     <div class="large-9 columns" role="content">
       <ul  data-orbit >
         <li style="width:800px;height:424px">
-        <a href="http://cloudleather.bosonfoundry.com" target="_blank"><img src="/assets/cloudleather_sm.png"  /></a>
+        <a href="http://cloudleather.bosonfoundry.com" target="_blank"><img src="/assets/cloudleather_sm.png" size="800x454" /></a>
         </li>
         <li class="active">
-        <a href="http://padhouses.heroku.com" target="_blank" ><img src="/assets/padhouses_sm.png"   /></a>
+        <a href="http://padhouses.heroku.com" target="_blank" ><img src="/assets/padhouses_sm.png" size="800x454" /></a>
         </li>
         <li>
-        <a href="http://inmylifevideo.com" target="_blank" ><img src="/assets/inmylifevideo_sm.png" /></a>
+        <a href="http://inmylifevideo.com" target="_blank" ><img src="/assets/inmylifevideo_sm.png" size="800x454" /></a>
         </li>
       </ul>  
 
@@ -78,8 +78,7 @@
 
       <div class="panel">
         <h5>DESIGN AND TECHNOLOGY</h5>
-        <p>I have either been completely or partially the creator of the graphic design in these featured sites. The technology 
-           implemented includes Ruby on Rails, Postgresql database, Hobo gem, Omniauth-twitter, jQuery, Pundit, Flash action script, Devise gem, Spree e-commerce, my Spree Tax Cloud gem, Mail Chimp, AWS-S3, Route 53, Capistrano gem, Sass, Compass, Paperclip, Foundation Orbit, Unicorn, Nginx, openSSL, Minitest-Rails, and Capybara.
+        <p class="design-tech">I have either been completely or partially the creator of the graphic design in these featured sites. The technology implemented includes Ruby on Rails, Postgresql database, Hobo gem, Omniauth-twitter, jQuery, Pundit, Flash action script, Devise gem, Spree e-commerce, my Spree Tax Cloud gem, Mail Chimp, AWS-S3, Route 53, Capistrano gem, Sass, Compass, Paperclip, Foundation Orbit, Unicorn, Nginx, openSSL, Minitest-Rails, and Capybara.
         </p>
         <a href="#">Read More →</a>
       </div>

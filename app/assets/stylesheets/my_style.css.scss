@@ -235,6 +235,10 @@ h1#edit-hdr {
 }
 .orbit-slider li > a {display:block}
 
+.orbit-container .orbit-slides-container {
+    height: 454px
+}
+
 div.profile-link {
     position: relative;
     float: right;
@@ -246,10 +250,15 @@ p.profile a {
    font-size: 3.0rem
 }
 p.profile {
-    line-height: 1.2rem;
     a:link {color:#FFF} 
     a:visited {color:#FFF}
     a:hover {color:#AF3636}
     a:active {color:#AF3636} 
     
+}
+
+p.design-tech {
+    font-weight: 400;
+    font-color: #BEBEBE;
+    line-height: 1.2rem
 }
