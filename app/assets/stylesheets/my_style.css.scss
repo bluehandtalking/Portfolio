@@ -233,3 +233,22 @@ h1#edit-hdr {
     padding-bottom: 1.0rem;
 
 }
+.orbit-slider li > a {display:block}
+
+div.profile-link {
+    position: relative;
+    float: right;
+    padding-top: 400px;
+    margin-right: 140px
+}
+
+p.profile a {
+   font-size: 3.0rem
+}
+p.profile {
+    a:link {color:#FFF} 
+    a:visited {color:#FFF}
+    a:hover {color:#AF3636}
+    a:active {color:#AF3636} 
+    
+}

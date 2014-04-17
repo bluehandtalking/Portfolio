@@ -18,7 +18,9 @@ class User < ActiveRecord::Base
       user.provider = auth.provider
       user.uid = auth.uid
       user.name = auth.info.nickname
-      user.email = "#{user.name}-CHANGEME@twitter.example.com"
+      # user.email = "#{user.name}-CHANGEME@twitter.example.com"
+      user.email = "jet@whidbey.com"
+
     end
   end
 
@@ -39,5 +41,7 @@ class User < ActiveRecord::Base
       super
     end
   end
-
+  def password_required?
+    super && provider.blank?
+  end
 end

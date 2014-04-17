@@ -13,7 +13,7 @@ class PostPolicy < ApplicationPolicy
 
   def create? 
     if user.present?
-      user.editor? || user.author? unless post.published
+      user.editor? ||  user.author? 
     end
   end
 

@@ -2,7 +2,7 @@ Portfolio::Application.routes.draw do
 
   resources :welcomes
 
-  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
+  devise_for :users, path_names: {sign_in: 'login', sign_out: 'logout'},  controllers: {omniauth_callbacks: "omniauth_callbacks"}
   resources :posts do
     resources :comments
   end
@@ -10,11 +10,13 @@ Portfolio::Application.routes.draw do
   resources :projects
 
   # The priority is based upon order of creation: fiorst created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  
 
-  # You can have the root of your site routed with "root"
   root to: 'welcome#index'
 
+  
+  
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

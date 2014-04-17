@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Portfolio::Application.config.secret_key_base = 'da9f4653d7461c31871bc564ac1ad63ce2b530350fbf116616df1cb20d41639c54efe8601a6f5fea28f9ef8d330739f7ca87a91ec6624fc68aa7e024efd38a8f'
+Portfolio::Application.config.secret_key_base = ENV["SECRET_KEY_BASE"]

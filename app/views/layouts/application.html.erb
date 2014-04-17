@@ -17,9 +17,6 @@
         <li class="name"><h1><%= link_to "Boson Foundry", root_path %></h1></li> 
       </ul>
       <section class="top-bar-section">
-        <ul class="right">
-        </ul>
-
         <% if user_signed_in? %>
           <ul class="left" >
           <li> Signed in as &nbsp; </li>
@@ -63,6 +60,9 @@
       <div class="contact">  
         <a href="mailto:jet@whidby.com"><span class="contact_btn">Contact Me!</span></a>
       </div> 
+      <div class="profile-link">
+        <p class="profile"><%= link_to "Projects", projects_path%></p>
+    </div>
     </div>
   </div>
 

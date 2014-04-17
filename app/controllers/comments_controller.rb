@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_post 
-  # before_filter :authenticate_user!, except: [:index, :show]
-  before_filter :load_commentable 
+  before_filter :authenticate_user!, except: [:index, :show]
+  # before_filter :load_commentable 
   def new
    @comment = @post.comments.new 
   end
