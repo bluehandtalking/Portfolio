@@ -17,11 +17,6 @@
         <li class="name"><h1><%= link_to "Boson Foundry", root_path %></h1></li> 
       </ul>
       <section class="top-bar-section">
-        <ul class="right">
-          <li><%= link_to "Blog", posts_path %></li>
-          <li><%= link_to "Projects", projects_path%></li>
-        </ul>
-
         <% if user_signed_in? %>
           <ul class="left" >
           <li> Signed in as &nbsp; </li>
@@ -51,24 +46,15 @@
 
     <!-- Main Blog Content -->
     <div class="large-9 columns" role="content">
-      <ul class="example-orbit" data-orbit>
+      <ul  data-orbit >
         <li style="width:800px;height:424px">
-        <img src="/assets/cloudleather_sm.png" style="width:800px;height:424px" />
-        <div class="orbit-caption">
-          Caption One.
-        </div>
+        <a href="http://cloudleather.bosonfoundry.com" target="_blank"><img src="/assets/cloudleather_sm.png"  /></a>
         </li>
         <li class="active">
-        <img src="/assets/padhouses_sm.png" style="width:800px;height:424px"  />
-        <div class="orbit-caption">
-          Caption Two.
-        </div>
+        <a href="http://padhouses.heroku.com" target="_blank" ><img src="/assets/padhouses_sm.png"   /></a>
         </li>
         <li>
-        <a href="http://inmylifevideo.com"><img src="/assets/inmylifevideo_sm.png" style="width:800px;height:424px" /></a>
-        <div class="orbit-caption">
-          Caption Three.
-        </div>
+        <a href="http://inmylifevideo.com" target="_blank" ><img src="/assets/inmylifevideo_sm.png" /></a>
         </li>
       </ul>  
 
@@ -81,18 +67,20 @@
 
     <aside class="large-3 columns">
 
-      <h5>Categories</h5>
-      <ul class="side-nav">
-        <li><a href="#">News</a></li>
-        <li><a href="#">Code</a></li>
-        <li><a href="#">Design</a></li>
-        <li><a href="#">Fun</a></li>
-        <li><a href="#">Weasels</a></li>
-      </ul>
+      <%# <h5>Categories</h5>%>
+      <%# <ul class="side-nav">%>
+      <%#   <li><a href="#">News</a></li>%>
+      <%#   <li><a href="#">Code</a></li>%>
+      <%#   <li><a href="#">Design</a></li>%>
+      <%#   <li><a href="#">Fun</a></li>%>
+      <%#   <li><a href="#">Weasels</a></li>%>
+      <%# </ul>%>
 
       <div class="panel">
-        <h5>Featured</h5>
-        <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow.</p>
+        <h5>DESIGN AND TECHNOLOGY</h5>
+        <p>I have either been completely or partially the creator of the graphic design in these featured sites. The technology 
+           implemented includes Ruby on Rails, Postgresql database, Hobo gem, Omniauth-twitter, jQuery, Pundit, Flash action script, Devise gem, Spree e-commerce, my Spree Tax Cloud gem, Mail Chimp, AWS-S3, Route 53, Capistrano gem, Sass, Compass, Paperclip, Foundation Orbit, Unicorn, Nginx, openSSL, Minitest-Rails, and Capybara.
+        </p>
         <a href="#">Read More →</a>
       </div>
 
@@ -111,7 +99,7 @@
       <hr />
       <div class="row">
         <div class="large-6 columns">
-          <p>© Copyright no one at all. Go to town.</p>
+          <p>© Copyright 2014 Jerrold R Thompson </p>
         </div>
         <div class="large-6 columns">
           <ul class="inline-list right">
@@ -125,6 +113,14 @@
     </div>
   </footer>
   <%= javascript_include_tag "application" %>
+  <script type="text/javascript">
+     $(document).foundation({
+  orbit: {
+      timer: false,
+      timer_speed: 0
+  }
+}); 
+  </script>
 </body>
 </html>
 
