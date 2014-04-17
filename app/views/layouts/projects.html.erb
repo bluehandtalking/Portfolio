@@ -6,9 +6,9 @@
 
     <title><%= content_for?(:title) ? yield(:title) : "Boson Foundry" %></title>
 
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "modernizr" %>
-    <%= javascript_include_tag "application" %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %> 
     <%= csrf_meta_tags %>
   </head>
 
@@ -112,7 +112,6 @@
       </div>
     </div>
   </footer>
-  <%= javascript_include_tag "application" %>
   <script type="text/javascript">
      $(document).foundation({
   orbit: {
