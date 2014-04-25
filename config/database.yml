@@ -1,6 +1,8 @@
 development:
   adapter: postgresql
   database: portfolio
+  user: portfolio
+  password: <%= ENV["DB_PWD"] %> 
   host: localhost
 
 test:
@@ -11,9 +13,6 @@ test:
 production:
   adapter: postgresql
   database: portfolio
+  user:    portfolio 
+  password: <%= ENV["DB_PWD"] %>
   host: localhost
-
-
-
-
-
