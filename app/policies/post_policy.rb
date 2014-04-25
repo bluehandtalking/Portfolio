@@ -26,4 +26,8 @@ class PostPolicy < ApplicationPolicy
   def destroy?  
     user.editor?
   end
+
+  def publish?
+    user.editor?
+  end
 end

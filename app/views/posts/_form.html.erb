@@ -24,7 +24,7 @@
     <%= f.text_area :content %> 
   </div>
   <div class="field">
-    <% if policy(@post).published? %><%= f.label :publish? %><%= f.check_box :published %><% end %> 
+    <% if policy(@post).publish? %><%= f.label :publish? %><%= f.check_box :published %><% end %> 
   </div>
   <div class="actions">
     <%= f.submit %>
