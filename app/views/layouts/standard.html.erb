@@ -19,10 +19,6 @@
             <li class="name"><h1><%= link_to "Boson Foundry", root_path %></h1></li> 
           </ul>
           <section class="top-bar-section">
-            <ul class="right">
-              <li><%= link_to "Blog", posts_path %></li>
-            </ul>
-    
             <% if user_signed_in? %>
               <ul class="left" >
               <li> Signed in as &nbsp; </li>
@@ -44,23 +40,47 @@
             </ul>
           <% end %>
           </section>
-        </nav>
+        </div>
+      </nav>
     </div>
+  <!-- Main Page Content and Sidebar -->
+
   <div class="row">
-    <div class="flash">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    </div>
 
-    <%# MAIN CONTENT%>
-    <div class="small-8 columns">
-      <%= yield :body %>
-    </div>
+    <!-- Main Blog Content -->
+    <%= yield :body %>
+    <!-- End Main Content -->
 
-    <%# RIGHT PANEL%>
-    <div class="small-4 columns">
-      <%= yield :panel %> 
-    </div>
+
+    <!-- Sidebar -->
+
+    <%= yield :panel %>
+    <!-- End Sidebar -->
   </div>
+
+  <!-- End Main Content and Sidebar -->
+
+
+  <!-- Footer -->
+
+  <footer class="row">
+    <div class="small-12 columns">
+      <hr />
+      <div class="row">
+        <div class="small-6 columns">
+          <p>© Copyright 2014 Jerrold R Thompson </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script type="text/javascript">
+     $(document).foundation({
+  orbit: {
+      timer: false,
+      timer_speed: 0
+  }
+}); 
+  </script>
 </body>
 </html>
+

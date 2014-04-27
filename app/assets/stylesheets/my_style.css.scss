@@ -76,19 +76,19 @@ div.small-8.columns.welcome {
       position: relative;
       font-size: 2.2rem;	
       left: 80px;
-      color: #FFF;
+      color: #FFF
 
    }
    h2 {
       font-size: 4.0em;
       font-size: 4.0rem;	
-      color: #FFF;
+      color: #FFF
 
    }
    h3 {
       font-size: 3.5em;
       font-size: 3.5rem;	
-      color: #FFF;
+      color: #FFF
 
    }
 }
@@ -96,30 +96,30 @@ div.small-8.columns.welcome {
 div.small-4.columns {
    padding-bottom: 2.0rem;
    h1, h2, h3 {
-      color: #BEBEBE;     
+      color: #BEBEBE     
    } 
    p {
       font-size: 1.2rem;
       line-height: 1.4rem;	
-      color: #BEBEBE; 
+      color: #BEBEBE 
    }
    div.about-us {
       position: relative;
-      padding-top: 5.2rem; 
+      padding-top: 5.2rem 
    } 
 
 }
 
 .row {
-   max-width: 92.5rem;
-   padding-top: rem;
+   max-width: 100%;
 }
 
 div.jerry {
    position: relative;
    left: 13.2rem;
+   margin-top: 4.1rem;
    h1, h2, h3, {
-      color: #BEBEBE; 
+      color: #BEBEBE 
    }
 }
 
@@ -237,6 +237,11 @@ h1#edit-hdr {
 
 .orbit-container .orbit-slides-container {
     height: 454px
+
+}
+
+.orbit-container {
+    margin-top: 3.0rem
 }
 
 div.profile-link {
@@ -262,4 +267,8 @@ p.design-tech {
     font-color: #BEBEBE;
     line-height: 1.6rem;
     font-size: 1.4rem
+}
+
+.contain-to-grid .top-bar {
+    max-width: 100%
 }
