@@ -32,7 +32,8 @@ group :development do
   gem 'binding_of_caller', github: "banister/binding_of_caller" # This needs to go in before better_errors
   gem 'better_errors'
   gem 'meta_request', '0.2.1'
-  gem 'pry-rails'
+  gem 'pry-rails', github: 'pry/pry-rails'
+  gem 'pry-doc', github: 'pry/pry-doc'
   gem 'thin'
 end
 
@@ -47,4 +48,5 @@ group :test do
   gem 'pry-rescue'
 end
 
-ruby "2.1.0"
+# BELOW MUST BE UNCOMMENTED FOR HEROKU, COMMENTED OUT FOR PRY#EDIT TO WORK
+# ruby "2.1.0"
