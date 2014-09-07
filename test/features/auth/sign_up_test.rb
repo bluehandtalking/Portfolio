@@ -4,7 +4,7 @@ feature "A visitor comes to the site and signs up for a new account so I can per
   let(:auth_test) {AuthTest.new}
   scenario " Visitor goes to sign up page and enters name, email, password, password_confirmation" do
     # Given a registration form
-    visit "/users/sign_up"
+    visit new_user_registration_path
     click_link "Sign up"
     # When I register with valid info
     fill_in 'Email', with: 'john@lighthouse.com'
