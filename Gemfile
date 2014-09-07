@@ -15,7 +15,6 @@ gem "foundation-rails", github: "codefellows/foundation-rails"
 gem 'pundit'
 gem 'omniauth-twitter'
 gem 'figaro', github: "laserlemon/figaro"
-
 group :doc do
   gem 'sdoc', require: false # bundle exec rake doc:rails generates the API under doc/api. 
 end
@@ -34,6 +33,8 @@ group :development do
   gem 'meta_request', '0.2.1'
   gem 'pry-rails', github: 'pry/pry-rails'
   gem 'pry-doc', github: 'pry/pry-doc'
+  gem 'pry-editline', github: "tpope/pry-editline"
+
   gem 'thin'
 end
 
