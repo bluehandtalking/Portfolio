@@ -34,7 +34,6 @@ group :development do
   gem 'pry-rails', github: 'pry/pry-rails'
   gem 'pry-doc', github: 'pry/pry-doc'
   gem 'pry-editline', github: "tpope/pry-editline"
-
   gem 'thin'
 end
 
@@ -47,6 +46,7 @@ group :test do
   gem 'debugger', "1.6.5"
   gem 'pry-debugger', github: 'nixme/pry-debugger'
   gem 'pry-rescue'
+  gem 'database_cleaner'
 end
 
 # BELOW MUST BE UNCOMMENTED FOR HEROKU, COMMENTED OUT FOR PRY#EDIT TO WORK

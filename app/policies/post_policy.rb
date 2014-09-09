@@ -6,7 +6,7 @@ class PostPolicy < ApplicationPolicy
       elsif user.editor? 
           scope.all
       elsif user.author? 
-          scope.where(:author_id ==  :user_id)
+          scope.where(author_id: user.id)
       end
     end
   end
@@ -19,7 +19,7 @@ class PostPolicy < ApplicationPolicy
 
   def update?
     if user.present?
-       user.editor? || (:author_id == :user_id) 
+       user.editor? || post.author_id == user.id 
     end
   end
 

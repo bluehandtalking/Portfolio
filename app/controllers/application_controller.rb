@@ -23,6 +23,7 @@ class ApplicationController < ActionController::Base
 
   def user_not_authorized
     flash[:error] = "Unauthorized to perform this action."
+    redirect_to :back
   end 
 
 end

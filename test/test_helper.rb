@@ -15,6 +15,27 @@ require "turn/autorun"
 
 Capybara.default_driver = :webkit
 
+class ActiveSupport::TestCase
+  fixtures :all
+end
+
+class ActionController::TestCase
+  include Devise::TestHelpers
+end
+
+# Make all database transactions use the same thread
+class ActiveRecord::Base
+  mattr_accessor :shared_connection
+  @@shared_connection = nil
+
+  def self.connection
+    @@shared_connection || retrieve_connection
+  end
+end
+
+ActiveRecord::Base.shared_connection = ActiveRecord::Base.connection
+
+
 class IndexPosts
   include Capybara::DSL
   def visit_page
@@ -74,22 +95,12 @@ class EditProjectPage
   end
 end
 
-class ActiveSupport::TestCase
-  fixtures :all
-end
-
-
-class FeatureTest < MiniTest::Spec
-  include Rails.application.routes.url_helpers
-  include Capybara::DSL
-  register_spec_type(/integration$/, self)
-end
-
-def sign_in(role = :editor)
-  visit '/users/sign_in'
+def sign_in(role )
+  visit new_user_session_path
   fill_in "Email", with: users(role).email
   fill_in "Password", with: 'secretpwd49'
-  page.all(:link,"Sign in")[0].click 
+  click_on "Submit"
+  # page.all(:link,"Sign in")[0].click 
 end
 
 def log_in
@@ -99,7 +110,4 @@ def log_in
   fill_in 'Password', with: 'secretpwd' 
 end     
 
-
-
 Turn.config.format = :outline
-

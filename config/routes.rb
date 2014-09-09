@@ -7,6 +7,8 @@ Portfolio::Application.routes.draw do
     resources :comments
   end
 
+  get '/posts/publish/:id' => 'posts#publish'
+
   resources :projects
 
   # The priority is based upon order of creation: fiorst created -> highest priority.

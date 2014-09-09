@@ -5,7 +5,7 @@
 .top-bar {
    height: 60px;
    h1  {
-   
+
       padding-top: 10px;
 
       a {
@@ -15,22 +15,22 @@
 }
 
 .top-bar-section li:not(.has-form) a:not(.button) {
-    padding: 0 10px;
+   padding: 0 10px;
 }
 
 .top-bar-section li:not(.has-form) a:not(.button):hover {
-    background: #902727;
+   background: #902727;
 }
 
 .top-bar-section ul {
-    background-color: #AF3636;
-    li {
-	color: #FFF    
-    }
+   background-color: #AF3636;
+   li {
+      color: #FFF    
+   }
 }
 
 .top-bar .name h1 a:hover {
-    background: #902727;
+   background: #902727;
 }
 
 h1, h2 {color: #FFF}
@@ -40,19 +40,19 @@ h1.welcome {
 }
 
 label {
-    color: #FFF;
-    font-size: 1.0rem
+   color: #FFF;
+   font-size: 1.0rem
 }
 
 .alert {
-    color: #FFF;
-    font-size: 0.875rem
+   color: #FFF;
+   font-size: 0.875rem
 }
 
 
 .being-here {
-    position: relative;
-    left: 10%
+   position: relative;
+   left: 10%
 }
 .ok {
    font-size: 1.25rem;
@@ -151,12 +151,12 @@ div.muse {
 }
 
 .contact {
-    position: relative;
-    top: 10.6rem;
-    a:link {color:#FFF} 
-    a:visited {color:#FFF}
-    a:hover {color:#AF3636}
-    a:active {color:#AF3636} 
+   position: relative;
+   top: 10.6rem;
+   a:link {color:#FFF} 
+   a:visited {color:#FFF}
+   a:hover {color:#AF3636}
+   a:active {color:#AF3636} 
 }
 .contact_btn {
    font-size: 1.8rem;
@@ -224,64 +224,105 @@ h1#edit-hdr {
 }
 
 #end-quote {
-    float: right;
-    top: 3rem;
-    margin-right: 6.4rem
+   float: right;
+   top: 3rem;
+   margin-right: 6.4rem
 }
 
 #begin-quote {
-    padding-bottom: 1.0rem;
+   padding-bottom: 1.0rem;
 
 }
 .orbit-slider li > a {display:block}
 
 .orbit-container .orbit-slides-container {
-    height: 454px
+   height: 454px
 
 }
 
 .orbit-container {
-    margin-top: 3.0rem
+   margin-top: 3.0rem
 }
 
 div.profile-link {
-    position: relative;
-    float: right;
-    padding-top: 400px;
-    margin-right: 140px
+   position: relative;
+   float: right;
+   padding-top: 400px;
+   margin-right: 140px
 }
 
 p.profile a {
    font-size: 3.0rem
 }
 p.profile {
-    a:link {color:#FFF} 
-    a:visited {color:#FFF}
-    a:hover {color:#AF3636}
-    a:active {color:#AF3636} 
-    
+   a:link {color:#FFF} 
+   a:visited {color:#FFF}
+   a:hover {color:#AF3636}
+   a:active {color:#AF3636} 
+
 }
 
 p.design-tech {
-    font-weight: 400;
-    font-color: #BEBEBE;
-    line-height: 1.6rem;
-    font-size: 1.4rem
+   font-weight: 400;
+   font-color: #BEBEBE;
+   line-height: 1.6rem;
+   font-size: 1.4rem
 }
 
 .contain-to-grid .top-bar {
-    max-width: 100%
+   max-width: 100%
 }
 
 div.small-9.columns.blog {
-    margin-top: 3rem
+   margin-top: 3rem
 }
 
 img.orbit_img {
-    display:block;
-    margin: 0 auto;
+   display:block;
+   margin: 0 auto;
 }
 
 .signup {
-    padding-top: 1.0rem 
+   padding-top: 1.0rem 
+}
+
+.new_post {
+   padding-top: 2.5rem
+}
+
+.show-blog {
+   font-weight: 400;
+   color: #FFF;
+   line-height: 1.6rem;
+   font-size: 1.4rem
+}
+
+p.blog {
+   color: #FFF;
+   font-size: 1.0rem;
+}
+
+div#comment_msg h3 {
+   font-size: 2.0rem;
+   color: #FFF;
+}
+
+p.new_comment_link {
+   margin-left: 3.0rem;
+   font-size: 1.5rem;
+   a:link {color:#FFF} 
+   a:visited {color:#FFF}
+   a:hover {color:#AF3636}
+   a:active {color:#AF3636} 
+
+}
+
+p.show_nav_links {
+   margin-left: 1.0rem;
+   font-size: 1.0rem;
+   a:link {color:#FFF} 
+   a:visited {color:#FFF}
+   a:hover {color:#AF3636}
+   a:active {color:#AF3636} 
+
 }

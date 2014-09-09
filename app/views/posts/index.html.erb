@@ -8,9 +8,9 @@
     <tr>
       <th>Title</th>
       <th>Description</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Show</th>
+      <th>Edit</th>
+      <th>Delete</th>
       <th>Publish</th>
     </tr>
   </thead>
@@ -22,13 +22,13 @@
           <td><%= post.description %></td>
           <td><%= link_to 'Show', post %></td>
           <% if current_user && policy(post).update? %>
-            <td><%= link_to 'Edit', edit_post_path(post), remote: true %></td>
+            <td><%= link_to 'Edit', edit_post_path(post) %></td>
           <% end %>
           <% if current_user && policy(post).destroy? %>
             <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <% end %>
-          <% if current_user && policy(post).published? %>
-            <td><%= link_to 'Publish', edit_post_path(post) %></td> 
+          <% if current_user && policy(post).publish? %>
+            <td><%= link_to 'Publish', controller: 'posts', action: 'publish', id: post %></td> 
           <% end %>
         </tr>
       <% end %>

@@ -1,9 +1,11 @@
 class CommentsController < ApplicationController
   before_action :set_post 
+  before_filter :load_commentable
   before_filter :authenticate_user!, except: [:index, :show]
+
   # before_filter :load_commentable 
   def new
-   @comment = @post.comments.new 
+   @comment = @commentable.comments.new 
   end
   def create
     # @comment = @commentable.comments.new(comment_params)
@@ -23,6 +25,10 @@ class CommentsController < ApplicationController
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def  index
+    @comments = @commentable.comments
   end
 
   def update
@@ -59,8 +65,8 @@ class CommentsController < ApplicationController
     def comment_params
       params.require(:comment).permit(:comment[ "author" ], :comment[ "author_email" ], :comment[ "comment" ], :post_id)
     end
-    # def  load_commentable
-    #   @resource, id = request.path.split('.')[1,2]
-    #   @commentable = @resource.singularize.classify.constantize.find(id)
-    # end
+    def  load_commentable
+      resource, id = request.path.split('/')[1,2]
+      @commentable = resource.singularize.classify.constantize.find(id)
+    end
 end
