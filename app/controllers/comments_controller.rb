@@ -14,10 +14,10 @@ class CommentsController < ApplicationController
     # else
     #   instance__varaible_set("@#{@resource.singularize}")
     set_post
-    @comment = @post.comments.new(comment_params)
+    @comment = @commentable.comments.new(comment_params)
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @post, notice: 'Comment was successfully created.' }
+        format.html { redirect_to @commentable, notice: 'Comment was successfully created.' }
         format.json { render action: 'show', status: :created, location: @comment }
         format.js
       else
@@ -63,7 +63,7 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:comment[ "author" ], :comment[ "author_email" ], :comment[ "comment" ], :post_id)
+      params.require(:comment).permit(:author, :comment, :author_email, :post_id)
     end
     def  load_commentable
       resource, id = request.path.split('/')[1,2]

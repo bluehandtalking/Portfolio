@@ -35,7 +35,6 @@ end
 
 ActiveRecord::Base.shared_connection = ActiveRecord::Base.connection
 
-
 class IndexPosts
   include Capybara::DSL
   def visit_page

@@ -1,50 +1,39 @@
 <% content_for :body do %>
   <p class="blog" id="notice"><%= notice %></p>
 
-<p class="blog">
-<strong class="show-blog">Title:</strong>
-<%= @post.title %>
-</p>
+  <p class="blog">
+  <strong class="show-blog">Title:</strong>
+  <%= @post.title %>
+  </p>
 
-<p class="blog">
-<strong class="show-blog">Description:</strong>
-</p>
-<p class="blog">
-<%= @post.description %>
-</p>
+  <p class="blog">
+  <strong class="show-blog">Description:</strong>
+  </p>
+  <p class="blog">
+  <%= @post.description %>
+  </p>
 
-<p class="blog">
-<strong class="show-blog">Content:</strong>
-</p>
-<p class="blog">
-<%= @post.content %>
-</p>
-<p class="blog">
-<strong class="show-blog">Comments:</strong>	
-</p>
-<div class="row">
-  <div class="small-10 columns" id="blog_comments" >
-    <% @comments.each do |comment| %>
-      <p class="blog"><%= comment.comment %></p>
-  <%  end %>
-  </div>
-</div>
-<div id="comment_msg">
+  <p class="blog">
+    <strong class="show-blog">Content:</strong>
+  </p>
+  <p class="blog">
+    <%= @post.content %>
+  </p>
+  <p class="blog">
+    <strong class="show-blog">Comments:</strong>	
+  </p>
+
+  <%= render "comments/comments" %>
+
   <h3>
     Leave a Comment!
   </h3>
-</div>
-<div id='comments_form'  class="row">
-  <div  class="small-8 columns">
-    <p class="new_comment_link">
-    <%= link_to "New Comment" , [:new, @commentable, :comment], remote: true %> 
-    </p>
-  </div>
-</div>
 
+  <%= render "comments/form" %>
 
-<p class="show_nav_links">
-  <%= link_to 'Edit', edit_post_path(@post), id: 'edit_link', remote: true %> |
-  <%= link_to 'Back', posts_path %>
-</p>
+  <p class="show_nav_links">
+    <%= link_to 'Edit', edit_post_path(@post), id: 'edit_link', remote: true %> |
+    <%= link_to 'Back', posts_path %>
+  </p>
+
 <% end  %>
