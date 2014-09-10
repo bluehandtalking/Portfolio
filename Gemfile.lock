@@ -143,7 +143,6 @@ GEM
     execjs (2.0.2)
     hashie (2.0.5)
     hike (1.2.3)
-    hirb (0.7.2)
     i18n (0.6.9)
     interception (0.4)
     jbuilder (1.5.3)
@@ -289,7 +288,6 @@ DEPENDENCIES
   devise
   figaro!
   foundation-rails!
-  hirb
   jbuilder (~> 1.2)
   jquery-rails
   meta_request (= 0.2.1)

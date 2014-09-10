@@ -1,8 +1,10 @@
-<h1>Listing comments</h1>
+<% content_for :body do %>
+  <h1>Listing comments</h1>
 
-<%= render  'comments' %>
+  <%= render  'comments' %>
 
-<p>
-  <%= link_to 'New Comment', [:new, @commentable, comment] %>
-</p>
+  <p>
+    <%= link_to 'New Comment', [:new, @commentable, @comment] %>
+  </p>
+<% end  %>
 
