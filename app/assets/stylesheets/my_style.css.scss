@@ -274,7 +274,7 @@ p.design-tech {
 }
 
 div.small-9.columns.blog {
-   margin-top: 3rem
+   margin-top: 60px
 }
 
 img.orbit_img {
@@ -300,6 +300,7 @@ img.orbit_img {
 p.blog {
    color: #FFF;
    font-size: 1.0rem;
+   width: 80%
 }
 
 div#comment_msg h3 {
@@ -326,3 +327,9 @@ p.show_nav_links {
    a:active {color:#AF3636} 
 
 }
+
+.copyright {
+    color: #FFF
+}
+
+h3 { color: #FFF }
