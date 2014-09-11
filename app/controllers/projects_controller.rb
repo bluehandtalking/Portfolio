@@ -29,6 +29,15 @@ class ProjectsController < ApplicationController
   def edit
   end
 
+  def publish
+    set_project
+    authorize @project, :update?
+    @project.published = true
+    @project.save
+    redirect_to project_url( @project )
+  end
+
+
   def create
     @project = Project.new(project_params)
     authorize @project
@@ -81,6 +90,10 @@ class ProjectsController < ApplicationController
       params.require(:project).permit(:name, :description, :content)
     end
 
+  def auth_project
+    set_project
+    authorize @project
+  end
 
 
 end
