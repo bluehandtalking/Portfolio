@@ -26,11 +26,12 @@
   
     <%= render "comments/comments" %>
   
-    <h3>
-      Leave a Comment!
-    </h3>
-  
+    <% if current_user %>
+      <h3>
+        Leave a Comment!
+      </h3>
     <%= render "comments/form" %>
+    <% end %>
   
     <p class="show_nav_links">
       <% if current_user && policy(@post).edit? %>
