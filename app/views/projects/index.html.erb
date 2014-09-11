@@ -18,7 +18,7 @@
     <% unless  @projects.blank?%>
       <% @projects.each do |project| %>
         <tr id="<%= dom_id(project) %>">
-          <td><%= project.title %></td>
+          <td><%= project.name %></td>
           <td><%= project.description %></td>
           <td><%= link_to 'Show', project %></td>
           <% if current_user && policy(project).update? %>

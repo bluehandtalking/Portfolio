@@ -1,10 +1,44 @@
-<p id="notice"><%= notice %></p>
+<% content_for :body do %>
+  <div class="small-9 columns blog">
+    <p class="blog" id="notice"><%= notice %></p>
+  
+    <p class="blog">
+    <strong class="show-blog">Name:</strong>
+    <%= @project.name %>
+    </p>
+  
+    <p class="blog">
+    <strong class="show-blog">Description:</strong>
+    </p>
+    <p class="blog">
+    <%= @project.description %>
+    </p>
+  
+    <p class="blog">
+      <strong class="show-blog">Content:</strong>
+    </p>
+    <p class="blog">
+      <%= @project.content %>
+    </p>
+    <p class="blog">
+      <strong class="show-blog">Comments:</strong>	
+    </p>
+  
+    <%= render "comments/comments" %>
+  
+    <h3>
+      Leave a Comment!
+    </h3>
+  
+    <%= render "comments/form" %>
+  
+    <p class="show_nav_links">
+      <% if current_user && policy(@project).edit? %>
+        <%= link_to 'Edit', edit_post_path(@project), id: 'edit_link' %> |
+      <% end %>
+      <%= link_to 'Back', projects_path %>
+    </p>
+  </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @project.name %>
-</p>
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<% end  %>
 

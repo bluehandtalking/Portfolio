@@ -54,7 +54,7 @@ class NewPostPage
     self
   end
   def fill_post
-    fill_in 'Title', with: 'Code Fellows Portfolio'
+    fill_in 'post_title', with: 'Code Fellows Portfolio'
     fill_in 'Description', with: 'The Amazing Life of Web Developers'
     fill_in 'Content', with: 'This is an example of how I merged with the goodness of Rails'
   end
