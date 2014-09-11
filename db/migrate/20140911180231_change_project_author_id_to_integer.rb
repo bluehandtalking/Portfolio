@@ -7,7 +7,7 @@ class ChangeProjectAuthorIdToInteger < ActiveRecord::Migration
         type integer using author_id::integer
       })
     else
-      change_column :catalog_item_specifications, :bec_id, :integer
+      change_column :projects, :author_id, :integer
     end 
   end
 end
