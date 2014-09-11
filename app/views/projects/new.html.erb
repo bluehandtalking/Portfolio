@@ -1,5 +1,9 @@
-<h1>New project</h1>
+<% content_for :body do %>
+
+<h1 class="new_project">New Project</h1>
 
 <%= render 'form' %>
 
 <%= link_to 'Back', projects_path %>
+
+<% end  %>

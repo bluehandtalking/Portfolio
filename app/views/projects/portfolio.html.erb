@@ -15,7 +15,7 @@
       <a href="http://inmylifevideo.com" target="_blank" ><%= image_tag 'inmylifevideo_sm.png' %></a>
       </li>
       <li class="active">
-      	<a href="http://housewright.bosonfoundry.com"><%= image_tag 'housewright.jpg' %></a>
+      	<a href="http://housewright.bosonfoundry.com" target="_blank" ><%= image_tag 'housewright.jpg' %></a>
       </li>
     </ul>  
 
@@ -32,5 +32,18 @@
       </div>
 
     </aside>
+    <script type="text/javascript">
+      $(document).foundation({
+        orbit: {
+          animation: 'slide',
+          timer_speed: 3000,
+          pause_on_hover: true,
+          animation_speed: 500,
+          navigation_arrows: true,
+          bullets: true
+       }
+      });
+    
+    </script>
 <% end %>
 
