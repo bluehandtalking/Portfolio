@@ -80,7 +80,7 @@ class NewProjectPage
     self
   end
   def build_project
-    fill_in 'project_name', with: "Code Fellows Portfolio" 
+    fill_in 'Name', with: "Code Fellows Portfolio" 
   end
 end
 
