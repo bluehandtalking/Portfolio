@@ -3,7 +3,7 @@ require "test_helper"
 feature "Deleting A Project" do
   let(:new_project) {NewProjectPage.new}
   scenario "delete an offensive project" do
-    new_project.visit_page
+    visit new_project_path
     new_project.build_project
     click_on 'Create Project'
     visit  '/projects'

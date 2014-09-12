@@ -4,7 +4,6 @@ feature "Allow a user who is signed in to be able to sign out" do
   scenario "A user is on the home page, signs in, and then signs out" do
     # Given a user is signed in
     # Then the user signs out
-    # log_in
     visit new_user_session_path
     fill_in 'Email', with: "chillwill@example.com" 
     fill_in 'Password', with: "secretpwd49"
