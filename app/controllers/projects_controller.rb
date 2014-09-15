@@ -29,6 +29,7 @@ class ProjectsController < ApplicationController
   def edit
   end
 
+  # Set published flag
   def publish
     set_project
     authorize @project, :update?

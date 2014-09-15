@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  has_many :comments, as: :commentable, dependent: destroy
+  has_many :comments, as: :commentable
   validates :name, length: {minimum: 4}
   validates :description, length: {minimum: 10} 
   validates :content, length: {minimum: 24} 
