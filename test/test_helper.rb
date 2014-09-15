@@ -35,6 +35,17 @@ end
 
 ActiveRecord::Base.shared_connection = ActiveRecord::Base.connection
 
+class ProjectPage
+  include Capybara::DSL
+  def build_project
+    fill_in 'Name', with: "Code Fellows Portfolio" 
+    fill_in 'Description', with: "A wonderful expression in creativity"
+    fill_in 'Content', with: "A Code Fellows portfolio demonstrates the chops of a Code Fellows professional"
+    click_on "Create Project"
+  end
+end
+
+
 class IndexPosts
   include Capybara::DSL
   def visit_page
@@ -73,16 +84,6 @@ class EditPostPage
 end
 
 
-class NewProjectPage
-  include Capybara::DSL
-  def visit_page
-    visit '/projects/new'
-    self
-  end
-  def build_project
-    fill_in 'Name', with: "Code Fellows Portfolio" 
-  end
-end
 
 class EditProjectPage
   include Capybara::DSL
@@ -101,12 +102,5 @@ def sign_in(role )
   click_on "Submit"
   # page.all(:link,"Sign in")[0].click 
 end
-
-def log_in
-  visit root_path
-  click_link "Sign in"
-  fill_in 'Email', with: users(:chill).email
-  fill_in 'Password', with: 'secretpwd' 
-end     
 
 Turn.config.format = :outline

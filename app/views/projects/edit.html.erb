@@ -1,7 +1,8 @@
-<h1>Editing project</h1>
+<% content_for :body do %>
+  <h1>Editing project</h1>
 
-<%= render 'form' %>
+  <%= render 'form' %>
 
-<%= link_to 'Show', @project %> |
-<%= link_to 'Back', projects_path %>
-
+  <%= link_to 'Show', @project %> |
+  <%= link_to 'Back', projects_path %>
+<% end %>

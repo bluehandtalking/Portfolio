@@ -47,7 +47,7 @@ group :test do
   gem 'pry-debugger', github: 'nixme/pry-debugger'
   gem 'pry-rescue'
   # gem 'database_cleaner'
-  gem 'm', '1.3.2', github: 'qrush/'
+  gem 'm', '1.3.2', github: 'qrush/m'
 end
 
 # BELOW MUST BE UNCOMMENTED FOR HEROKU, COMMENTED OUT FOR PRY#EDIT TO WORK

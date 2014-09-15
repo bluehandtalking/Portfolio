@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
     :omniauthable
 
   has_many :posts, foreign_key: 'author_id'
+  has_many :projects, foreign_key: 'author_id'
 
   def author?
     role == 'author'
