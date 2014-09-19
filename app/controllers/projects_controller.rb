@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
 
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :auth_project, only: [:update, :destroy, :publish]
-  before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :authenticate_user!, except: [:index, :show, :portfolio]
 
 
   layout "standard"
