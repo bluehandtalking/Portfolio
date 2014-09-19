@@ -1,6 +1,6 @@
 require "test_helper"
 
-feature "Visiting thePosts Index, a list of posts is seen" do
+feature "Visiting the Posts Index, a list of posts is seen" do
   scenario "User visits the posts index and sees 3 posts "  do
     # first, a valid users creates 3 posts
     sign_in(:author)
