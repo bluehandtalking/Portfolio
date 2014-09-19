@@ -1,5 +1,6 @@
-require 'simplecov'
-SimpleCov.start 'rails'
+# Remove for Travis CI
+# require 'simplecov'
+# SimpleCov.start 'rails'
 
 ENV["RAILS_ENV"] = "test"
 require File.expand_path("../../config/environment", __FILE__)
@@ -8,7 +9,7 @@ require "minitest/rails"
 require "minitest/rails/capybara"
 require "capybara-webkit"
 require 'capybara/dsl'
-require 'devise'
+# require 'devise'
 require "turn/autorun"
 
 
@@ -19,9 +20,9 @@ class ActiveSupport::TestCase
   fixtures :all
 end
 
-class ActionController::TestCase
-  include Devise::TestHelpers
-end
+# class ActionController::TestCase
+#   include Devise::TestHelpers
+# end
 
 # Make all database transactions use the same thread
 class ActiveRecord::Base
