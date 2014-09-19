@@ -1,18 +1,16 @@
 require "test_helper"
 
-feature "VisitingThePostIndex" do
-  let(:new_post) {NewPostPage.new}
-  let(:index_posts) {IndexPosts.new}
-  scenario "with existing post, show list"  do
-      #Given existing posts --provided by  ActiveSupport::TestCase ---fixtures :all
+feature "Visiting thePosts Index, a list of posts is seen" do
+  scenario "User visits the posts index and sees 3 posts "  do
+    # first, a valid users creates 3 posts
+    sign_in(:author)
+    posts(:wave)
+    posts(:being)
+    posts(:life)
     visit '/posts'
-    new_post.fill_post
-    click_on 'Create Post'
-    #When I visit/posts
-    visit '/posts'
-    #Then the exiisting post should exist, confirmed by content
-    page.must_have_content "Amazing Life of Web"
-    #Then the existing post should be confirmed by content absent
+    page.must_have_content "Riding the Wave"
+    page.must_have_content "Being There"
+    page.must_have_content "A Day in the Life of Peter Yanovich"
     page.wont_have_content "Dutchman's Holiday"
   end
 end

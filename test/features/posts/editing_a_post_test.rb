@@ -5,6 +5,7 @@ feature "Editing A Post" do
   let(:edit_post) {EditPostPage.new}
   scenario "submit updates to an existing post" do
     #Given a post exists
+    sign_in(:author)
     visit '/posts/new'
     new_post.fill_post
     click_on 'Create Post'
@@ -21,5 +22,6 @@ feature "Editing A Post" do
     click_on "Update Post"
     #Then the updated post page should be shown and have text 'Post successfully updated'
     page.must_have_content "Post was successfully updated."
+    page.must_have_content "Fishing for Blackmouth"
   end
 end

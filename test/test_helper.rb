@@ -46,13 +46,13 @@ class ProjectPage
 end
 
 
-class IndexPosts
-  include Capybara::DSL
-  def visit_page
-    visit '/posts'
-    self
-  end  
-end
+# class IndexPosts
+#   include Capybara::DSL
+#   def visit_page
+#     visit '/posts'
+#     self
+#   end  
+# end
 
 class NewPostPage
   include Capybara::DSL
@@ -78,9 +78,9 @@ class EditPostPage
     fill_in "post_description", with: "How to hook the big ones"
     fill_in "post_content", with: "Winter fishing for blackmouth is a great sport in th Pacific Northwest"
   end
-  def visit_index_page
-    visit '/posts'
-  end
+  # def visit_index_page
+  #   visit '/posts'
+  # end
 end
 
 
@@ -90,9 +90,9 @@ class EditProjectPage
   def fill_fields
     fill_in "project_name", with: "Whidbey Island Watershed stewards"
   end
-  def visit_index_page
-    visit '/projects'
-  end
+  # def visit_index_page
+  #   visit '/projects'
+  # end
 end
 
 def sign_in(role )
