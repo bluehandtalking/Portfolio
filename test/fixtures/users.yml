@@ -3,15 +3,19 @@ author:
   email: alvindude@example.com
   encrypted_password: <%= User.new.send(:password_digest, 'secretpwd49') %>  
   role: author
+  name: Jet
 editor:
   id: 2
   email: controlguy@example.com
   encrypted_password: <%= User.new.send(:password_digest, 'secretpwd49') %>
   role: editor
+  name: Jack
 guest: 
   id: 3
   email: billtheman@example.com
   encrypted_password: <%= User.new.send(:password_digest, 'secretpwd49') %> 
+  name: Bill the Man
 chill:
   email: chillwill@example.com
   encrypted_password: <%= User.new.send(:password_digest, 'secretpwd49') %> 
+  name: Chill Will Guest

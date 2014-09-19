@@ -1,27 +1,22 @@
 require "test_helper"
 
-feature "Editing A Post" do
-  let(:new_post) {NewPostPage.new}
+feature "Creating, Editing and Updating A Post" do
   let(:edit_post) {EditPostPage.new}
-  scenario "submit updates to an existing post" do
-    #Given a post exists
+  scenario "Guest tries to edit a post owned by an author" do
+    sign_in(:guest)
+    visit posts_path
+    page.wont_have_link "Destroy"
+  end
+  scenario "Author updates a post they own " do
     sign_in(:author)
     visit '/posts/new'
-    new_post.fill_post
-    click_on 'Create Post'
-    #When we show a list of posts
     visit '/posts'
-    #Then confirm we have visited the correct post 
-    page.must_have_content "Code Fellows Portfolio"
+    page.must_have_content posts(:wave).title
     page.wont_have_content "Dutchman's Holiday"
-    #Then click on post to edit 
-    page.all(:link,"Edit")[0].click
-    #Then fill in the post fields
+    page.find(:xpath, "//a[starts-with(@href, '/posts/#{posts(:wave).id}/edit')]").click
     edit_post.fill_fields
-    #Then click to update post
     click_on "Update Post"
-    #Then the updated post page should be shown and have text 'Post successfully updated'
-    page.must_have_content "Post was successfully updated."
+    page.text.must_include "Post was successfully updated."
     page.must_have_content "Fishing for Blackmouth"
   end
 end

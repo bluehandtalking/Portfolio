@@ -13,8 +13,11 @@ feature "Accessing the site in roles of visitor, author, or editor to allow diff
     visit new_post_path
     page.has_no_content?  "New post"
   end
-  scenario "Author is not able to publish a post" do
+  scenario "Author only sees their posts when visiting post index" do
     sign_in(:author)
+    visit posts_path
+    page.must_have_content posts(:wave).title
+    page.wont_have_content posts(:life).title
   end
   scenario "An author signs in, visits new_post_path, creates a post" do
     sign_in(:author)
@@ -27,5 +30,20 @@ feature "Accessing the site in roles of visitor, author, or editor to allow diff
     fill_in "Content", with: 'A long voyage will always end where it began'
     click_on "Create Post"
     page.must_have_content 'A long voyage will always end where it began' 
+    page.must_have_content      'Post was successfully created.'
+ 
+  end
+  scenario "An author signs in but can not publish a post" do
+    sign_in(:author)
+    visit posts_path
+    page.wont_have_link "Publish"
+  end
+  scenario "The editor signs in and publishes a post" do
+    sign_in(:editor)
+    visit posts_path
+    page.find(:xpath, "//a[starts-with(@href, '/posts/publish/#{posts(:being).id}')]").click
+    click_on "Sign out"
+    visit posts_path
+    page.must_have_content posts(:being).title
   end
 end

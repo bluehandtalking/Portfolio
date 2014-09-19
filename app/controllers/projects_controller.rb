@@ -46,7 +46,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       if @project.save
         current_user.projects << @project
-        format.html { redirect_to action: 'show', id: @project.id, notice: 'Project was successfully created.' }
+        format.html { redirect_to( { action: 'show', id: @project.id }, notice: 'Project was successfully created.' ) }
         format.json { render action: 'show', status: :created, location: @project }
       else
         format.html { render action: 'new' }

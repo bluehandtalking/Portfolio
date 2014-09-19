@@ -35,39 +35,13 @@ end
 
 ActiveRecord::Base.shared_connection = ActiveRecord::Base.connection
 
+# Examples of using Page Object pattern
 class ProjectPage
   include Capybara::DSL
   def build_project
     fill_in 'Name', with: "Code Fellows Portfolio" 
     fill_in 'Description', with: "A wonderful expression in creativity"
     fill_in 'Content', with: "A Code Fellows portfolio demonstrates the chops of a Code Fellows professional"
-    click_on "Create Project"
-  end
-end
-
-
-# class IndexPosts
-#   include Capybara::DSL
-#   def visit_page
-#     visit '/posts'
-#     self
-#   end  
-# end
-
-class NewPostPage
-  include Capybara::DSL
-  def visit_page
-    visit '/posts/new'
-    self
-  end
-  def visit_index_page
-    visit '/posts'
-    self
-  end
-  def fill_post
-    fill_in 'post_title', with: 'Code Fellows Portfolio'
-    fill_in 'Description', with: 'The Amazing Life of Web Developers'
-    fill_in 'Content', with: 'This is an example of how I merged with the goodness of Rails'
   end
 end
 
@@ -78,21 +52,6 @@ class EditPostPage
     fill_in "post_description", with: "How to hook the big ones"
     fill_in "post_content", with: "Winter fishing for blackmouth is a great sport in th Pacific Northwest"
   end
-  # def visit_index_page
-  #   visit '/posts'
-  # end
-end
-
-
-
-class EditProjectPage
-  include Capybara::DSL
-  def fill_fields
-    fill_in "project_name", with: "Whidbey Island Watershed stewards"
-  end
-  # def visit_index_page
-  #   visit '/projects'
-  # end
 end
 
 def sign_in(role )
@@ -100,7 +59,6 @@ def sign_in(role )
   fill_in "Email", with: users(role).email
   fill_in "Password", with: 'secretpwd49'
   click_on "Submit"
-  # page.all(:link,"Sign in")[0].click 
 end
 
 Turn.config.format = :outline

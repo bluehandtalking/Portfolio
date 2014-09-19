@@ -1,17 +1,24 @@
 require "test_helper"
 
 feature "An editor Deleting an offensive Post" do
-  let(:new_post) {NewPostPage.new}
-  scenario "delete an offensive post" do
-    visit root_path
-    click_link "Sign in"
-    fill_in "Email", with: users(:editor).email
-    fill_in "user_password", with: "secretpwd49"
-    # visit '/posts/new'
-    # new_post.fill_post
-    # click_on 'Create Post'
-    # new_post.visit_index_page
-    # page.all(:link,"Destroy")[0].click
-    # page.driver.browser.accept_js_confirms
+  scenario "An author signs in but can not destroy a post" do
+    sign_in(:author)
+    visit posts_path
+    page.wont_have_link "Destroy"
+  end
+  scenario "A guest signs in but can not destroy a post" do
+    sign_in(:guest)
+    visit posts_path
+    page.wont_have_link "Destroy"
+  end  
+  scenario "Editor signs in and deletes an offensive post" do
+    sign_in('editor')
+    posts(:wave)
+    visit posts_path
+    page.must_have_content "Riding the Wave"
+    page.find(:xpath, "//a[starts-with(@href, '/posts/#{posts(:wave).id}')][@data-method='delete']").click
+    page.driver.browser.accept_js_confirms
+    page.wont_have_content "Riding the Wave"
+
   end
 end
