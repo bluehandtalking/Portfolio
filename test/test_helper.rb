@@ -1,6 +1,6 @@
 # Remove for Travis CI
-# require 'simplecov'
-# SimpleCov.start 'rails'
+require 'simplecov'
+SimpleCov.start 'rails'
 
 ENV["RAILS_ENV"] = "test"
 require File.expand_path("../../config/environment", __FILE__)
@@ -19,10 +19,6 @@ Capybara.default_driver = :webkit
 class ActiveSupport::TestCase
   fixtures :all
 end
-
-# class ActionController::TestCase
-#   include Devise::TestHelpers
-# end
 
 # Make all database transactions use the same thread
 class ActiveRecord::Base
