@@ -20,7 +20,14 @@ class ActiveSupport::TestCase
   fixtures :all
 end
 
-# Make all database transactions use the same thread
+
+class ActionDispatch::IntegrationTest
+  include Capybara::DSL
+end
+
+
+# Thread friendly shared connections, using transactions
+# ::Make all database transactions use the same thread
 class ActiveRecord::Base
   mattr_accessor :shared_connection
   @@shared_connection = nil
