@@ -15,6 +15,7 @@ gem "foundation-rails", github: "codefellows/foundation-rails"
 gem 'pundit'
 gem 'omniauth-twitter'
 gem 'figaro', github: "laserlemon/figaro"
+gem 'json', '1.8.1'
 group :doc do
   gem 'sdoc', require: false # bundle exec rake doc:rails generates the API under doc/api. 
 end
@@ -35,7 +36,13 @@ group :development do
   gem 'pry-doc', github: 'pry/pry-doc'
   gem 'pry-editline', github: "tpope/pry-editline"
   gem 'thin'
+  # enable ctags to find methods in gems
+  gem 'guard'
+  gem 'guard-ctags-bundler'
+  gem 'rb-readline'
 end
+ 
+gem 'minitest', '4.7.5'
 
 group :test do 
   gem 'minitest-rails'
