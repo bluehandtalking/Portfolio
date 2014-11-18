@@ -39,7 +39,7 @@ group :development do
   # enable ctags to find methods in gems
   gem 'guard'
   gem 'guard-ctags-bundler'
-  gem 'rb-readline'
+  # gem 'rb-readline'
 end
  
 gem 'minitest', '4.7.5'

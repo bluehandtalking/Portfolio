@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   #
   
-  layout 'standard'
+  layout :resolve_layout
 
   def new
     @post = Post.new
@@ -89,6 +89,14 @@ class PostsController < ApplicationController
   def auth_post
     set_post
     authorize @post
+  end
+
+  def  resolve_layout
+    if ( action_name == 'index' ) || ( action_name == 'show' )
+      'blog'
+    else
+      "standard"
+    end
   end
 
 end

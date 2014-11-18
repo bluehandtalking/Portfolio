@@ -1,21 +1,8 @@
 <% content_for :body do %>
-<div class="small-9 columns blog">
-<h1 id="list-hdr">Current Creative Musings</h1>
-<h1 id="edit-hdr">Edit Post</h1>
-<div id="edit_place"></div>
-<table>
-  <thead>
-    <tr>
-      <th>Reflections</th>
-      <th>Synopsis</th>
-      <th>Show</th>
-      <th>Edit</th>
-      <th>Delete</th>
-      <th>Publish</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% unless  @posts.blank?%>
+<div class=" small-7 cols blog_content">
+    <% if  @posts.blank?%>
+       <%= render "testing_Rails_4.1"   %>
+    <% else %>
       <% @posts.each do |post| %>
         <tr id="<%= dom_id(post) %>">
           <td><%= post.title %></td>
@@ -32,6 +19,7 @@
           <% end %>
         </tr>
       <% end %>
+
     <% end %>
     <tr>
       <td>
