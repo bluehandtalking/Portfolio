@@ -342,8 +342,39 @@ h3 { color: #FFF }
 }
 
 .blog_content {
-  margin-left: 1.0rem;
+  margin-left: 8.0rem;
   margin-top: 3.0rem
 }
 
+.blog-background {
+    background-color:#af3636;
+}
+.blog {
+    h1, h2 {
+       color:#000;
+    }
+}
 
+.blog-main {
+    margin-top: 5.0rem;
+}
+.off-canvas-fixed {
+  -webkit-transition: -webkit-transform 500ms ease;
+  transition: transform 500ms ease;
+}
+
+.move-right > .off-canvas-fixed {
+  height: 100%;
+  -webkit-transform: translate3d(15.625rem, 0, 0);
+  transform: translate3d(15.625rem, 0, 0);
+}
+
+.left-off-canvas-menu {
+  -webkit-transform: none;
+  -webkit-transform: translate(0%, 0);
+  transform: none;
+  margin-left: -15.625rem;
+  /* vh UNITS NICER THAN JS LISTENER */
+  /* height: 100vh; */
+  /* (BUT LESS SUPPORTED) */
+}

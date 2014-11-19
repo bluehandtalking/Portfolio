@@ -5070,7 +5070,7 @@ blockquote p {
 
 nav.tab-bar {
   -webkit-backface-visibility: hidden;
-  background: #333333;
+  background: #000000;
   color: white;
   height: 2.8125rem;
   line-height: 2.8125rem;
@@ -5090,7 +5090,7 @@ section.left-small {
   height: 2.8125rem;
   position: absolute;
   top: 0;
-  border-right: solid 1px #1a1a1a;
+  // border-right: solid 1px #1a1a1a;
   box-shadow: 1px 0 0 #4e4e4e;
   left: 0; }
 
@@ -5259,7 +5259,7 @@ ul.off-canvas-list li a {
   .move-left a.exit-off-canvas:hover {
     background: rgba(255, 255, 255, 0.05); } }
 .csstransforms.no-csstransforms3d .left-off-canvas-menu {
-  -webkit-transform: translate(-100%, 0);
+  -webkit-transform: translate(0, 0);
   -moz-transform: translate(-100%, 0);
   -ms-transform: translate(-100%, 0);
   -o-transform: translate(-100%, 0);
