@@ -1,20 +1,14 @@
 <% content_for :body do %>
   <% if  @posts.blank?%>
     <div class="fixed off-canvas-fixed">
-    <nav class="tab-bar">
       <section class="left-small">
-        <a class="left-off-canvas-toggle menu-icon"><span></span></a>
+        <a class="left-off-canvas-toggle menu-icon"><%= image_tag("menu_icon.png") %></a>
       </section>
 
-      <section class="right tab-bar-section">
-        <h1 class="title">Foundation</h1>
-      </section>
-
-    </nav>
        <aside class="left-off-canvas-menu">
           <ul class="off-canvas-list">
-            <li><label>Useful Menu</label></li>
-            <li><a href="#">As a mobile device user,</a></li>
+            <li><label>Table of Contents</label></li>
+            <li><a href="#top">What is Testing?</a></li>
             <li><a href="#">etc, etc, etc</a></li>
           </ul>
         </aside>
@@ -23,7 +17,7 @@
        <a class="exit-off-canvas"></a> 
        <section class="blog-main">
           <div class="row">
-            <div class="small-12 columns">
+            <div class="small-9 columns blog-style">
               <%= render "testing_Rails_4.1"   %>
             </div> 
           </div> 

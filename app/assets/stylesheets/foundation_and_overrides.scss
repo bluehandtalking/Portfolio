@@ -5050,10 +5050,13 @@ blockquote p {
   width: 100%;
   overflow: hidden; }
 
+
+
 .inner-wrap {
   -webkit-backface-visibility: hidden;
   position: relative;
   width: 100%;
+  margin-left: 5.0rem;
   *zoom: 1;
   -webkit-transition: -webkit-transform 500ms ease;
   -moz-transition: -moz-transform 500ms ease;
@@ -5062,7 +5065,7 @@ blockquote p {
   transition: transform 500ms ease; }
 
 .inner-wrap:before, .inner-wrap:after {
-  content: " ";
+  content: "";
   display: table; }
 
 .inner-wrap:after {
@@ -5070,7 +5073,7 @@ blockquote p {
 
 nav.tab-bar {
   -webkit-backface-visibility: hidden;
-  background: #000000;
+  background: #FFFFFF;
   color: white;
   height: 2.8125rem;
   line-height: 2.8125rem;
@@ -5084,6 +5087,7 @@ nav.tab-bar h1, nav.tab-bar h2, nav.tab-bar h3, nav.tab-bar h4, nav.tab-bar h5, 
 
 nav.tab-bar h1, nav.tab-bar h2, nav.tab-bar h3, nav.tab-bar h4 {
   font-size: 1.125rem; }
+
 
 section.left-small {
   width: 2.8125rem;
@@ -5149,6 +5153,8 @@ a.menu-icon:hover span {
   -webkit-box-shadow: 1px 10px 1px 1px #b3b3b3, 1px 16px 1px 1px #b3b3b3, 1px 22px 1px 1px #b3b3b3;
   box-shadow: 0 10px 0 1px #b3b3b3, 0 16px 0 1px #b3b3b3, 0 22px 0 1px #b3b3b3; }
 
+/* $off-canvas-width: rem-calc(550) !default; */
+
 .left-off-canvas-menu {
   -webkit-backface-visibility: hidden;
   width: 250px;
@@ -5157,7 +5163,7 @@ a.menu-icon:hover span {
   height: 100%;
   position: absolute;
   overflow-y: auto;
-  background: #333333;
+  background: #af3636;
   z-index: 1001;
   box-sizing: content-box;
   -webkit-transform: translate3d(-100%, 0, 0);
@@ -5219,7 +5225,7 @@ ul.off-canvas-list li a {
   -webkit-backface-visibility: hidden;
   transition: background 300ms ease;
   cursor: pointer;
-  box-shadow: -4px 0 4px rgba(0, 0, 0, 0.5), 4px 0 4px rgba(0, 0, 0, 0.5);
+/*  box-shadow: -4px 0 4px rgba(0, 0, 0, 0.5), 4px 0 4px rgba(0, 0, 0, 0.5); */
   display: block;
   position: absolute;
   background: rgba(255, 255, 255, 0.2);
@@ -5244,7 +5250,7 @@ ul.off-canvas-list li a {
   -webkit-backface-visibility: hidden;
   transition: background 300ms ease;
   cursor: pointer;
-  box-shadow: -4px 0 4px rgba(0, 0, 0, 0.5), 4px 0 4px rgba(0, 0, 0, 0.5);
+  /* box-shadow: -4px 0 4px rgba(0, 0, 0, 0.5), 4px 0 4px rgba(0, 0, 0, 0.5); */
   display: block;
   position: absolute;
   background: rgba(255, 255, 255, 0.2);

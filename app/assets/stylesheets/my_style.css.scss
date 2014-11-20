@@ -1,3 +1,6 @@
+h1 {
+   font-size: 2.0rem;
+}
 .jet {
    background-color: #000 
 }
@@ -301,8 +304,9 @@ img.orbit_img {
 
 p.blog {
    color: #FFF;
-   font-size: 1.0rem;
-   width: 80%
+   font-size: 1.125rem;
+   width: 80%;
+   line-height: 1.5rem;
 }
 
 
@@ -358,6 +362,48 @@ h3 { color: #FFF }
 .blog-main {
     margin-top: 5.0rem;
 }
+
+.blog-style {
+   p {
+    margin-left: 2.0rem;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    color: #121111;
+    font-weight: 600;
+   }
+   ul > li {
+    font-size: 1.125rem; 
+    line-height: 1.5rem;
+    margin-left: 4.0rem;
+    color: #000;
+    a:link { color: #af3636; font-weight: 900; text-decoration: underline }
+    a:visited { color: #af3636; font-weight: 900; text-decoration: underline }
+    a:hover { color: #000; }
+
+   }
+   ol > li {
+    font-size: 1.125rem; 
+    line-height: 1.5rem;
+    margin-left: 4.0rem;
+   
+   }
+   h3 {
+	color: #434343;   
+   }
+   a:link { color: #af3636; font-weight: 900; text-decoration: underline }
+   a:visited { color: #af3636; font-weight: 900; text-decoration: underline }
+   a:hover { color: #000; }
+}
+
+.nested-list ul > li{
+    margin-left: 6.0rem
+}
+
+.code-indent { 
+   position: relative;
+   left: 4.0rem
+}
+
 .off-canvas-fixed {
   -webkit-transition: -webkit-transform 500ms ease;
   transition: transform 500ms ease;
@@ -371,10 +417,57 @@ h3 { color: #FFF }
 
 .left-off-canvas-menu {
   -webkit-transform: none;
-  -webkit-transform: translate(0%, 0);
+  /* -webkit-transform: translate(0%, 0); */
   transform: none;
   margin-left: -15.625rem;
   /* vh UNITS NICER THAN JS LISTENER */
-  /* height: 100vh; */
+  height: 100vh; 
   /* (BUT LESS SUPPORTED) */
+}
+
+section.left-small {
+    left: -1.0rem;
+}
+
+ul.off-canvas-list li a {
+    font-size: 1.2rem;
+    color: #FFF;
+}
+
+
+
+h1.blog-title {
+    color: #AF3636;
+    font-size: 3.0rem; 
+    line-height: 3.2rem;
+    width: 80%;
+    margin: 0 auto;
+    font-weight: 700;
+    font-family: "calibri, arial"
+}
+
+hr {
+   border: solid 1px #000;
+}
+
+.code-blue {
+    font-family: Georgia, "Times New Roman",  serif;
+    font-size: 1.125rem;
+    color: #0000ff
+}
+
+.code-shift {
+    margin-left: 2.0rem; 
+}
+
+.code-em {
+    font-size: 1.5rem;
+    font-weight: 500
+}
+
+.code-red {
+    font-family: Georgia, "Times New Roman",  serif;
+    font-size: 1.325rem;
+    font-weight: 700;
+    color: #af3636
 }
