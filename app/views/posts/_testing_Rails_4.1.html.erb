@@ -730,38 +730,17 @@ end
 </code>
 </pre>
 <p></p>
-<H3 CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 150%"><A NAME="h.c1xlbwale1cn"></A>
-<FONT COLOR="#434343">Compatibility</FONT></H3>
-<p><SPAN STYLE="background: #ffffff">Minitest
-and Rspec spec DSL are not compatible so do not load both of them. If
-your tests using the spec DSL are not running, be sure and check the
-dependencies to be sure that Rspec DSL is not loaded.</SPAN></P>
-<p><BR>
+<H3>Compatibility</H3>
+<p>Minitest and Rspec spec DSL are not compatible so do not load both of them. If
+your tests using the spec DSL are not running, be sure and check the dependencies to be sure that Rspec DSL is not loaded.</P>
+<p>Matt Sears put together a MiniTest Quick Reference listing matchers and assertions. 
 </P>
-<p>Matt Sears put
-together a MiniTest Quick Reference listing matchers and assertions. 
-  
-</P>
-<p><BR>
-</P>
-<p>     <FONT COLOR="#880000">
-</FONT><A HREF="http://www.mattsears.com/articles/2011/12/10/minitest-quick-reference"><FONT COLOR="#880000"><U>MiniTest
-Quick Reference</U></FONT></A></P>
-<p><BR>
-</P>
-<p><FONT SIZE=3>Following
-is a partial listing from above link:</FONT></P>
-<H2 CLASS="western" STYLE="margin-top: 0.32in; margin-bottom: 0.15in; line-height: 150%"><A NAME="h.2319sth36rb5"></A>
-MiniTest::Spec</H2>
-<P STYLE="margin-bottom: 0.18in; line-height: 150%"><FONT COLOR="#222222"><FONT SIZE=3><SPAN STYLE="background: #ffffff">Provides
-RSpec-like matchers and contexts right out of the box.</SPAN></FONT></FONT></P>
-<H4 CLASS="western" STYLE="margin-bottom: 0.18in; line-height: 150%"><A NAME="h.msz34hj6bkxy"></A>
-<FONT COLOR="#000000">Matchers (must | wont)</FONT></H4>
-<P STYLE="margin-bottom: 0.18in; line-height: 150%"><SPAN STYLE="background: #ffffff">In
-most cases you can switch between must for positive expectations and
-wont for negative expectations.</SPAN></P>
-<p><BR>
-</P>
+<p><A HREF="http://www.mattsears.com/articles/2011/12/10/minitest-quick-reference">MiniTest Quick Reference</A></P>
+<H2>MiniTest::Spec</H2>
+<p>Provides RSpec-like matchers and contexts right out of the box.</P>
+<H4>Matchers (must | wont)</H4>
+<p>In most cases you can switch between must for positive expectations and
+wont for negative expectations.</P>
 <TABLE WIDTH=646 CELLPADDING=7 CELLSPACING=0>
 	<COL WIDTH=171>
 	<COL WIDTH=445>
@@ -923,12 +902,9 @@ wont for negative expectations.</SPAN></P>
 </TABLE>
 <p><BR>
 </P>
-<H4 CLASS="western" STYLE="margin-top: 0in; line-height: 150%"><A NAME="h.l54oatpxinrk"></A>
-<FONT COLOR="#000000"><FONT FACE="Arial, serif"><SPAN STYLE="background: #ffffff">Assertions
-(assert | refute)</SPAN></FONT></FONT></H4>
-<p><SPAN STYLE="background: #ffffff">Toggle
-between assert for positive assertions and refute for negative
-assertions.</SPAN></P>
+<H4>Assertions (assert | refute)</H4>
+<p>Toggle between assert for positive assertions and refute for negative
+assertions.</P>
 <TABLE WIDTH=642 CELLPADDING=7 CELLSPACING=0>
 	<COL WIDTH=141>
 	<COL WIDTH=471>
@@ -1102,123 +1078,80 @@ assertions.</SPAN></P>
 </TABLE>
 <p><BR>
 </P>
-<H2 CLASS="western" STYLE="line-height: 150%"><A NAME="h.kqqp0v30kv19"></A>
-</H2>
-<H2 CLASS="western" STYLE="line-height: 150%"><A NAME="h.u5pl4e4q6l4o"></A>
-Rspec with Capybara and Factory Girl</H2>
-<p><BR>
-</P>
-<P STYLE="margin-bottom: 0.17in; line-height: 150%"><FONT FACE="Consolas, serif">Start
-out by configuring your Gemfile:</FONT></P>
-<P STYLE="margin-bottom: 0.11in; line-height: 150%"><FONT COLOR="#000088"><FONT FACE="Consolas, serif">group</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif">
-</FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">:</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif">development</FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">,</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif">
-</FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">:</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif">test
-</FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif">do</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><BR>
- gem </FONT></FONT><FONT COLOR="#008800"><FONT FACE="Consolas, serif">'rspec-rails'</FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">,</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif">
-</FONT></FONT><FONT COLOR="#008800"><FONT FACE="Consolas, serif">'~&gt;
-3.0.0'</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif">
-<BR>  gem </FONT></FONT><FONT COLOR="#008800"><FONT FACE="Consolas, serif">'factory_girl_rails'</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><BR>
- gem </FONT></FONT><FONT COLOR="#008800"><FONT FACE="Consolas, serif">'capybara'</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><BR>
- gem </FONT></FONT><FONT COLOR="#008800"><FONT FACE="Consolas, serif">'database_cleaner'</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><BR></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif">end</FONT></FONT></P>
-<P STYLE="margin-bottom: 0.17in; line-height: 150%"><FONT FACE="Consolas, serif">Run
-Rspec generator to create initial framework:</FONT></P>
-<P STYLE="margin-bottom: 0.17in; line-height: 150%">     <FONT COLOR="#0000ff"><B>rails
-generate rspec:install</B></FONT></P>
-<P STYLE="margin-bottom: 0.11in; line-height: 150%">Add the following
-to  <I>rails_helper.rb </I> to  make Capybara available within 
+<H2>Rspec with Capybara and Factory Girl</H2>
+<p>Start out by configuring your Gemfile:</P>
+
+<pre>
+<code class="ruby">
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0' 
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'database_cleaner'
+end
+</code>
+</pre>
+<p></p>
+<p>Run Rspec generator to create initial framework:</P>
+
+
+<p>
+	<span class="code-blue code-shift">
+bundle exec rails generate rspec:install
+</span>	
+</p>
+<p>Add the following to  <I>rails_helper.rb </I> to  make Capybara available within 
 Rspec:</P>
-<P STYLE="margin-bottom: 0.11in; line-height: 150%">      <FONT COLOR="#880000"><FONT FACE="Consolas, serif"><I>#
-spec/rails_helper.rb</I></FONT></FONT></P>
-<P STYLE="margin-bottom: 0.11in; line-height: 150%">      <FONT COLOR="#000088"><FONT FACE="Consolas, serif">require</FONT></FONT><FONT FACE="Consolas, serif">
-</FONT><FONT COLOR="#008800"><FONT FACE="Consolas, serif">'capybara/rails'</FONT></FONT></P>
-<P STYLE="margin-bottom: 0.11in; line-height: 150%">   <FONT COLOR="#880000"><FONT FACE="Consolas, serif">#
-Insert the following additions into the Rspec configure block</FONT></FONT></P>
-<P STYLE="margin-bottom: 0.11in; line-height: 150%">  
-<FONT COLOR="#660066"><FONT FACE="Consolas, serif">RSpec</FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">.</FONT></FONT><FONT FACE="Consolas, serif">configure
-</FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif">do</FONT></FONT><FONT FACE="Consolas, serif">
-</FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">|</FONT></FONT><FONT FACE="Consolas, serif">config|</FONT></P>
-<p>      <FONT COLOR="#000088"><FONT FACE="Consolas, serif">require</FONT></FONT><FONT FACE="Consolas, serif">
-</FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">'</FONT></FONT><FONT FACE="Consolas, serif">database_cleaner</FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">'</FONT></FONT><FONT FACE="Consolas, serif">
- </FONT><FONT COLOR="#880000"><FONT FACE="Consolas, serif"># setting
-up for Capybara/Selenium testing</FONT></FONT></P>
-<p><FONT COLOR="#880000">
-     <FONT FACE="Consolas, serif"># disable Rails implicit wrapping
-of test in database transaction</FONT></FONT></P>
-<p><FONT COLOR="#880000">
-     <FONT FACE="Consolas, serif"># essential to disable this if
-testing with Capybara/Selenium</FONT></FONT></P>
-<p><FONT COLOR="#880000">
-     <FONT FACE="Consolas, serif"># and you wish to eliminate
-poundage of head against wall</FONT></FONT></P>
-<p><FONT COLOR="#880000">
-     </FONT><FONT FACE="Consolas, serif">config</FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">.</FONT></FONT><FONT FACE="Consolas, serif">use_transactional_fixtures
-</FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">=</FONT></FONT><FONT FACE="Consolas, serif">
-</FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif">false</FONT></FONT></P>
-<p><FONT COLOR="#000088">
-     </FONT><FONT COLOR="#880000"><FONT FACE="Consolas, serif"># Set
-up for Capybara/Selenium feature tests:</FONT></FONT></P>
-<p><FONT COLOR="#880000">
-     </FONT><FONT FACE="Consolas, serif">config</FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">.</FONT></FONT><FONT FACE="Consolas, serif">before</FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">(:</FONT></FONT><FONT FACE="Consolas, serif">suite</FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">)</FONT></FONT><FONT FACE="Consolas, serif">
-</FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif">do</FONT></FONT></P>
-<p><FONT COLOR="#000088">
-        </FONT><FONT COLOR="#660066"><FONT FACE="Consolas, serif">DatabaseCleaner</FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">.</FONT></FONT><FONT FACE="Consolas, serif">clean_with</FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">(:</FONT></FONT><FONT FACE="Consolas, serif">truncation</FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">)</FONT></FONT></P>
-<p><FONT COLOR="#666600">
-     </FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif">end</FONT></FONT></P>
-<p><FONT COLOR="#000088">
-     </FONT><FONT FACE="Consolas, serif">config</FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">.</FONT></FONT><FONT FACE="Consolas, serif">before</FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">(:</FONT></FONT><FONT FACE="Consolas, serif">each</FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">)</FONT></FONT><FONT FACE="Consolas, serif">
-</FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif">do</FONT></FONT></P>
-<p><FONT COLOR="#000088">
-        </FONT><FONT COLOR="#660066"><FONT FACE="Consolas, serif">DatabaseCleaner</FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">.</FONT></FONT><FONT FACE="Consolas, serif">strategy
-</FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">=</FONT></FONT><FONT FACE="Consolas, serif">
-</FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">:</FONT></FONT><FONT FACE="Consolas, serif">transaction</FONT></P>
-<p>      <FONT COLOR="#000088"><FONT FACE="Consolas, serif">end</FONT></FONT></P>
-<p>     
-<FONT FACE="Consolas, serif">config</FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">.</FONT></FONT><FONT FACE="Consolas, serif">before</FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">(:</FONT></FONT><FONT FACE="Consolas, serif">each</FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">,</FONT></FONT><FONT FACE="Consolas, serif">
-</FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">:</FONT></FONT><FONT FACE="Consolas, serif">js
-</FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">=&gt;</FONT></FONT><FONT FACE="Consolas, serif">
-</FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif">true</FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">)</FONT></FONT><FONT FACE="Consolas, serif">
-</FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif">do</FONT></FONT></P>
-<p>        
-<FONT COLOR="#660066"><FONT FACE="Consolas, serif">DatabaseCleaner</FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">.</FONT></FONT><FONT FACE="Consolas, serif">strategy
-</FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">=</FONT></FONT><FONT FACE="Consolas, serif">
-</FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">:</FONT></FONT><FONT FACE="Consolas, serif">truncation</FONT></P>
-<p>      <FONT COLOR="#000088"><FONT FACE="Consolas, serif">end</FONT></FONT></P>
-<p>     
-<FONT FACE="Consolas, serif">config</FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">.</FONT></FONT><FONT FACE="Consolas, serif">before</FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">(:</FONT></FONT><FONT FACE="Consolas, serif">each</FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">)</FONT></FONT><FONT FACE="Consolas, serif">
-</FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif">do</FONT></FONT></P>
-<p>        
-<FONT COLOR="#660066"><FONT FACE="Consolas, serif">DatabaseCleaner</FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">.</FONT></FONT><FONT FACE="Consolas, serif">start</FONT></P>
-<p>      <FONT COLOR="#000088"><FONT FACE="Consolas, serif">end</FONT></FONT></P>
-<p>     
-<FONT FACE="Consolas, serif">config</FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">.</FONT></FONT><FONT FACE="Consolas, serif">after</FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">(:</FONT></FONT><FONT FACE="Consolas, serif">each</FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">)</FONT></FONT><FONT FACE="Consolas, serif">
-</FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif">do</FONT></FONT></P>
-<p>        
-<FONT COLOR="#660066"><FONT FACE="Consolas, serif">DatabaseCleaner</FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">.</FONT></FONT><FONT FACE="Consolas, serif">clean</FONT></P>
-<p>      <FONT COLOR="#000088"><FONT FACE="Consolas, serif">end</FONT></FONT></P>
-<p>   <FONT COLOR="#000088"><FONT FACE="Consolas, serif">end</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><BR></FONT></FONT><BR>
-</P>
+<p></p>
+<pre>
+<code class="ruby">
+      # spec/rails_helper.rb
+      require 'capybara/rails'
+   # Insert the following additions into the Rspec configure block
+   RSpec.configure do |config|
+      require 'database_cleaner'  # setting up for Capybara/Selenium testing
+      # disable Rails implicit wrapping of test in database transaction
+      # essential to disable this if testing with Capybara/Selenium
+      # and you wish to eliminate poundage of head against wall
+      config.use_transactional_fixtures = false
+      # Set up for Capybara/Selenium feature tests:
+      config.before(:suite) do
+         DatabaseCleaner.clean_with(:truncation)
+      end
+      config.before(:each) do
+         DatabaseCleaner.strategy = :transaction
+      end
+      config.before(:each, :js => true) do
+         DatabaseCleaner.strategy = :truncation
+      end
+      config.before(:each) do
+         DatabaseCleaner.start
+      end
+      config.after(:each) do
+         DatabaseCleaner.clean
+      end
+   end
+
+</code>
+</pre>
+<p></p>
 <p>Be warned:  The
-database_cleaner strategy is a monkey-patched</P>
-<p>kludge which depends
-upon ActiveRecord  refraining from changing its connection-sharing
+database_cleaner strategy is a monkey-patched kludge which depends
+upon ActiveRecord refraining from changing its connection-sharing
 internals. It is reported to have created race conditions with
 postgresql in combination with certain Ruby VM’s.</P>
-<p><FONT COLOR="#0000ff">
-          </FONT>
 </P>
-<P STYLE="margin-bottom: 0.11in; line-height: 150%">Create a
+<p>Create a
 directory for your features:</P>
-<P STYLE="margin-bottom: 0.11in; line-height: 150%">	<FONT COLOR="#0000ff"><B>mkdir
-spec/features</B></FONT></P>
+<P><span class="code-blue code-shift">mkdir spec/features</span></P>
 <p>Now when you run 
 </P>
-<p>	<FONT COLOR="#0000ff"><B>bundle
-exec rails g resource post title content:text published:boolean</B></FONT></P>
+<p><span class="code-blue code-shift">bundle exec rails g resource post title content:text published:boolean</span></P>
 <p>you should get
 output similar to:</P>
-<p><BR>
-</P>
-<P STYLE="margin-bottom: 0.11in; line-height: 150%"><FONT FACE="Droid Serif, serif"><FONT SIZE=2>invoke
+<p>
+	<span class="code-blue">
+invoke
  active_record<BR>create   
 db/migrate/20140630160246_create_posts.rb<BR>create   
 app/models/post.rb<BR>invoke    rspec<BR>create     
@@ -1232,615 +1165,381 @@ spec/controllers/posts_controller_spec.rb<BR>invoke    helper<BR>create
 coffee<BR>create        app/assets/javascripts/posts.js.coffee<BR>invoke
      scss<BR>create       
 app/assets/stylesheets/posts.css.scss<BR>invoke  resource_route<BR>route
-   resources :posts</FONT></FONT></P>
-<P STYLE="margin-bottom: 0.11in; line-height: 150%"><FONT COLOR="#343434">Now
-you will be able to write feature tests like the following:</FONT></P>
-<P STYLE="margin-bottom: 0.11in; line-height: 150%"><FONT COLOR="#880000"><FONT FACE="Consolas, serif"><I>#
-spec/features/user_creates_a_foobar_spec.rb</I></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><BR>feature
-</FONT></FONT><FONT COLOR="#008800"><FONT FACE="Consolas, serif">'User
-visits Posts Index'</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif">
-</FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif">do</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><BR>
- scenario </FONT></FONT><FONT COLOR="#008800"><FONT FACE="Consolas, serif">'Navigating
-to Post Index, a list of posts is seen'</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif">
-</FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif">do</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><BR>
-   visit posts_path<BR>    expect</FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">(</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif">page</FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">).</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif">to
-have_content posts</FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">(:</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif">wave</FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">).</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif">title<BR>
- </FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif">end</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><BR></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif">end</FONT></FONT></P>
-<H1 CLASS="western" STYLE="margin-bottom: 0.11in; line-height: 150%"><A NAME="h.jo77bb1bbs4m"></A>
-Mocking and Stubbing</H1>
-<P>Testing should be simple, fast, and
-indempotent.</P>
-<P>The purpose of stubbing is to replace
-classes or components that 
-</P>
-<P>may be complex or slow the test down
+   resources :posts
+</span>	
+</p>
+<p>Now you will be able to write feature tests like the following:</P>
+<p></p>
+<pre>
+<code class="ruby">
+# spec/features/user_creates_a_foobar_spec.rb
+feature 'User visits Posts Index' do
+  scenario 'Navigating to Post Index, a list of posts is seen' do
+    visit posts_path
+    expect(page).to have_content posts(:wave).title
+  end
+end
+</code>
+</pre>
+<p></p>
+<H1>Mocking and Stubbing</H1>
+<P>Testing should be simple, fast, and indempotent. The purpose of stubbing is to replace classes or components that may be complex or slow the test down
 but still preserve the interface.</P>
-<P><BR>
-</P>
-<P>For instance, you can create a stub
-that will return false records but still</P>
-<P>satisfy the needs of the test. The
-caveat of using stubs is that you have 
-</P>
-<P>to be careful not to remove too much of
-the real world. You really do need</P>
-<P>to interact with your database at some
-point to see if all is well.</P>
-<P><BR>
-</P>
+<P>For instance, you can create a stub that will return false records but still satisfy the needs of the test. The caveat of using stubs is that you have to be careful not to remove too much of the real world. You really do need to interact with your database at some point to see if all is well.</P>
 <P>With a stub you want to accomplish 2
 things:</P>
 <UL>
-	<LI><P>Replace a part of the real system
-	in your test case with a stub.</P>
-	<LI><P>Have the stub duplicate behavior
-	of the real system part you replace.</P>
+	<LI>Replace a part of the real system in your test case with a stub.</li>
+	<LI>Have the stub duplicate behavior of the real system part you replace.</li>
 </UL>
-<P><BR>
-</P>
 <P>A mock object is similar to a stub
-object. However, it has the added 
-</P>
-<P>functionality of checking how the
-client code actually uses the object.</P>
-<P>It does this with behavior
-verification, to ensure that the mock object is</P>
-<P>interacting with the client code in the
-manner we expect, it is fullfilling our</P>
-<P>expectations.</P>
-<P><BR>
-</P>
+object. However, it has the added functionality of checking how the
+client code actually uses the object. It does this with behavior verification, to ensure that the mock object is interacting with the client code in the
+manner we expect, it is fullfilling our expectations.</P>
 <P>Following is a list of popular mocking
 and stubbing solutions in Rails:</P>
 <UL>
-	<LI><P><A HREF="https://github.com/seattlerb/minitest"><FONT COLOR="#880000"><U>MiniTest
-	Mock</U></FONT></A></P>
-	<LI><P><A HREF="http://gofreerange.com/mocha/docs/"><FONT COLOR="#880000"><U>Mocha</U></FONT></A><FONT COLOR="#880000">
-	</FONT>
-	</P>
-	<LI><P><A HREF="https://github.com/jimweirich/flexmock"><FONT COLOR="#880000"><U>FlexMock</U></FONT></A></P>
-	<LI><P><A HREF="https://github.com/rspec/rspec-mocks"><FONT COLOR="#880000"><U>Rspec
-	Mocks</U></FONT></A></P>
+	<LI><A HREF="https://github.com/seattlerb/minitest">MiniTest Mock</A></li>
+	<LI><A HREF="http://gofreerange.com/mocha/docs/">Mocha</A>
+	<LI><A HREF="https://github.com/jimweirich/flexmock">FlexMock</li>
+	<LI><A HREF="https://github.com/rspec/rspec-mocks">Rspec Mocks</A></li>
 </UL>
-<P><BR>
-</P>
-<H1 CLASS="western"><A NAME="h.j3sfekp52jck"></A>Page Object Pattern</H1>
-<H1 CLASS="western"><A NAME="h.j3sfekp52jck1"></A></H1>
-<P>The concept of a page object is to wrap
-an HTML page or fragment in order to manipulate page elements without
-digging into the HTML. Tests that manipulate page elements directly
-are brittle to changes in the UI.</P>
-<P><BR>
-</P>
+<H1>Page Object Pattern</H1>
+
+<p>The concept of a page object is to wrap an HTML page or fragment in order to manipulate page elements without digging into the HTML. Tests that manipulate page elements directly are brittle to changes in the UI.</P>
 <P>Objectives in creating a page object:</P>
 <UL>
-	<LI><P>Allow a software client to do
-	anything a human looking at the page can do</P>
-	<LI><P>Provide interface that hides
-	underlying widgetry of window and is easy to use</P>
-	<LI><P>Encapsulate mechanics required to
-	find and manipulate the data in the GUI control.</P>
-	<LI><P>Model the structure in the page
+	<LI>Allow a software client to do
+	anything a human looking at the page can do</>
+	<LI>Provide interface that hides
+	underlying widgetry of window and is easy to use</li>
+	<LI>Encapsulate mechanics required to
+	find and manipulate the data in the GUI control.</li>
+	<LI>Model the structure in the page
 	that makes sense to the user of the application, complex UI
-	structures should not be revealed by the page object.</P>
-	<LI><P>Page objects are not usually built
+	structures should not be revealed by the page object.</li>
+	<LI>Page objects are not usually built
 	for each page, but rather significant elements of a page such as
-	header, footer, contact form, etc.</P>
-	<LI><P>If you navigate to another page,
+	header, footer, contact form, etc.</li>
+	<LI>If you navigate to another page,
 	initial page object should return another page object for the new
-	page.</P>
-	<LI><P>Page objects should return
-	fundamental types [string date] or other page objects.</P>
+	page.</li>
+	<LI>Page objects should return
+	fundamental types [string date] or other page objects.</li>
 </UL>
-<P><BR>
-</P>
-<P>“<FONT COLOR="#303633"><FONT SIZE=3><SPAN STYLE="background: #ffffff">Page
-objects are commonly used for testing, but should not make assertions
+<P>“Page objects are commonly used for testing, but should not make assertions
 themselves. Their responsibility is to provide access to the state of
 the underlying page. It's up to test clients to carry out the
-assertion logic.” ---Martin Fowler</SPAN></FONT></FONT></P>
-<P><BR>
-</P>
-<P><FONT SIZE=3>Please read the excellent
+assertion logic.” ---Martin Fowler</P>
+<P>Please read the excellent
 article on page objects by Martin Fowler if you are interested in
-this topic.</FONT></P>
-<P><BR>
-</P>
-<P>      <A HREF="http://martinfowler.com/bliki/PageObject.html"><FONT COLOR="#aa0000"><FONT SIZE=3><U>Page
-Object by Martin Fowler</U></FONT></FONT></A></P>
-<P><BR>
-</P>
-<P><FONT SIZE=3>Gems to enhance the use of
-Page Object.</FONT></P>
+this topic.</P>
+<P><A HREF="http://martinfowler.com/bliki/PageObject.html">Page Object by Martin Fowler</A></P>
+<P>Gems to enhance the use of
+Page Object.</P>
 <UL>
-	<LI><P><A HREF="http://www.rubydoc.info/gems/site_prism/frames"><FONT COLOR="#aa0000"><FONT SIZE=3><U>Site
-	Prism Wiki</U></FONT></FONT></A><FONT COLOR="#aa0000"><FONT SIZE=3> 
-	    </FONT></FONT><A HREF="https://github.com/natritmeyer/site_prism"><FONT COLOR="#aa0000"><FONT SIZE=3><U>Github</U></FONT></FONT></A><FONT COLOR="#aa0000"><FONT SIZE=3>
-	  </FONT></FONT>
-	</P>
-	<LI><P><A HREF="https://github.com/cheezy/page-object/wiki/page-object"><FONT COLOR="#aa0000"><FONT SIZE=3><U>Page-Object
-	Wiki</U></FONT></FONT></A><FONT COLOR="#aa0000"><FONT SIZE=3>  
-	</FONT></FONT><A HREF="https://github.com/cheezy/page-object"><FONT COLOR="#aa0000"><FONT SIZE=3><U>Github</U></FONT></FONT></A></P>
+	<LI><A HREF="http://www.rubydoc.info/gems/site_prism/frames">Site Prism Wiki</A> <A HREF="https://github.com/natritmeyer/site_prism">Github</A>
+</li>
+	<LI><A HREF="https://github.com/cheezy/page-object/wiki/page-object">Page-Object
+	Wiki</A>  
+	<A HREF="https://github.com/cheezy/page-object">Github</A></li>
 </UL>
-<P><BR>
-</P>
-<P><BR>
-</P>
+<p></p>
 <H1 CLASS="western"><A NAME="h.fuo4sl5p1cz6"></A>Debugging:
 Opinionated Programming</H1>
-<P><BR>
-</P>
 <P>What to do when your test fails?</P>
 <UL>
-	<LI><P>Check for syntax errors</P>
-	<LI><P>Review test data</P>
-	<LI><P>Analyze your logic and algorithms</P>
-	<LI><P>Fire up Pry</P>
+	<LI>Check for syntax errors</li>
+	<LI>Review test data</li>
+	<LI>Analyze your logic and algorithms</li>
+	<LI>Fire up Pry</li>
 </UL>
-<P><BR>
-</P>
 <P>You can fire up the Rails console which
 uses irb, then use debugger to inspect your code, set breakpoints,
 etc.  But why would you want to do this when the most excellent pry
 gem is available? If you have not tried pry, you owe it to yourself
 to give it a road test. Who knows? Besides finding yourself in a
 state of bliss you may also save humanity from imminent destruction.</P>
-<P><BR>
 </P>
-<H2 CLASS="western"><A NAME="h.w0etm5y3ok2v"></A>Pry</H2>
+<H2>Pry</H2>
 <UL>
-	<LI><P><A HREF="https://github.com/pry/pry"><FONT COLOR="#aa0000"><U>Pry</U></FONT></A></P>
-	<LI><P><A HREF="https://github.com/pry/pry/wiki"><FONT COLOR="#aa0000"><U>Pry
-	Wiki</U></FONT></A></P>
+	<LI><A HREF="https://github.com/pry/pry">Pry</A></li>
+	<LI><A HREF="https://github.com/pry/pry/wiki"><FONT COLOR="#aa0000">Pry Wiki</A></li>
 </UL>
-<P><BR>
-</P>
-<P><BR>
+<P>
 </P>
 <P>Easily set a breakpoint by entering</P>
-<P><BR>
+<P>
 </P>
-<P>      binding.pry</P>
-<P><BR>
-</P>
+<P><span class="code-blue code-shift">binding.pry</span></P>
 <P>in a model or controller. You can also
 enter</P>
-<P><BR>
+<P>
 </P>
-<P>      &lt;% require ‘pry’;
-binding.pry %&gt;  
+<P> <span class="code-blue code-shift">&lt;% require ‘pry’; binding.pry %&gt;</span>  
 </P>
-<P><BR>
+<P>
 </P>
 <P>in a view to set a break point.</P>
-<P><BR>
+<P>
 </P>
-<H2 CLASS="western"><A NAME="h.ymfee1hr87gl"></A>Pry-rescue gem</H2>
-<P><BR>
+<H2>Pry-rescue gem</H2>
+<P>
 </P>
 <P>Whenever something goes wrong, e.g.
-there is an unhandled exception,</P>
-<P>pry-rescue will automatically open pry
+there is an unhandled exception, pry-rescue will automatically open pry
 for you.</P>
-<P><BR>
+<P>
 </P>
 <P>Add the following to your Gemfile.</P>
-<P><BR>
+<P>
 </P>
-<P STYLE="margin-bottom: 0in; line-height: 145%"><FONT COLOR="#000088">
-  </FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">group</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">:</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">development
-</FONT></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">do</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><BR>
-    gem </FONT></FONT></FONT><FONT COLOR="#008800"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">'pry-rescue'</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><BR>
-    gem </FONT></FONT></FONT><FONT COLOR="#008800"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">'pry-stack_explorer'</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><BR>
-  </FONT></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">end</FONT></FONT></FONT></P>
-<P><BR>
-</P>
+<pre>
+<code class="ruby">
+group :development do
+ gem 'pry-rescue'
+ gem 'pry-stack_explorer'
+end
+</code>
+</pre>
+<p></p>
 <H2 CLASS="western"><A NAME="h.rxn09r77namc"></A>Git</H2>
-<P><BR>
+<P>
 </P>
-<P>Search using regex for all differences
-in added or removed lines</P>
-<P>matches the given regular expression.</P>
-<P><BR>
+<P>Search using regex for all differences in added or removed<br/> lines matching the given regular expression.</P>
+<P>
 </P>
-<P>      <FONT COLOR="#0000ff">git log
--G”^[a-zA-Z0-9_-]*_widget$” --pretty=oneline</FONT></P>
-<P><BR>
+<p>
+	<span class="code-blue code-shift">
+git log -G”^[a-zA-Z0-9_-]*_widget$” --pretty=oneline</P>
+</span>	
+</p>
+<P>
 </P>
-<P>Compare current state of file with that
-of a specific commit</P>
-<P><BR>
+<P>Compare current state of file with that of a specific commit.</P>
+<P>
 </P>
-<P>      <FONT COLOR="#0000ff">git diff
-4dc72 -- app/models/user.rb</FONT></P>
-<P><BR>
+<P><span class="code-blue code-shift">git diff 4dc72 -- app/models/user.rb</span></P>
+<P>
 </P>
-<P>When a bug is current and you know it
-was not in the past, pick</P>
-<P>a commit in the past where your code
-was good.  Now you need to</P>
-<P><BR>
+<P>When a bug is current and you know it was not in the past,<br/> pick a commit in the past where your code was good. <br/>Now you need to</P>
+<P>
 </P>
-<P>      <FONT COLOR="#0000ff">git bisect
-start</FONT></P>
-<P><BR>
+<P><span class="code-blue code-shift">git bisect start</span></P>
+<P>
 </P>
-<P>You will then proceed with setting the
-status of the current commit.</P>
-<P><BR>
+<P>You will then proceed with setting the status of the current commit.</P>
+<P>
 </P>
-<P>      <FONT COLOR="#0000ff">git bisect
-bad</FONT></P>
-<P><BR>
+<P><span class="code-blue code-shift">git bisect bad</span></P>
+<P>
 </P>
-<P>Next you select a commit where you know
-the code functioned properly</P>
-<P>and set the status for that.</P>
-<P><BR>
+<P>Next you select a commit where you know the code<br/> functioned properly and set the status for that.</P>
+<P>
 </P>
-<P>      <FONT COLOR="#0000ff">git bisect
-good &lt;sha&gt;</FONT></P>
-<P><BR>
+<P><span class="code-blue code-shift">git bisect good &lt;sha&gt;</span></P>
+<P>
 </P>
-<P>You proceed with this process until you
-have identified where the bad code</P>
-<P>was introduced.</P>
-<UL>
-	<LI><P><A HREF="http://hashrocket.com/blog/posts/finding-failure-git-bisect"><FONT COLOR="#aa0000"><U>Finding
-	Failure: Git Bisect</U></FONT></A></P>
-</UL>
-<P><BR>
+<P>You proceed with this process until you have identified <br/>where the bad code was introduced.</P>
+<p><A HREF="http://hashrocket.com/blog/posts/finding-failure-git-bisect">Finding Failure: Git Bisect</A></P>
+<P>
 </P>
-<H2 CLASS="western"><A NAME="h.b2e79guzer45"></A>Debugging
-Opportunities in Rails.</H2>
-<P><BR>
+<H2>Debugging Opportunities in Rails.</H2>
+<P>
 </P>
 <P>See what routes are really available.</P>
-<UL>
-	<LI><P><A HREF="http://localhost:3000/rails/info/routes"><FONT COLOR="#aa0000"><U>http://localhost:3000/rails/info/routes</U></FONT></A></P>
-</UL>
-<P><BR>
+	<P><A HREF="http://localhost:3000/rails/info/routes">http://localhost:3000/rails/info/routes</A></P>
+<P>
 </P>
 <P>Gem for style, lint, metrics, and Rails
 specific checking.</P>
-<UL>
-	<LI><P><A HREF="https://github.com/bbatsov/rubocop"><FONT COLOR="#aa0000"><U>Rubocop</U></FONT></A></P>
-</UL>
-<P><BR>
+<P><A HREF="https://github.com/bbatsov/rubocop">Rubocop</A></P>
+<P>
 </P>
 <P>Vim specific plugin for syntax
 checking.</P>
-<UL>
-	<LI><P><A HREF="https://github.com/scrooloose/syntastic"><FONT COLOR="#aa0000"><U>Syntastic</U></FONT></A></P>
-</UL>
-<P><BR>
+<P><A HREF="https://github.com/scrooloose/syntastic">Syntastic</A></P>
+<P>
 </P>
 <P>Check all available Rake tasks</P>
-<UL>
-	<LI><P><FONT COLOR="#0000ff">rake -T</FONT></P>
-</UL>
-<P><BR>
+<P><span class="code-blue code-shift">bundle exec rake -T</span></P>
+<P>
 </P>
 <P>Check what middleware is in use.</P>
-<UL>
-	<LI><P><FONT COLOR="#0000ff">rake
-	middleware</FONT></P>
-</UL>
-<P><BR>
+<P><span class="code-blue code-shift">bundle exec rake middleware</span></P>
+<P>
 </P>
 <P>See all gems actually used, and version
 numbers.</P>
-<UL>
-	<LI><P><FONT COLOR="#0000ff">less
-	Gemfile.lock</FONT></P>
-</UL>
-<H1 CLASS="western"><A NAME="h.6l8s9zfp0mr4"></A>Speeding Up your
-Test Environment</H1>
-<P><BR>
+<P><span class="code-blue code-shift">less Gemfile.lock</span></FONT></P>
+<p></p>
+<H1>Speeding Up your Test Environment</H1>
+<P>
 </P>
-<P>Ryan Bates  has compiled various
-methods of</P>
-<P>optimizing your test environment in
-this Railscast, 
+<P>Ryan Bates has compiled various methods of optimizing <br/>your test environment in this Railscast, including use of the ‘parallelize_me’ <br/>method in minitest.</P>
+<P><A HREF="http://railscasts.com/episodes/413-fast-tests?view=comments">Fast Tests</A></P>
+<P>
 </P>
-<P>including use of the ‘parallelize_me’
-method in minitest.</P>
-<UL>
-	<LI><P><A HREF="http://railscasts.com/episodes/413-fast-tests?view=comments"><FONT COLOR="#aa0000"><U>Fast
-	Tests</U></FONT></A></P>
-</UL>
-<P><BR>
+<H1><span class="code-green">Prenascent Test Paradigm</span></H1>
+<p>
 </P>
-<P><BR>
-</P>
-<H1 CLASS="western" STYLE="line-height: 150%"><A NAME="h.6eme78v8yp1z"></A>
-<FONT COLOR="#008000"><U><B>Prenascent Test Paradigm</B></U></FONT></H1>
-<p><BR>
-</P>
-<p>It is most
-beneficial in testing when the code itself is clarity, integrity,
+<p>It is most beneficial in testing when the code itself <br/>is clarity, integrity,
 simplicity.</P>
-<p><BR>
+<p>
 </P>
-<p><FONT COLOR="#222222">“</FONT><FONT COLOR="#222222"><FONT FACE="Georgia, serif"><FONT SIZE=4>O</FONT></FONT></FONT><FONT COLOR="#222222"><FONT FACE="Georgia, serif">ften,
-when you can express an idea in a single sentence, you have a good
-shot at implementing that idea in a single line or two of Ruby code.</FONT></FONT><FONT COLOR="#222222"><FONT SIZE=5><B>”</B></FONT></FONT></P>
+<p>&quotOften, when you can express an idea in a single sentence, you have a good
+shot at implementing that idea in a single line or two of Ruby code.&quot</P>
 <P STYLE="margin-bottom: 0.17in; line-height: 150%"><FONT FACE="Consolas, serif">						---Bruce
 Tate</FONT></P>
-<P STYLE="margin-bottom: 0.17in; line-height: 150%"><BR><BR>
+<p>
 </P>
-<H2 CLASS="western" STYLE="margin-bottom: 0.17in; line-height: 150%"><A NAME="h.u67lg0kx7fcd"></A>
-Addendum - Helpful Information</H2>
-<H3 CLASS="western"><A NAME="h.xhymph2nb8uj"></A>Testing Pundit
-Authorization Policies with Minitest</H3>
-<P><BR>
+<H2>Addendum - Helpful Information</H2>
+<H3>Testing Pundit Authorization Policies with Minitest</H3>
+<P>
 </P>
 <P>An example of Pundit policy testing on
 Stack Overflow using Minitest and factories. The example could be
 adjusted for use with fixtures.</P>
-<P><BR>
+<P>
 </P>
-<UL>
-	<LI><P><A HREF="http://stackoverflow.com/questions/20256893/how-to-test-pundit-policies-with-minitest"><FONT COLOR="#880000"><U>
-	Pundit Policy Testing</U></FONT></A><FONT COLOR="#880000">    </FONT>
-	</P>
-</UL>
-<P><BR>
+<P><A HREF="http://stackoverflow.com/questions/20256893/how-to-test-pundit-policies-with-minitest">Pundit Policy Testing</a></P>
+<P>
 </P>
-<H3 CLASS="western"><A NAME="h.mdir6tl8oszr"></A>Factory Girl</H3>
-<P><BR>
+<H3>Factory Girl</H3>
+<P>
 </P>
 <P>Complicated relationships in factories
 on RailsGuide.net, solved using ignore/transient.</P>
-<P><BR>
+<P>
 </P>
-<UL>
-	<LI><P><A HREF="http://railsguides.net/integral-factories-in-tests-with-factory-girl/"><FONT COLOR="#880000"><U>Integral
-	Factories</U></FONT></A></P>
-</UL>
-<P><BR>
+<P><A HREF="http://railsguides.net/integral-factories-in-tests-with-factory-girl/">Integral Factories</A></P>
+<P>
 </P>
-<P><BR>
+<H3>Rspec Example of testing factories first using spec syntax.</H3>
+<P>
 </P>
-<P>Test factories first using spec syntax.</P>
-<P><BR>
+<pre>
+<code class="ruby">
+# spec/factories_spec.rb
+
+FactoryGirl.factories.map(&:name).each do |factory_name|
+  describe "The #{factory_name} factory" do
+     it 'is valid' do
+      build(factory_name).should be_valid
+     end
+  end
+end
+
+# lib/tasks/factory.rake
+
+if defined?(RSpec)
+  desc 'Run factory specs.'
+  RSpec::Core::RakeTask.new(:factory_specs) do |t|
+    t.pattern = './spec/factories_spec.rb'
+  end
+end
+
+task spec: :factory_specs
+</code>
+</pre>
+<p></p>
+<H4>MiniTest Spec Example</H4>
+<P>
 </P>
-<H4 CLASS="western"><A NAME="h.xdud4muxk9n0"></A>Rspec Example</H4>
-<P><BR>
-</P>
-<P><FONT COLOR="#880000"><FONT FACE="Consolas, serif"><I>#
-spec/factories_spec.rb</I></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><BR><BR></FONT></FONT><FONT COLOR="#660066"><FONT FACE="Consolas, serif">FactoryGirl</FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">.</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif">factories</FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">.</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif">map</FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">(&amp;:</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif">name</FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">).</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif">each
-</FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif">do</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif">
-</FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">|</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif">factory_name</FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">|</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><BR>
- describe </FONT></FONT><FONT COLOR="#008800"><FONT FACE="Consolas, serif">&quot;The
-#{factory_name} factory&quot;</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif">
-</FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif">do</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><BR>
-    it </FONT></FONT><FONT COLOR="#008800"><FONT FACE="Consolas, serif">'is
-valid'</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif">
-</FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif">do</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><BR>
-     build</FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">(</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif">factory_name</FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif">).</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif">should
-be_valid<BR>     </FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif">end</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><BR>
- </FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif">end</FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><BR></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif">end</FONT></FONT></P>
-<P><BR>
-</P>
-<P><FONT COLOR="#880000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">#
-lib/tasks/factory.rake</FONT></FONT></FONT></P>
-<P><BR>
-</P>
-<P><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">if</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">defined</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">?(</FONT></FONT></FONT><FONT COLOR="#660066"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">RSpec</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">)</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><BR>
- desc </FONT></FONT></FONT><FONT COLOR="#008800"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">'Run
-factory specs.'</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><BR>
- </FONT></FONT></FONT><FONT COLOR="#660066"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">RSpec</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">::</FONT></FONT></FONT><FONT COLOR="#660066"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">Core</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">::</FONT></FONT></FONT><FONT COLOR="#660066"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">RakeTask</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">.</FONT></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">new</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">(:</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">factory_specs</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">)</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">do</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">|</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">t</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">|</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><BR>
-   t</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">.</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">pattern
-</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">=</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#008800"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">'./spec/factories_spec.rb'</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><BR>
- </FONT></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">end</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><BR></FONT></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">end</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><BR><BR>task
-spec</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">:</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">:</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">factory_specs</FONT></FONT></FONT></P>
-<P><BR>
-</P>
-<H4 CLASS="western"><A NAME="h.9anmv439ebj2"></A>MiniTest Spec 
-Example</H4>
-<P><BR>
-</P>
-<P STYLE="margin-bottom: 0in; line-height: 140%"><FONT COLOR="#880000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">#
-spec/factories_spec.rb</FONT></FONT></FONT></P>
-<P STYLE="margin-bottom: 0in; line-height: 140%"><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">require</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#660066"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">File</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">.</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">expand_path</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">(</FONT></FONT></FONT><FONT COLOR="#660066"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">File</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">.</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">dirname</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">(</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">__FILE__</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">)</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">+</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#008800"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">'/spec_helper'</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">)</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><BR><BR>describe
-</FONT></FONT></FONT><FONT COLOR="#660066"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">FactoryGirl</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">do</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><BR>
- EXCEPTIONS </FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">=</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">%</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">w</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">(</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-bad_</FONT></FONT></FONT><FONT FACE="Consolas, serif">user</FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">_address
-shipping_method</FONT></FONT></FONT><FONT FACE="Consolas, serif">
-your_errors etc</FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">)</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><BR>
- </FONT></FONT></FONT><FONT COLOR="#660066"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">FactoryGirl</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">.</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">factories</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">.</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">each
-</FONT></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">do</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">|</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">factory</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">|</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><BR>
-   </FONT></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">next</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">if</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-EXCEPTIONS</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">.</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">include</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">?(</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">factory</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">.</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">name</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">.</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">to_s</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">)</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><BR>
-   describe </FONT></FONT></FONT><FONT COLOR="#008800"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">&quot;The
-#{factory.name} factory&quot;</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">do</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><BR>
-     it </FONT></FONT></FONT><FONT COLOR="#008800"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">'is
-valid'</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">do</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><BR>
-       instance </FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">=</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-build</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">(</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">factory</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">.</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">name</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">)</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><BR>
-       instance</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">.</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">must_be
-</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">:</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">valid</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">?</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><BR>
-     </FONT></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">end</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><BR>
-   </FONT></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">end</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><BR>
- </FONT></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">end</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><BR></FONT></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">end</FONT></FONT></FONT></P>
-<P><BR>
-</P>
-<P><FONT COLOR="#880000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">#
-lib/tasks/factory.rake</FONT></FONT></FONT></P>
-<P><FONT COLOR="#880000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">#
-assuming you are using spec style</FONT></FONT></FONT></P>
-<P><BR>
-</P>
-<P STYLE="margin-bottom: 0in; line-height: 140%"><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">desc
-</FONT></FONT></FONT><FONT COLOR="#008800"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">'Run
-factory specs.'</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><BR></FONT></FONT></FONT><FONT COLOR="#660066"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">Rake</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">::</FONT></FONT></FONT><FONT COLOR="#660066"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">TestTask</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">.</FONT></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">new</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">(:</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">factory_specs</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">)</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">do</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">|</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">t</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">|</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><BR>
- t</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">.</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">pattern
-</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">=</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#008800"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">'./spec/factories_spec.rb'</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><BR></FONT></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">end</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt"><BR><BR>task
-test</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">:</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">:</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">factory_specs</FONT></FONT></FONT></P>
-<P STYLE="margin-bottom: 0in; line-height: 140%"><BR>
-</P>
-<H4 CLASS="western" STYLE="line-height: 140%"><A NAME="h.4bdxk75dcrju"></A>
-MiniTest without Spec example</H4>
-<P STYLE="margin-bottom: 0in; line-height: 140%"><BR>
-</P>
-<P STYLE="margin-bottom: 0in; line-height: 140%"><FONT COLOR="#880000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">#
-test/factories_test.rb</FONT></FONT></FONT></P>
-<P STYLE="margin-bottom: 0in; line-height: 140%"><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">require</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#660066"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">File</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">.</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">expand_path</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">(</FONT></FONT></FONT><FONT COLOR="#660066"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">File</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">.</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">dirname</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">(</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">__FILE__</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">)</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">+</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#008800"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">'/test_helper'</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">)
-</FONT></FONT></FONT>
-</P>
-<P STYLE="margin-bottom: 0in; line-height: 140%"><FONT COLOR="#000000">
-  </FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">class</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#660066"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">FactoriesTest</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">&lt;</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#660066"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">ActiveSupport</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">::</FONT></FONT></FONT><FONT COLOR="#660066"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">TestCase
-</FONT></FONT></FONT>
-</P>
-<P STYLE="margin-bottom: 0in; line-height: 140%"><FONT COLOR="#000000">
-     <FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">EXCEPTIONS
-</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">=</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">%</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">w</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">(</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">user_address
-user_email</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">)
-</FONT></FONT></FONT>
-</P>
-<P STYLE="margin-bottom: 0in; line-height: 140%"><FONT COLOR="#000000">
-     </FONT><FONT COLOR="#660066"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">FactoryGirl</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">.</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">factories</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">.</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">map</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">(&amp;:</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">name</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">).</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">each
-</FONT></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">do</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
- </FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">|</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">factory_name|</FONT></FONT></FONT></P>
-<P STYLE="margin-bottom: 0in; line-height: 140%"><FONT COLOR="#000000">
-        </FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">next</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">if</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-factory_name</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">.</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">to_s</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">.</FONT></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">in</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">?(</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">EXCEPTIONS</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">)
-</FONT></FONT></FONT>
-</P>
-<P STYLE="margin-bottom: 0in; line-height: 140%"><FONT COLOR="#000000">
-        <FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">context
-</FONT></FONT></FONT><FONT COLOR="#008800"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">&quot;The
-#{factory_name} factory&quot;</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">do
-</FONT></FONT></FONT>
-</P>
-<P STYLE="margin-bottom: 0in; line-height: 140%"><FONT COLOR="#000000">
-           <FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">should
-</FONT></FONT></FONT><FONT COLOR="#008800"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">'be
-valid'</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">do
-</FONT></FONT></FONT>
-</P>
-<P STYLE="margin-bottom: 0in; line-height: 140%"><FONT COLOR="#000000">
-              <FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">assert_equal
-</FONT></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">true</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">,</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-build</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">(</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">factory_name</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">).</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">valid</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">?
-</FONT></FONT></FONT>
-</P>
-<P STYLE="margin-bottom: 0in; line-height: 140%"><FONT COLOR="#000000">
-           </FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">end
-</FONT></FONT></FONT>
-</P>
-<P STYLE="margin-bottom: 0in; line-height: 140%"><FONT COLOR="#000000">
-        </FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">end
-</FONT></FONT></FONT>
-</P>
-<P STYLE="margin-bottom: 0in; line-height: 140%"><FONT COLOR="#000000">
-     </FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">end
-</FONT></FONT></FONT>
-</P>
-<P STYLE="margin-bottom: 0in; line-height: 140%"><FONT COLOR="#000000">
-  </FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">end</FONT></FONT></FONT></P>
-<P STYLE="margin-bottom: 0in; line-height: 140%"><BR>
-</P>
-<P STYLE="margin-bottom: 0in; line-height: 140%"><FONT COLOR="#880000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">#
-lib/tasks/factory.rake</FONT></FONT></FONT></P>
-<P STYLE="margin-bottom: 0in; line-height: 140%"><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">namespace</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">:</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">test
-</FONT></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">do
-</FONT></FONT></FONT>
-</P>
-<P STYLE="margin-bottom: 0in; line-height: 140%"><FONT COLOR="#000000">
-  <FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">desc
-</FONT></FONT></FONT><FONT COLOR="#008800"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">'Test
-factories'</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#660066"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">Rake</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">::</FONT></FONT></FONT><FONT COLOR="#660066"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">TestTask</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">.</FONT></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">new</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">(:</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">factories</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">)</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">do</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">|</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">t</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">|
-</FONT></FONT></FONT>
-</P>
-<P STYLE="margin-bottom: 0in; line-height: 140%"><FONT COLOR="#000000">
-     <FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">t</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">.</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">pattern
-</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">=</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#008800"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">'./test/factories_test.rb'
-</FONT></FONT></FONT>
-</P>
-<P STYLE="margin-bottom: 0in; line-height: 140%"><FONT COLOR="#000000">
-  </FONT><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">end
-</FONT></FONT></FONT>
-</P>
-<P STYLE="margin-bottom: 0in; line-height: 140%"><FONT COLOR="#000088"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">end
-</FONT></FONT></FONT>
-</P>
-<P STYLE="margin-bottom: 0in; line-height: 140%"><BR>
-</P>
-<P STYLE="margin-bottom: 0in; line-height: 140%"><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">task
-minitest</FONT></FONT></FONT><FONT COLOR="#666600"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">:</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">
-</FONT></FONT></FONT><FONT COLOR="#008800"><FONT FACE="Consolas, serif"><FONT SIZE=2 STYLE="font-size: 11pt">'test:factories'</FONT></FONT></FONT></P>
-<P><BR>
-</P>
-<H3 CLASS="western" STYLE="line-height: 150%"><A NAME="h.900ihqo0eer6"></A>
-Guard configuration for MiniTest</H3>
-<P><BR>
+<pre>
+<code class="ruby">
+# spec/factories_spec.rb
+require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
+
+describe FactoryGirl do
+  EXCEPTIONS = %w( bad_user_address shipping_method your_errors etc)
+  FactoryGirl.factories.each do |factory|
+    next if EXCEPTIONS.include?(factory.name.to_s)
+    describe "The #{factory.name} factory" do
+      it 'is valid' do
+        instance = build(factory.name)
+        instance.must_be :valid?
+      end
+    end
+  end
+end
+
+# lib/tasks/factory.rake
+# assuming you are using spec style
+
+desc 'Run factory specs.'
+Rake::TestTask.new(:factory_specs) do |t|
+  t.pattern = './spec/factories_spec.rb'
+end
+
+task test: :factory_specs
+</code>
+</pre>
+<p></p>
+<H4>MiniTest without Spec example</H4>
+<p></p>
+<pre>
+<code class="ruby">
+# test/factories_test.rb
+require File.expand_path(File.dirname(__FILE__) + '/test_helper') 
+
+class FactoriesTest < ActiveSupport::TestCase 
+  EXCEPTIONS = %w(user_address user_email) 
+  FactoryGirl.factories.map(&:name).each do  |factory_name|
+     next if factory_name.to_s.in?(EXCEPTIONS) 
+     context "The #{factory_name} factory" do 
+        should 'be valid' do 
+           assert_equal true, build(factory_name).valid? 
+        end 
+     end 
+  end 
+end
+
+# lib/tasks/factory.rake
+namespace :test do 
+   desc 'Test factories' Rake::TestTask.new(:factories) do |t| 
+      t.pattern = './test/factories_test.rb' 
+   end 
+end 
+
+task minitest: 'test:factories'
+</code>
+</pre>
+<p></p>
+<H3>Guard configuration for MiniTest</H3>
+<P>
 </P>
 <P>Guard is a command line tool to handle
 events when changes occur in your file system, and can be configured
 to run tests when changes occur. Here is a sample configuration that
 will ignore tmp and other non-related files (including lib! ...may
 not be what you want).</P>
-<P><BR>
+<P>
 </P>
 <UL>
-	<LI><P><A HREF="https://github.com/guard/guard"><FONT COLOR="#880000"><U>Guard
-	on Github</U></FONT></A></P>
-	<LI><P><A HREF="https://github.com/guard/guard/wiki"><FONT COLOR="#880000"><U>Guard
-	Wiki</U></FONT></A></P>
-	<LI><P><A HREF="http://railscasts.com/episodes/264-guard"><FONT COLOR="#880000"><U>Railscasts
-	Guard</U></FONT></A></P>
+	<LI><A HREF="https://github.com/guard/guard">Guard on Github</A></li>
+	<LI><A HREF="https://github.com/guard/guard/wiki">Guard Wiki</A></li>
+	<LI><A HREF="http://railscasts.com/episodes/264-guard">Railscasts	Guard</A></li>
 </UL>
-<P><BR>
+<P>
 </P>
-<P><FONT FACE="Consolas, serif"><I>#
-.guard.rb in app root</I></FONT></P>
-<P STYLE="margin-bottom: 0in; line-height: 145%"><FONT FACE="Consolas, serif"><I>#
-Rails 4 ignores:</I></FONT><FONT FACE="Consolas, serif"><BR>ignore([%r{^bin/*},
-%r{^config/*}, %r{^db/*}, %r{^lib/*}, %r{^log/*}, %r{^public/*},
-%r{^tmp/*}])<BR><BR>guard :minitest, all_on_start: false, zeus: true,
-bundler: false do<BR>  </FONT><FONT FACE="Consolas, serif"><I># Rails
-4 watch:</I></FONT><FONT FACE="Consolas, serif"><BR> 
-watch(%r{^app/(.+)\.rb})              { |m| &quot;test/#{m[1]}_test.rb&quot;
-}<BR>  watch(%r{^test/.+_test\.rb})<BR> 
-watch(%r{^test/test_helper\.rb})      { 'test' }<BR>end</FONT></P>
-<P><BR>
-</P>
+<p>This is an example of setting up a <i>.guard.rb </i>file.  </p>
+<p>
+	<pre>
+    <code class="ruby">
+# .guard.rb in app root
+# Rails 4 ignores:
+ignore([%r{^bin/*}, %r{^config/*}, %r{^db/*}, %r{^lib/*}, %r{^log/*}, %r{^public/*}, %r{^tmp/*}])
+
+guard :minitest, all_on_start: false, zeus: true, bundler: false do
+  # Rails 4 watch:
+  watch(%r{^app/(.+)\.rb})              { |m| "test/#{m[1]}_test.rb" }
+  watch(%r{^test/.+_test\.rb})
+  watch(%r{^test/test_helper\.rb})      { 'test' }
+end
+    </code>
+	</pre>
+</p>
 <H1 CLASS="western"><A NAME="h.wmort4owqglv"></A>References</H1>
 <P><BR>
 </P>
