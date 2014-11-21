@@ -425,9 +425,6 @@ h3 { color: #FFF }
   /* (BUT LESS SUPPORTED) */
 }
 
-section.left-small {
-    left: -1.0rem;
-}
 
 ul.off-canvas-list li a {
     font-size: 1.2rem;
@@ -436,10 +433,8 @@ ul.off-canvas-list li a {
 
 
 
-h1.blog-title {
+h2.blog-title {
     color: #AF3636;
-    font-size: 3.0rem; 
-    line-height: 3.2rem;
     width: 80%;
     margin: 0 auto;
     font-weight: 700;
@@ -474,4 +469,12 @@ hr {
 
 .code-green {
     color: #39751c
+}
+
+li.iron-horse {
+    background-color: #4d494a;
+    a:link { color: #af3636 }
+    a:visited { color: #af3636; font-weight: 900; text-decoration: underline }
+    a:hover { color: #000; }
+ 
 }

@@ -1,14 +1,15 @@
-<div >
-<h1 class="blog-title right" >
-Rails 4.1 Testing with</P>
-<h1 class="blog-title right">
-Test::Unit, MiniTest, and Rspec</P>
+ <div >
+   <span id="top"></span>
+   <h2 class="blog-title right" >
+     Rails 4.1 Testing with</h2>
+<h2 class="blog-title right">
+Test::Unit, MiniTest, and Rspec</h2>
 </div>
 <hr class=".rule"/>
 <P>
 <BR>
 </P>
-<H1  id="top" >
+<H1>
 What is this Testing All About?</H1>
 <P >Testing in Ruby on
 Rails was built in from the very beginning.</P>
@@ -460,21 +461,16 @@ Stones, to <span class="code-em">GoF</span>, and</P>
 </P>
 <H3 CLASS="western" STYLE="line-height: 150%"><A NAME="h.tn9g6y7w7ub5"></A>
 ThoughtBot on Factory Girl:</H3>
-<P STYLE="margin-bottom: 0.21in; line-height: 150%"><SPAN STYLE="background: #ffffff">“</SPAN><FONT FACE="Georgia, serif"><FONT SIZE=4><SPAN STYLE="background: #ffffff">W</SPAN></FONT></FONT><FONT FACE="Georgia, serif"><SPAN STYLE="background: #ffffff">e
+
+<P><FONT FACE="Georgia, serif">&quot We
 prefer factories (with FactoryGirl) over Rails fixtures, because
 fixtures are a form of Mystery Guest. Fixtures make it hard to see
 cause and effect, because part of the logic is defined in a file far
 away from the context in which you are using it. Because fixtures are
 implemented so far away from your tests, they tend to be hard to
-control.</SPAN></FONT></P>
-<p><FONT FACE="Georgia, serif"><SPAN STYLE="background: #ffffff">Factories,
-on the other hand, put the logic right in the test. They make it easy
-to see what is happening at a glance and are more flexible to
-different scenarios you may want to set up.While factories are slower
-than fixtures, we think the </SPAN></FONT>
-</P>
-<p><FONT FACE="Georgia, serif"><SPAN STYLE="background: #ffffff">benefits
-in flexibility and readability outweigh the costs.</SPAN></FONT><FONT FACE="Georgia, serif"><FONT SIZE=6><SPAN STYLE="background: #ffffff">”</SPAN></FONT></FONT></P>
+control.</FONT></P>
+
+<p><FONT FACE="Georgia, serif">Factories, on the other hand, put the logic right in the test. They make it easy to see what is happening at a glance and are more flexible to different scenarios you may want to set up.While factories are slower than fixtures, we think the benefits in flexibility and readability outweigh the costs.&quot</FONT></P>
 <p><A HREF="http://robots.thoughtbot.com/how-we-test-rails-applications">How ThoughtBot Tests Applications</A></P>
 <p>
 </P>
@@ -737,7 +733,7 @@ your tests using the spec DSL are not running, be sure and check the dependencie
 <H2 id="minitestspec">MiniTest::Spec</H2>
 <p>Provides RSpec-like matchers and contexts right out of the box.</P>
 <H4>Matchers (must | wont)</H4>
-<p>In most cases you can switch between must for positive expectations and
+<p>In most cases you can switch between must for positive <br/>expectations and
 wont for negative expectations.</P>
 <TABLE WIDTH=646 CELLPADDING=7 CELLSPACING=0>
 	<COL WIDTH=171>
@@ -901,7 +897,7 @@ wont for negative expectations.</P>
 <p><BR>
 </P>
 <H4>Assertions (assert | refute)</H4>
-<p>Toggle between assert for positive assertions and refute for negative
+<p>Toggle between assert for positive assertions <br/>and refute for negative
 assertions.</P>
 <TABLE WIDTH=642 CELLPADDING=7 CELLSPACING=0>
 	<COL WIDTH=141>
@@ -1103,32 +1099,32 @@ Rspec:</P>
 <p></p>
 <pre>
 <code class="ruby">
-      # spec/rails_helper.rb
-      require 'capybara/rails'
-   # Insert the following additions into the Rspec configure block
-   RSpec.configure do |config|
-      require 'database_cleaner'  # setting up for Capybara/Selenium testing
-      # disable Rails implicit wrapping of test in database transaction
-      # essential to disable this if testing with Capybara/Selenium
-      # and you wish to eliminate poundage of head against wall
-      config.use_transactional_fixtures = false
-      # Set up for Capybara/Selenium feature tests:
-      config.before(:suite) do
-         DatabaseCleaner.clean_with(:truncation)
-      end
-      config.before(:each) do
-         DatabaseCleaner.strategy = :transaction
-      end
-      config.before(:each, :js => true) do
-         DatabaseCleaner.strategy = :truncation
-      end
-      config.before(:each) do
-         DatabaseCleaner.start
-      end
-      config.after(:each) do
-         DatabaseCleaner.clean
-      end
-   end
+# spec/rails_helper.rb
+require 'capybara/rails'
+# Insert the following additions into the Rspec configure block
+RSpec.configure do |config|
+  require 'database_cleaner'  # setting up for Capybara/Selenium testing
+  # disable Rails implicit wrapping of test in database transaction
+  # essential to disable this if testing with Capybara/Selenium
+  # and you wish to eliminate poundage of head against wall
+  config.use_transactional_fixtures = false
+  # Set up for Capybara/Selenium feature tests:
+  config.before(:suite) do
+     DatabaseCleaner.clean_with(:truncation)
+  end
+  config.before(:each) do
+     DatabaseCleaner.strategy = :transaction
+  end
+  config.before(:each, :js => true) do
+     DatabaseCleaner.strategy = :truncation
+  end
+  config.before(:each) do
+     DatabaseCleaner.start
+  end
+  config.after(:each) do
+     DatabaseCleaner.clean
+  end
+end
 
 </code>
 </pre>
@@ -1308,7 +1304,7 @@ end
 </P>
 <p>
 	<span class="code-blue code-shift">
-git log -G”^[a-zA-Z0-9_-]*_widget$” --pretty=oneline</P>
+git log -G'^[a-zA-Z0-9_-]*_widget$' --pretty=oneline</P>
 </span>	
 </p>
 <P>
@@ -1538,69 +1534,44 @@ end
 	</pre>
 </p>
 <H1 id="references">References</H1>
-<P><BR>
+<P>
 </P>
 <UL>
-	<LI><P><A HREF="http://guides.rubyonrails.org/testing.html"><FONT COLOR="#aa0000"><U>Guide
-	to Testing Rails Applications</U></FONT></A></P>
-	<LI><P><A HREF="http://mikewilliamson.wordpress.com/2013/06/12/the-difference-between-feature-specs-and-request-specs/"><FONT COLOR="#aa0000"><U>Difference
-	Between Feature Specs and Request Specs</U></FONT></A></P>
-	<LI><P><A HREF="https://whatdoitest.com/getting-friendly-with-fixtures"><FONT COLOR="#aa0000"><U>Factories
-	or Fixtures</U></FONT></A></P>
-	<LI><P><A HREF="http://www.hiringthing.com/2012/08/02/rails-testing-demystifying-test-unit.html"><FONT COLOR="#aa0000"><U>Demystifying
-	Test::Unit</U></FONT></A></P>
-	<LI><P><A HREF="https://semaphoreapp.com/blog/2014/01/14/rails-testing-antipatterns-fixtures-and-factories.html"><FONT COLOR="#aa0000"><U>Rails
-	Testing Antipatterns: Factories and Fixtures</U></FONT></A></P>
-	<LI><P><A HREF="http://brandonhilkert.com/blog/7-reasons-why-im-sticking-with-minitest-and-fixtures-in-rails/"><FONT COLOR="#aa0000"><U>7
-	Reasons Why I am Sticking with Minitest and Fixtures in Rails</U></FONT></A></P>
-	<LI><P><A HREF="http://thoughts.wallproductions.com/2014/02/fixtures-vs-factories/"><FONT COLOR="#aa0000"><U>Factories
-	vs Fixtures</U></FONT></A></P>
-	<LI><P><A HREF="http://thoughts.wallproductions.com/2014/02/fixtures-vs-factories/"><FONT COLOR="#aa0000"><U>Mocking
-	and Stubbing in Rails</U></FONT></A></P>
-	<LI><P><A HREF="http://www.mattsears.com/articles/2011/12/10/minitest-quick-reference"><FONT COLOR="#aa0000"><U>MiniTest
-	Quick Reference</U></FONT></A></P>
-	<LI><P><A HREF="https://github.com/seattlerb/minitest"><FONT COLOR="#aa0000"><U>Seattlerb-MiniTest</U></FONT></A></P>
-	<LI><P><A HREF="https://github.com/blowmage/minitest-rails-capybara"><FONT COLOR="#aa0000"><U>MiniTest-Rails-Capybara</U></FONT></A></P>
-	<LI><P><A HREF="https://semaphoreapp.com/blog/2013/08/14/setting-up-bdd-stack-on-a-new-rails-4-application.html"><FONT COLOR="#aa0000"><U>Setting
-	up the BDD stack on a new Rails 4 app</U></FONT></A></P>
-	<LI><P><A HREF="https://github.com/rspec/rspec-rails"><FONT COLOR="#aa0000"><U>rspec-rails</U></FONT></A></P>
-	<LI><P><A HREF="http://devblog.avdi.org/2012/08/31/configuring-database_cleaner-with-rails-rspec-capybara-and-selenium/"><FONT COLOR="#aa0000"><U>Configuring
-	database_cleaner with Capybara, Rspec and Selenium</U></FONT></A></P>
-	<LI><P><A HREF="http://everydayrails.com/2012/03/19/testing-series-rspec-models-factory-girl.html"><FONT COLOR="#aa0000"><U>Model
-	Specs Testing</U></FONT></A></P>
-	<LI><P><A HREF="http://guides.rubyonrails.org/testing.html#available-assertions"><FONT COLOR="#aa0000"><U>Rails
-	Assertions</U></FONT></A></P>
-	<LI><P><A HREF="http://martinfowler.com/articles/mocksArentStubs.html"><FONT COLOR="#aa0000"><U>Mocks
-	aren’t Stubs</U></FONT></A></P>
-	<LI><P><A HREF="http://blog.berylliumwork.com/2013/07/rails-4-devise-3-minitest-and-capybara.html"><FONT COLOR="#aa0000"><U>MiniTest,
-	Capybara, and Factory Girl</U></FONT></A></P>
-	<LI><P><A HREF="http://railscasts.com/episodes/327-minitest-with-rails"><FONT COLOR="#aa0000"><U>Railscasts
-	MiniTest with Rails</U></FONT></A></P>
-	<LI><P><A HREF="http://robots.thoughtbot.com/how-we-test-rails-applications"><FONT COLOR="#aa0000"><U>How
-	We Test Rails ---ThoughtBot</U></FONT></A></P>
-	<LI><P><A HREF="http://chriskottom.com/blog/2014/10/4-fantastic-ways-to-set-up-state-in-minitest/"><FONT COLOR="#aa0000"><U>MiniTest:
-	Setting up before a Test</U></FONT></A></P>
-	<LI><P><A HREF="http://chriskottom.com/blog/2014/10/exploring-minitest-concurrency/"><FONT COLOR="#aa0000"><U>Parallelize
-	Me! MiniTest Concurrency</U></FONT></A></P>
-	<LI><P><A HREF="http://chriskottom.com/blog/2014/08/customize-minitest-assertions-and-expectations/"><FONT COLOR="#aa0000"><U>Customize
-	MiniTest Assertions and Expectations</U></FONT></A></P>
-	<LI><P><A HREF="http://www.mattsears.com/articles/2013/12/17/a-guide-for-writing-maintainable-rails-tests"><FONT COLOR="#aa0000"><U>Guide
-	for Writing Maintainable Rails Tests</U></FONT></A></P>
-	<LI><P><A HREF="http://brandonhilkert.com/blog/managing-login-passwords-for-capybara-with-minitest-and-rails-fixtures/"><FONT COLOR="#aa0000"><U>Password
-	Helper for Minitest and Capybara</U></FONT></A></P>
-	<LI><P><A HREF="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-logs.html"><FONT COLOR="#aa0000"><U>Debugging
-	Rails with Logs</U></FONT></A></P>
-	<LI><P><A HREF="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-custom-instrumentation.html"><FONT COLOR="#aa0000"><U>Debugging
-	with Custom Instrumentation</U></FONT></A></P>
-	<LI><P><A HREF="https://developer.chrome.com/devtools/docs/javascript-debugging"><FONT COLOR="#aa0000"><U>Debugging
-	Javascript</U></FONT></A></P>
-	<LI><P><A HREF="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-operating-system-tools.html"><FONT COLOR="#aa0000"><U>Debugging
-	with OS Tools</U></FONT></A></P>
+  <LI><A HREF="http://guides.rubyonrails.org/testing.html">Guide to Testing Rails Applications</a></li>
+
+  <LI><A HREF="http://mikewilliamson.wordpress.com/2013/06/12/the-difference-between-feature-specs-and-request-specs/">Difference	Between Feature Specs and Request Specs</a></li>
+
+  <LI><A HREF="https://whatdoitest.com/getting-friendly-with-fixtures">Factories or Fixtures</a></li>
+  <LI><A HREF="http://www.hiringthing.com/2012/08/02/rails-testing-demystifying-test-unit.html">Demystifying Test::Unit</a></li>
+  <LI><A HREF="https://semaphoreapp.com/blog/2014/01/14/rails-testing-antipatterns-fixtures-and-factories.html">Rails Testing Antipatterns: Factories and Fixtures</a></li>
+  <LI><A HREF="http://brandonhilkert.com/blog/7-reasons-why-im-sticking-with-minitest-and-fixtures-in-rails/">7 Reasons Why I am Sticking with Minitest and Fixtures in Rails</a></li> 
+  <LI><A HREF="http://thoughts.wallproductions.com/2014/02/fixtures-vs-factories/">Factories	vs Fixtures</a></li> 
+  <LI><A HREF="http://thoughts.wallproductions.com/2014/02/fixtures-vs-factories/">Mocking	and Stubbing in Rails</a></li> 
+  <LI><A HREF="http://www.mattsears.com/articles/2011/12/10/minitest-quick-reference">MiniTest	Quick Reference</a></li> 
+  <LI><A HREF="https://github.com/seattlerb/minitest">Seattlerb-MiniTest</a></li>
+  <LI><A HREF="https://github.com/blowmage/minitest-rails-capybara">MiniTest-Rails-Capybara</a></li>
+	<LI><A HREF="https://semaphoreapp.com/blog/2013/08/14/setting-up-bdd-stack-on-a-new-rails-4-application.html">Setting	up the BDD stack on a new Rails 4 app</a></li>
+  <LI><A HREF="https://github.com/rspec/rspec-rails">rspec-rails</a></li>
+	<LI><A HREF="http://devblog.avdi.org/2012/08/31/configuring-database_cleaner-with-rails-rspec-capybara-and-selenium/">Configuring	database_cleaner with Capybara, Rspec and Selenium</a></li>
+	<LI><A HREF="http://everydayrails.com/2012/03/19/testing-series-rspec-models-factory-girl.html">Model Specs Testing</a></li>
+	<LI><A HREF="http://guides.rubyonrails.org/testing.html#available-assertions">Rails	Assertions</a></li>
+	<LI><A HREF="http://martinfowler.com/articles/mocksArentStubs.html">Mocks aren’t Stubs</a></li>
+	<LI><A HREF="http://blog.berylliumwork.com/2013/07/rails-4-devise-3-minitest-and-capybara.html">MiniTest, Capybara, and Factory Girl</a></li>
+	<LI><A HREF="http://railscasts.com/episodes/327-minitest-with-rails">Railscasts
+	MiniTest with Rails</a></li>
+	<LI><A HREF="http://robots.thoughtbot.com/how-we-test-rails-applications">How	We Test Rails ---ThoughtBot</a></li>
+	<LI><A HREF="http://chriskottom.com/blog/2014/10/4-fantastic-ways-to-set-up-state-in-minitest/">MiniTest:	Setting up before a Test</a></li>
+	<LI><A HREF="http://chriskottom.com/blog/2014/10/exploring-minitest-concurrency/">Parallelize	Me! MiniTest Concurrency</a></li>
+	<LI><A HREF="http://chriskottom.com/blog/2014/08/customize-minitest-assertions-and-expectations/">Customize	MiniTest Assertions and Expectations</a></li>
+	<LI><A HREF="http://www.mattsears.com/articles/2013/12/17/a-guide-for-writing-maintainable-rails-tests">Guide for Writing Maintainable Rails Tests</a></li>
+	<LI><A HREF="http://brandonhilkert.com/blog/managing-login-passwords-for-capybara-with-minitest-and-rails-fixtures/">Password Helper for Minitest and Capybara</a></li>
+	<LI><A HREF="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-logs.html">Debugging	Rails with Logs</a></li>
+	<LI><A HREF="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-custom-instrumentation.html">Debugging	with Custom Instrumentation</a></li>
+	<LI><A HREF="https://developer.chrome.com/devtools/docs/javascript-debugging">Debugging Javascript</a></li>
+	<LI><A HREF="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-operating-system-tools.html">Debugging	with OS Tools</a></li>
+  <li>
+  	<a href="http://blog.arvidandersson.se/2012/03/28/minimalicous-testing-in-ruby-1-9">Minimalicious testing in Ruby 1.9 with MiniTest</a>
+  </li>
 </UL>
-<P><BR>
-</P>
-<P><BR>
-</P>
-<P ALIGN=CENTER STYLE="margin-bottom: 0in; line-height: 150%; page-break-inside: avoid; widows: 2; orphans: 2; page-break-after: avoid">
-<BR>
+<P>
 </P>
