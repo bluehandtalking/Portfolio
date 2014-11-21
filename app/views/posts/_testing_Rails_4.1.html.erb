@@ -32,7 +32,7 @@ config/environments/production.rb,</I></P>
 </P>
 <P><FONT COLOR="#38761d"><B>Tests
     ensure that your code adheres to the desired <br/>functionality, even after major refactoring.</B></FONT></P>
-<H1> Testing Frameworks</H1>
+<H1 id="testingframeworks"> Testing Frameworks</H1>
 <P>At this time there are 3 main frameworks for testing in Rails:<br /></P>
 <OL>
 	<LI>Test::Unit.
@@ -65,7 +65,7 @@ config/environments/production.rb,</I></P>
 	<LI>Flexible and customizable reporting.</LI>
 </UL>
 </span>
-<H1>Types of Tests</H1>
+<H1 id="typestest">Types of Tests</H1>
 <P>What do we test in a Rails app? Ideally, everything: Models, Controllers, Views, 
 Helpers, Routing. However, the following list may be more typical,
 the nomenclature starts with Test::Unit or MiniTest followed by
@@ -99,7 +99,7 @@ Rspec:</P>
 </code>
 </pre>
 <p></p>
-<H3>Examples for Test::Unit / Minitest:</H3>
+<H3 id="examplestestunit">Examples for Test::Unit / Minitest:</H3>
 <p></p>
 <pre>
 <code class="ruby">
@@ -180,8 +180,7 @@ end
 			assertions</U></FONT></A></P>
 			<P>
 			</P>
-<H3>
-Examples for Rspec:</H3>
+<H3 id="examplesrspec">Examples for Rspec:</H3>
 <P></P>
 <P>rspec-rails 3
 generates rails_helper.rb and spec_helper.rb. 
@@ -303,9 +302,8 @@ stack, including rspec-rails, shoulda-matchers, factory_girl,
 cucumber-rails (capybara is dependency), and selenium-webdriver.</P>
 <p>
 <A HREF="https://semaphoreapp.com/blog/2013/08/14/setting-up-bdd-stack-on-a-new-rails-4-application.html"><FONT COLOR="#880000"><u>Semaphore Rails 4 BDD Stack</u></A></P>
-<H1 CLASS="western" STYLE="line-height: 150%"><A NAME="h.xhei9vfkyzom"></A>
-Setting Up your Data</H1>
-<p><BR>
+<H1 id="settingupdata">Setting Up Your Data</H1>
+<p>
 </P>
 <p>Just about every Rails application depends on heavy interaction with the database and as a result it is necessary to know how to setup the database for the test environment and populate it with data. It is useful to know the standard ways to setup the database for development and production so as to know how these may 
 be different from setup for the test environment.</P>
@@ -410,7 +408,7 @@ question!  A question in many minds of the Ruby on Rails community:</P>
 Fixture or to Factory?</P>
 <p>
 </P>
-<H1>FIXTURES</H1>
+<H1 id="fixtures">FIXTURES</H1>
 <p>
 </P>
 <p>Years of
@@ -439,7 +437,7 @@ revealed in a memorable fashion. Fixtures can be difficult in the beginning of a
 <p>      <A HREF="http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html#method-c-context_class">Rails Fixture Reference</A></P>
 <p><BR>
 </P>
-<H1>FACTORIES</H1>
+<H1 id="factories">FACTORIES</H1>
 <p>
 </P>
 <p>From the Rolling
@@ -480,7 +478,7 @@ in flexibility and readability outweigh the costs.</SPAN></FONT><FONT FACE="Geor
 <p><A HREF="http://robots.thoughtbot.com/how-we-test-rails-applications">How ThoughtBot Tests Applications</A></P>
 <p>
 </P>
-<H1>MiniTest with Capybara and Fixtures</H1>
+<H1 id="minitest">MiniTest with Capybara and Fixtures</H1>
 <p>
 </P>
 <p>Mike Moore has created the ‘minitest-rails-capybara’ gem, which is a wrapper to
@@ -589,7 +587,7 @@ tests.</P>
 <p><span class="code-blue code-shift">bundle exec rails generate mini_test:feature CheckForZurb</span></P>
 <p><span class="code-red">for minitest-rails v1.x</span></P>
 <p><br/></p>
-<h3>Example Feature Test</h3>
+<h3 id="examplefeaturetest">Example Feature Test</h3>
 
 <pre>
 	<code class="ruby">
@@ -661,7 +659,7 @@ you wish it to be spec style add the <FONT COLOR="#0000ff">--spec
 </FONT>flag.</P>
 <p>
 </P>
-<H1>Mixing It Up with Feature Tests and Capybara</H1>
+<H1 id="mixingitup">Mixing It Up with Feature Tests and Capybara</H1>
 <p>
 </P>
 <p>One of the purposes
@@ -676,7 +674,7 @@ any dependency on hard-wired relationships.</P>
 Reference Manual</U></FONT></A></P>
 <p>
 </P>
-<H2>MiniTest with Capybara and Factory Girl</H2>
+<H1>MiniTest with Capybara and Factory Girl</H1>
 <P>If you are using a javascript capable
 driver like Selenium for integration testing, browser actions are run
 in another thread. This prevents you from seeing the data which was
@@ -736,7 +734,7 @@ your tests using the spec DSL are not running, be sure and check the dependencie
 <p>Matt Sears put together a MiniTest Quick Reference listing matchers and assertions. 
 </P>
 <p><A HREF="http://www.mattsears.com/articles/2011/12/10/minitest-quick-reference">MiniTest Quick Reference</A></P>
-<H2>MiniTest::Spec</H2>
+<H2 id="minitestspec">MiniTest::Spec</H2>
 <p>Provides RSpec-like matchers and contexts right out of the box.</P>
 <H4>Matchers (must | wont)</H4>
 <p>In most cases you can switch between must for positive expectations and
@@ -1078,7 +1076,7 @@ assertions.</P>
 </TABLE>
 <p><BR>
 </P>
-<H2>Rspec with Capybara and Factory Girl</H2>
+<H2 id="rspecwithcapybara">Rspec with Capybara and Factory Girl</H2>
 <p>Start out by configuring your Gemfile:</P>
 
 <pre>
@@ -1182,7 +1180,7 @@ end
 </code>
 </pre>
 <p></p>
-<H1>Mocking and Stubbing</H1>
+<H1 id="mockingstubbing">Mocking and Stubbing</H1>
 <P>Testing should be simple, fast, and indempotent. The purpose of stubbing is to replace classes or components that may be complex or slow the test down
 but still preserve the interface.</P>
 <P>For instance, you can create a stub that will return false records but still satisfy the needs of the test. The caveat of using stubs is that you have to be careful not to remove too much of the real world. You really do need to interact with your database at some point to see if all is well.</P>
@@ -1204,7 +1202,7 @@ and stubbing solutions in Rails:</P>
 	<LI><A HREF="https://github.com/jimweirich/flexmock">FlexMock</li>
 	<LI><A HREF="https://github.com/rspec/rspec-mocks">Rspec Mocks</A></li>
 </UL>
-<H1>Page Object Pattern</H1>
+<H1 id="pageobject">Page Object Pattern</H1>
 
 <p>The concept of a page object is to wrap an HTML page or fragment in order to manipulate page elements without digging into the HTML. Tests that manipulate page elements directly are brittle to changes in the UI.</P>
 <P>Objectives in creating a page object:</P>
@@ -1245,8 +1243,7 @@ Page Object.</P>
 	<A HREF="https://github.com/cheezy/page-object">Github</A></li>
 </UL>
 <p></p>
-<H1 CLASS="western"><A NAME="h.fuo4sl5p1cz6"></A>Debugging:
-Opinionated Programming</H1>
+<H1 id="debugging">Debugging: Opinionated Programming</H1>
 <P>What to do when your test fails?</P>
 <UL>
 	<LI>Check for syntax errors</li>
@@ -1303,7 +1300,7 @@ end
 </code>
 </pre>
 <p></p>
-<H2 CLASS="western"><A NAME="h.rxn09r77namc"></A>Git</H2>
+<H2 id="git">Git</H2>
 <P>
 </P>
 <P>Search using regex for all differences in added or removed<br/> lines matching the given regular expression.</P>
@@ -1373,7 +1370,7 @@ checking.</P>
 numbers.</P>
 <P><span class="code-blue code-shift">less Gemfile.lock</span></FONT></P>
 <p></p>
-<H1>Speeding Up your Test Environment</H1>
+<H1 id="speeding">Speeding Up your Test Environment</H1>
 <P>
 </P>
 <P>Ryan Bates has compiled various methods of optimizing <br/>your test environment in this Railscast, including use of the ‘parallelize_me’ <br/>method in minitest.</P>
@@ -1393,7 +1390,7 @@ shot at implementing that idea in a single line or two of Ruby code.&quot</P>
 Tate</FONT></P>
 <p>
 </P>
-<H2>Addendum - Helpful Information</H2>
+<H2 id="addendum">Addendum - Helpful Information</H2>
 <H3>Testing Pundit Authorization Policies with Minitest</H3>
 <P>
 </P>
@@ -1540,7 +1537,7 @@ end
     </code>
 	</pre>
 </p>
-<H1 CLASS="western"><A NAME="h.wmort4owqglv"></A>References</H1>
+<H1 id="references">References</H1>
 <P><BR>
 </P>
 <UL>
