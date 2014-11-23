@@ -5202,7 +5202,8 @@ a.menu-icon:hover span {
 ul.off-canvas-list {
   list-style-type: none;
   padding: 0;
-  margin: 0; }
+  margin: 0;
+  margin-left: 0.5rem; }
 
 ul.off-canvas-list li label {
   padding: 0.3rem 0.9375rem;
@@ -5271,7 +5272,7 @@ ul.off-canvas-list li a {
   .move-left a.exit-off-canvas:hover {
     background: rgba(255, 255, 255, 0.05); } }
 .csstransforms.no-csstransforms3d .left-off-canvas-menu {
-  -webkit-transform: translate(0.9rem, 0);
+  -webkit-transform: translate(0, 0);
   -moz-transform: translate(-100%, 0);
   -ms-transform: translate(-100%, 0);
   -o-transform: translate(-100%, 0);
@@ -6258,7 +6259,7 @@ School Book style from goldblog.com.ua (c) Zaripov Yura <yur4ik7@ukr.net>
 }
 
 pre{
-  background:#f6f6ae url(./school_book.png);
+  background:#f6f6ae url(/assets/school_book.png);
   border-top: solid 2px #d2e8b9;
   border-bottom: solid 1px #d2e8b9;
 }
