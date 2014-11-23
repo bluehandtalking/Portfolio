@@ -7,6 +7,9 @@ $(document).on('resize', function() {
   //  Throttle & consolidate #perfmatters
   menu.height($(this).height());  
 });
+// Initialize height
+$(document).trigger('resize');
+
 $(document).foundation({
   offcanvas : {
     // Sets method in which offcanvas opens.
@@ -17,5 +20,4 @@ $(document).foundation({
     close_on_click : true 
   }
 });
-// Initialize height
-$(document).trigger('resize');
+
