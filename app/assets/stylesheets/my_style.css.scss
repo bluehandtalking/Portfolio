@@ -417,7 +417,7 @@ h3 { color: #FFF }
 
 .left-off-canvas-menu {
   -webkit-transform: none;
-  -webkit-transform: translate(0.9rem, 0); 
+  /* -webkit-transform: translate(0%, 0); */
   transform: none;
   margin-left: -15.625rem;
   /* vh UNITS NICER THAN JS LISTENER */
