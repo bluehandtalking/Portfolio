@@ -5202,7 +5202,8 @@ a.menu-icon:hover span {
 ul.off-canvas-list {
   list-style-type: none;
   padding: 0;
-  margin: 0; }
+  margin: 0;
+  margin-left: 0.5rem; }
 
 ul.off-canvas-list li label {
   padding: 0.3rem 0.9375rem;
