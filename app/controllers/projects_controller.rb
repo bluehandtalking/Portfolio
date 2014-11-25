@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show, :portfolio]
 
 
-  layout "standard"
+  layout "portfolio"
 
   def index
     @projects = policy_scope(Project.scoped)   #Project.all  
