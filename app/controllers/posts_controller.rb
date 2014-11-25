@@ -97,8 +97,10 @@ class PostsController < ApplicationController
   end
 
   def  resolve_layout
-    if ( action_name == 'index' ) || ( action_name == 'show' )
+    if  action_name == 'index'
       'blog'
+    elsif action_name == 'show'
+      'blog-show'
     else
       "standard"
     end
