@@ -83,7 +83,12 @@ class PostsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
-    params.require(:post).permit(:title, :description, :content, :author_id,  (:published if current_user.role == 'editor') )
+    safe_attributes = [
+      commentable_attributes: [ 
+        :id, :commentable_id, :commentable_type, :author, :comment
+      ]
+    ]
+    params.require(:post).permit(:title, :description, :content, :author_id,  (:published if current_user.role == 'editor'), *safe_attributes)
   end
 
   def auth_post
@@ -92,8 +97,10 @@ class PostsController < ApplicationController
   end
 
   def  resolve_layout
-    if ( action_name == 'index' ) || ( action_name == 'show' )
-      'blog'
+    if  action_name == 'index'
+      'blog-index'
+    elsif action_name == 'show'
+      'blog-show'
     else
       "standard"
     end
