@@ -29,7 +29,6 @@ class CommentsController < ApplicationController
 
   def  index
     @comments = @commentable.comments
-    binding.pry
   end
 
   def update
