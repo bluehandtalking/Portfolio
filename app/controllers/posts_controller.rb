@@ -98,7 +98,7 @@ class PostsController < ApplicationController
 
   def  resolve_layout
     if  action_name == 'index'
-      'blog'
+      'blog-index'
     elsif action_name == 'show'
       'blog-show'
     else
