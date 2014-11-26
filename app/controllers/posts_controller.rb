@@ -88,7 +88,7 @@ class PostsController < ApplicationController
         :id, :commentable_id, :commentable_type, :author, :comment
       ]
     ]
-    params.require(:post).permit(:title, :description, :content, :author_id,  (:published if current_user.role == 'editor'), *safe_attributes)
+    params.require(:post).permit(:title, :description, :content, :author_id, :menu, :article, (:published if current_user.role == 'editor'), *safe_attributes)
   end
 
   def auth_post
