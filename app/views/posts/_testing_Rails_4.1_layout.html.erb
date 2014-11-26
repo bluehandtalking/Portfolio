@@ -1,0 +1,22 @@
+    <div class="fixed off-canvas-fixed">
+      <section class="left-small">
+        <a class="left-off-canvas-toggle menu-icon"><%= image_tag("menu_icon.png") %></a>
+      </section>
+
+       <aside class="left-off-canvas-menu">
+          <ul class="off-canvas-list">
+            <%= render "menus/#{@post.menu}" %>
+          </ul>
+        </aside>
+    </div>
+    <div class="inner-wrap">
+       <a class="exit-off-canvas"></a>
+       <section class="blog-main">
+          <div class="row">
+            <div class="small-9 columns blog-style">
+              <%= render "testing_Rails_4.1"   %>
+            </div> 
+          </div> 
+        </section>
+    </div>
+

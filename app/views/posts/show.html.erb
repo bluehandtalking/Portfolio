@@ -1,49 +1,42 @@
-<% if @post %>
-  <% content_for :body do %>
-    <div class="small-9 columns blog">
-      <p class="blog" id="notice"><%= notice %></p>
-    
-      <p class="blog">
-      <strong class="show-blog">Title:</strong>
-      <%= @post.title %>
-      </p>
-    
-      <p class="blog">
-      <strong class="show-blog">Description:</strong>
-      </p>
-      <p class="blog">
-      <%= @post.description %>
-      </p>
-    
-      <p class="blog">
-        <strong class="show-blog">Content:</strong>
-      </p>
-      <p class="blog">
-        <%= @post.content %>
-      </p>
-      <p class="blog">
-        <strong class="show-blog">Comments:</strong>	
-      </p>
-    
-      <%= render "comments/comments" %>
-    
-      <% if current_user %>
-        <h3>
-          Leave a Comment!
-        </h3>
-      <%= render "comments/form" %>
-      <% end %>
-    
-      <p class="show_nav_links">
-        <% if current_user && policy(@post).edit? %>
-          <%= link_to 'Edit', edit_post_path(@post), id: 'edit_link' %> |
-        <% end %>
-        <%= link_to 'Back', posts_path %>
-      </p>
+<% content_for :body do %>
+
+<% if @post.content.blank? %>
+  <div class="off-canvas-wrap">
+
+    <div class="fixed off-canvas-fixed">
+      <section class="left-small">
+        <a class="left-off-canvas-toggle menu-icon"><%= image_tag("menu_icon.png") %></a>
+      </section>
+
+      <aside class="left-off-canvas-menu">
+        <ul class="off-canvas-list">
+          <%= render  "posts/menus/#{@post.menu}" %>
+        </ul>
+      </aside>
     </div>
-
+    <div class="inner-wrap">
+      <a class="exit-off-canvas"></a>
+      <section class="blog-main">
+        <div class="row">
+          <div class="small-9 columns blog-style">
+            <%= render "posts/articles/#{@post.article}" %>
+          </div> 
+        </div> 
+      </section>
+    </div>
+    <%= render "comments/comments" %>
+    <% if current_user %>
+      <h3>
+        Leave a Comment!
+      </h3>
+      <%= render "comments/form" %>
+    <% end %>
+    <p class="show_nav_links">
+      <% if current_user && policy(@post).edit? %>
+        <%= link_to 'Edit', edit_post_path(@post), id: 'edit_link' %> 
+      <% end %>
+      <%= link_to 'Back', posts_path %>
+    </p>
+  </div>
   <% end  %>
-
-<% else %>
-  <%= render 'test_word_to_clean'%>
 <% end  %>
