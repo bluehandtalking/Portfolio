@@ -13,7 +13,7 @@
   </head>
 
   <body class="jet">
-    <% if !current_user.nil? && policy(@posts.first).publish? %>
+    <% if  policy(@posts.first).publish? %>
     <div class="contain-to-grid fixed">
         <nav class="top-bar">
           <ul class="title-area">
