@@ -473,9 +473,9 @@ hr {
 
 li.iron-horse {
     background-color: #4d494a;
-    a:link { color: #af3636 }
-    a:visited { color: #af3636; font-weight: 900; text-decoration: underline }
-    a:hover { color: #000; }
+    a:link { color: #bebebe }
+    a:visited { color: #bebebe; font-weight: 900; text-decoration: underline }
+    a:hover { color: #FFF; }
  
 }
 
@@ -527,3 +527,9 @@ div.index-blog-left-panel {
 }
 
 .center { text-align: center}
+p.post-description {
+   color: #bebebe;
+   font-size: 1.5rem;
+   line-height: 2.5rem;
+   margin: 0 5.0rem;
+}
