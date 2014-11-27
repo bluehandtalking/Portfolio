@@ -1,7 +1,8 @@
   <% content_for :panel do %>
-     <h1 class="center">Reflecting on Rails </h1>
+     <h2 class="center">Reflecting on Rails </h2>
   <p class="et-pic" id=""> <%= image_tag "et_oval.png" %></p>
-  <p class="" id=""> Hi, my name is Jerry Thompson and I am a Ruby on Rails developer living in the Pacific Northwest. I am passionate about writing clean, elegant code that translates the product stories into a living application.</p>
+  <h2 class="center">Jerry Thompson</h2> 
+  <p class="center" id=""> Hi, I am a Ruby on Rails developer living in the Pacific Northwest. I am passionate about writing clean, elegant code that translates the product stories into a living application.</p>
   <% end %>
 <% content_for :body do %>
   <% if current_user && policy(@posts.first).publish? %>
