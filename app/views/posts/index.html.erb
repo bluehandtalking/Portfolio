@@ -1,30 +1,49 @@
-<% content_for :body do %>
-    <table>
-      <tbody>
-        <% @posts.each do |post| %>
-          <tr id="<%= dom_id(post) %>">
-            <td><%= post.title %></td>
-            <td><%= post.description %></td>
-            <td><%= link_to 'Show', post %></td>
-          <% if current_user && policy(post).update? %>
-            <td><%= link_to 'Edit', edit_post_path(post) %></td>
-          <% end %>
-          <% if current_user && policy(post).destroy? %>
-            <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% end %>
-          <% if current_user && policy(post).publish? %>
-            <td><%= link_to 'Publish', controller: 'posts', action: 'publish', id: post %>
-            </td> 
-          <% end %>
-          </tr>
-          <tr>
-            <td>
-              <% if current_user && policy(Post.new).create? %>
-              <%= link_to 'New Post', new_post_path %>
-              <% end %>
-            </td>
-          </tr>     
-        <% end %>
-      </tbody>
-    </table>        
+  <% content_for :panel do %>
+     <h1 class="center">Reflecting on Rails </h1>
+  <p class="et-pic" id=""> <%= image_tag "et_oval.png" %></p>
+  <p class="" id=""> Hi, my name is Jerry Thompson and I am a Ruby on Rails developer living in the Pacific Northwest. I am passionate about writing clean, elegant code that translates the product stories into a living application.</p>
   <% end %>
+<% content_for :body do %>
+  <% if current_user && policy(@posts.first).publish? %>
+    <div class="index-editor">
+      <table>
+        <tbody>
+          <% @posts.each do |post| %>
+            <tr id="<%= dom_id(post) %>">
+              <td><%= post.title %></td>
+              <td><%= post.description %></td>
+              <td><%= link_to 'Show', post %></td>
+            <% if current_user && policy(post).update? %>
+              <td><%= link_to 'Edit', edit_post_path(post) %></td>
+            <% end %>
+            <% if current_user && policy(post).destroy? %>
+              <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+            <% if current_user && policy(post).publish? %>
+              <td><%= link_to 'Publish', controller: 'posts', action: 'publish', id: post %>
+              </td> 
+            <% end %>
+            </tr>
+            <tr>
+              <td>
+                <% if current_user && policy(Post.new).create? %>
+                <%= link_to 'New Post', new_post_path %>
+                <% end %>
+              </td>
+            </tr>     
+          <% end %>
+        </tbody>
+      </table>        
+    </div>
+  <% else %>
+    <div class="index-blog">
+        <p>
+                <% @posts.each do |post| %>
+                  <h1><%= post.title %><br/><br/></h1>
+                  <p class="post-description"><%= post.description %>
+                <%= link_to "...read more", post_path(post) %></p> 
+                <% end %>
+        </p>
+    </div>
+  <% end %>
+<% end  %>

@@ -13,6 +13,7 @@
   </head>
 
   <body class="jet">
+    <% if current_user && policy(@posts.first).publish? %>
     <div class="contain-to-grid fixed">
         <nav class="top-bar">
           <ul class="title-area">
@@ -56,12 +57,26 @@
     <div class="small-8 columns">
       <%= yield :body %>
     </div>
-
-    <%# RIGHT PANEL%>
-    <div class="small-4 columns">
-      <%= yield :panel %> 
-    </div>
   </div>
+  <% else %>
+    <div class="row">
+      <div class="flash">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>
+
+      <%# LEFT PANEL%>
+        <div class="small-4 columns fixed index-blog-left-panel">
+                <%= yield :panel %> 
+        </div>
+
+      
+      <%# MAIN CONTENT%>
+      <div class="small-8 columns">
+        <%= yield :body %>
+      </div>
+    </div>
+  <% end  %>
 </body>
 </html>
 

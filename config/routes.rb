@@ -21,7 +21,6 @@ Portfolio::Application.routes.draw do
   
 
   root to: 'welcome#index'
-
   resources :blogs, controller: 'posts'  
   
 end
