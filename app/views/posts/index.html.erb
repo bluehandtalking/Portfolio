@@ -5,7 +5,7 @@
   <p class="center" id=""> Hi, I am a Ruby on Rails developer living in the Pacific Northwest. I am passionate about writing clean, elegant code that translates the product stories into a living application.</p>
   <% end %>
 <% content_for :body do %>
-  <% if  policy(@posts.first).publish? %>
+  <% if  current_user && policy(@posts.first).publish? %>
     <div class="index-editor">
       <table>
         <tbody>
