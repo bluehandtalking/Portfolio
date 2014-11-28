@@ -102,7 +102,7 @@ class PostsController < ApplicationController
     elsif action_name == 'show'
       'blog-show'
     else
-      "standard"
+      "portfolio"
     end
   end
 
