@@ -24,4 +24,12 @@
         </div> 
       </section>
     </div>
+    <p class="show_nav_links">
+      <% if current_user && policy(@post).edit? %>
+        <%= link_to 'Edit', edit_post_path(@post), id: 'edit_link' %> 
+      <% end %>
+      <%= link_to 'Back', posts_path %>
+    </p>
+  </div>
+  <% end  %>
 <% end  %>
