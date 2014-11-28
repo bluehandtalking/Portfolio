@@ -55,3 +55,4 @@ group :test do
   gem 'pry-rescue'
 end
 
+ruby '2.1.0'
