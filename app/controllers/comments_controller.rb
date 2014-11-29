@@ -28,6 +28,7 @@ class CommentsController < ApplicationController
   end
 
   def  index
+    <%=# @commentable = Post.find(params[:article_id]) %>
     @comments = @commentable.comments
   end
 
