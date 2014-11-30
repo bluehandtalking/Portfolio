@@ -20,14 +20,6 @@
           <div class="row">
             <div class="small-9 columns blog-style">
               <%= render "posts/articles/#{@post.article}" %>
-      <H1>Comments</H1>
-      <div class="comments">
-        <% if @comments %>
-          <% @comments.each do |comment| %>
-            <%= simple_format comment.comment %>
-          <% end %>
-        <% end %>
-      </div>
             </div> 
           </div> 
         </section>
