@@ -15,6 +15,9 @@ gem "foundation-rails", github: "codefellows/foundation-rails"
 gem 'pundit'
 gem 'omniauth-twitter'
 gem 'figaro', github: "laserlemon/figaro"
+
+gem 'disqus_rails', github: "sandric/disqus_rails"
+
 gem 'json', '1.8.1'
 group :doc do
   gem 'sdoc', require: false # bundle exec rake doc:rails generates the API under doc/api. 

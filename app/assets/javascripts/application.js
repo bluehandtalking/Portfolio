@@ -17,5 +17,5 @@
 //= require_self
 //= require_tree .
 //= require modernizr
-
+//= require disqus_rails
 $(function(){ $(document).foundation(); });

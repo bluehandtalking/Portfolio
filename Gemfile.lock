@@ -63,6 +63,13 @@ GIT
       pry (>= 0.9.10)
 
 GIT
+  remote: git://github.com/sandric/disqus_rails.git
+  revision: d332b6b51a9b039c4a48bd4741b87ed5df16b3f7
+  specs:
+    disqus_rails (0.0.6)
+      rails
+
+GIT
   remote: git://github.com/tpope/pry-editline.git
   revision: 29f3d01ae93b3e86da433c6be26c9fe4fe628325
   specs:
@@ -307,6 +314,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   debugger (= 1.6.5)
   devise
+  disqus_rails!
   figaro!
   foundation-rails!
   guard
