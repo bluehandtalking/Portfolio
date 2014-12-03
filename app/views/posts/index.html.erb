@@ -43,13 +43,14 @@
     </div>
   <% else %>
     <div class="index-blog">
-        <p>
-                <% @posts.each do |post| %>
-                  <h1><%= post.title %><br/><br/></h1>
-                  <p class="post-description"><%= post.description %>
-                <%= link_to "...read more", post_path(post) %></p> 
-                <% end %>
-        </p>
+      
+      <p>
+        <% @posts.each do |post| %>
+          <h1><%= post.title %><br/><br/></h1>
+          <p class="post-description"><%= post.description %>
+        <%= link_to "...read more", post_path(post) %></p> 
+        <% end %>
+      </p>
     </div>
   <% end %>
 <% end  %>
