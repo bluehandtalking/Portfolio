@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "Boson Foundry" %></title>
+
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %> 
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body class="jet">
+    <% if current_user && policy(@posts.first).publish? %>
+    <div class="contain-to-grid fixed">
+        <nav class="top-bar">
+          <ul class="title-area">
+            <li class="name"><h1><%= link_to "Boson Foundry", root_path %></h1></li> 
+          </ul>
+          <section class="top-bar-section">
+            <ul class="right">
+              <li><%= link_to "Blog", blog_path %></li>
+            </ul>
+    
+            <% if user_signed_in? %>
+              <ul class="left" >
+              <li> Signed in as &nbsp; </li>
+            </ul>
+            <ul>
+              <li><%= current_user.email %></li>
+            </ul>
+            <ul>
+              <li>  &nbsp; Not you?  </li>
+            </ul>
+            <ul>
+              <li> <%= link_to 'Sign out', destroy_user_session_path, method: :delete %> </li>
+            </ul>
+          <% else %>
+              <ul class="left">
+              <li> <%= link_to 'Sign up', new_user_registration_path %> </li>
+              <li><%= link_to 'Sign in', new_user_session_path  %> </li> 
+              <li><%= link_to 'Twitter Sign In', user_omniauth_authorize_path(:twitter) %></li> 
+            </ul>
+          <% end %>
+          </section>
+        </nav>
+    </div>
+  <div class="row">
+    <div class="flash">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
+
+    <%# MAIN CONTENT%>
+    <div class="small-8 columns">
+      <%= yield :body %>
+    </div>
+  </div>
+  <% else %>
+    <div class="row">
+      <div class="flash">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>
+
+      <%# LEFT PANEL%>
+        <div class="small-4 columns fixed index-blog-left-panel">
+                <%= yield :panel %> 
+        </div>
+
+      
+      <%# MAIN CONTENT%>
+      <div class="small-8 columns">
+        <%= yield :body %>
+      </div>
+    </div>
+  <% end  %>
+</body>
+</html>
+

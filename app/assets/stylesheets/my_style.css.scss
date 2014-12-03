@@ -1,0 +1,555 @@
+h1 {
+   font-size: 2.0rem;
+}
+.jet {
+   background-color: #000 
+}
+
+.top-bar {
+   height: 60px;
+   h1  {
+
+      padding-top: 10px;
+
+      a {
+	 font-size: 2.0rem
+      }	       
+   }
+}
+
+.top-bar-section li:not(.has-form) a:not(.button) {
+   padding: 0 10px;
+}
+
+.top-bar-section li:not(.has-form) {
+    a:not(.button):hover { color: #000; background: none }
+}
+
+.top-bar-section ul {
+   background-color: #AF3636;
+   li {
+      color: #FFF    
+   }
+}
+
+
+.top-bar .name h1 a:hover {background: none; color: #000 }
+
+h1, h2 {color: #FFF}
+h1.welcome {
+   font-size: 3.75rem;
+   margin-bottom: 2.0rem
+}
+
+label {
+   color: #FFF;
+   font-size: 1.0rem
+}
+
+.alert {
+   color: #FFF;
+   font-size: 0.875rem
+}
+
+
+.being-here {
+   position: relative;
+   left: 10%
+}
+.ok {
+   font-size: 1.25rem;
+   color: #BEBEBE; 
+   line-height: 1.5rem;	
+   padding-bottom: 2.0rem;
+   padding: 2.0rem 0.0rem;
+   width: 110%
+}
+.qualities {
+   font-size: 1.25rem;
+   color: #BEBEBE; 
+   line-height: 1.5rem;	
+   position: relative;
+   left: 30%; 
+   width: 90%
+}
+
+div.small-8.columns.welcome { 
+   h1 {
+      position: relative;
+      font-size: 2.2rem;	
+      left: 80px;
+      color: #FFF
+
+   }
+   h2 {
+      font-size: 4.0em;
+      font-size: 4.0rem;	
+      color: #FFF
+
+   }
+   h3 {
+      font-size: 3.5em;
+      font-size: 3.5rem;	
+      color: #FFF
+
+   }
+}
+
+div.small-4.columns {
+   padding-bottom: 2.0rem;
+   h1, h2, h3 {
+      color: #BEBEBE     
+   } 
+   p {
+      font-size: 1.2rem;
+      line-height: 1.4rem;	
+      color: #BEBEBE 
+   }
+   div.about-us {
+      position: relative;
+      padding-top: 5.2rem 
+   } 
+
+}
+
+.row {
+   max-width: 100%;
+}
+
+div.jerry {
+   position: relative;
+   left: 13.2rem;
+   margin-top: 4.1rem;
+   h1, h2, h3, {
+      color: #BEBEBE 
+   }
+}
+
+div.musings {
+   position: relative;
+   font-size: 2.5rem;
+   line-height: 2.75rem; 
+   margin: auto;
+   width: 100%;
+   clear: both;
+}
+div.muse {
+   position: relative;
+   float: none;
+   width: 90%;
+   // left: 30%;
+   clear: both;
+   h2 {
+      padding-right: 10%;
+      color: #BEBEBE;
+      font-size: 2.0rem
+   }
+}
+
+.front_pg_img {
+   position: relative;
+   left: 30%;
+   margin-top: 4.0rem
+}
+
+.contact {
+   position: relative;
+   top: 10.6rem;
+   a:link {color:#FFF} 
+   a:visited {color:#FFF}
+   a:hover {color:#AF3636}
+   a:active {color:#AF3636} 
+}
+.contact_btn {
+   font-size: 1.8rem;
+   font-color: #FFF
+}
+
+form#new_post {
+   width: 80%
+}
+input#post_published  {
+   line-height: 18px;
+   font-size: 18px;
+   height: 22px;
+   width: 22px;
+}
+
+div#comment_msg h3 {
+   font-size: 1.2rem;
+   font-weight: bold;
+}
+
+h1#edit-hdr {
+   display: none;    
+}
+
+.drop_cap { 
+   float: left; 
+   color: #FFF; 
+   font-size: 3.0rem; 
+   line-height: 2.8rem; 
+   padding: 0px 12px 0px 0px; 
+   margin-top: 0px
+}
+
+.drop_cap_small { 
+   color: #FFF; 
+   font-size: 2.4rem; 
+   line-height: 2.4rem; 
+   padding-top: 0px; 
+   margin-top: 0px;
+   padding-right: 8px; 
+   padding-left: 3px
+}
+
+.quote_drop_cap { 
+   color: #FFF; 
+   font-size: 2.4rem; 
+   line-height: 2.4rem; 
+   font-family: "Verdana";
+   padding-top: 0px; 
+   margin-top: 0px;
+   padding-right: 8px; 
+   padding-left: 3px
+}
+
+.quote_drop_cap_end { 
+   color: #FFF; 
+   font-size: 2.4rem; 
+   line-height: 2.4rem; 
+   font-family: "Verdana";
+   padding-top: 0px; 
+   margin-top: 0px;
+   padding-right: 8px; 
+   padding-left: 3px
+}
+
+#end-quote {
+   float: right;
+   top: 3rem;
+   margin-right: 6.4rem
+}
+
+#begin-quote {
+   padding-bottom: 1.0rem;
+
+}
+.orbit-slider li > a {display:block}
+
+.orbit-container .orbit-slides-container {
+   height: 454px
+
+}
+
+.orbit-container {
+   margin-top: 3.0rem
+}
+
+div.profile-link {
+   position: relative;
+   float: right;
+   padding-top: 400px;
+   margin-right: 140px
+}
+
+p.profile a {
+   font-size: 3.0rem
+}
+p.profile {
+   a:link {color:#FFF} 
+   a:visited {color:#FFF}
+   a:hover {color:#AF3636}
+   a:active {color:#AF3636} 
+
+}
+
+p.design-tech {
+   font-weight: 400;
+   font-color: #BEBEBE;
+   line-height: 1.4rem;
+   font-size: 1.0rem
+}
+
+.contain-to-grid .top-bar {
+   max-width: 100%
+}
+
+div.small-9.columns.blog {
+   margin-top: 60px
+}
+
+img.orbit_img {
+   display:block;
+   margin: 0 auto;
+}
+
+.signup {
+   padding-top: 1.0rem 
+}
+
+.new_post {
+   padding-top: 2.5rem
+}
+
+.new_project { padding-top: 2.5rem }
+
+.show-blog {
+   font-weight: 400;
+   color: #FFF;
+   line-height: 1.6rem;
+   font-size: 1.4rem
+}
+
+p.blog {
+   color: #FFF;
+   font-size: 1.125rem;
+   width: 80%;
+   line-height: 1.5rem;
+}
+
+
+div#comment_msg h3 {
+   font-size: 2.0rem;
+   color: #FFF;
+}
+
+p.new_comment_link {
+   margin-left: 3.0rem;
+   font-size: 1.5rem;
+   a:link {color:#FFF} 
+   a:visited {color:#FFF}
+   a:hover {color:#AF3636}
+   a:active {color:#AF3636} 
+
+}
+
+p.show_nav_links {
+   margin-left: 1.0rem;
+   font-size: 1.0rem;
+   a:link {color:#FFF} 
+   a:visited {color:#FFF}
+   a:hover {color:#AF3636}
+   a:active {color:#AF3636} 
+
+}
+
+.copyright {
+    color: #FFF
+}
+
+h3 { color: #FFF }
+
+.top-bar-section ul li > a {
+   font-size: 1.5rem
+}
+
+.blog_content {
+  margin-left: 8.0rem;
+  margin-top: 3.0rem
+}
+
+.blog-background {
+    background-color:#af3636;
+}
+.blog {
+    h1, h2 {
+       color:#000;
+    }
+}
+
+.blog-main {
+    margin-top: 5.0rem;
+}
+
+.blog-style {
+   p {
+    margin-left: 2.0rem;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    color: #121111;
+    font-weight: 600;
+   }
+   ul > li {
+    font-size: 1.125rem; 
+    line-height: 1.5rem;
+    margin-left: 4.0rem;
+    color: #000;
+    a:link { color: #af3636; font-weight: 900; text-decoration: underline }
+    a:visited { color: #af3636; font-weight: 900; text-decoration: underline }
+    a:hover { color: #000; }
+
+   }
+   ol > li {
+    font-size: 1.125rem; 
+    line-height: 1.5rem;
+    margin-left: 4.0rem;
+   
+   }
+   h3 {
+	color: #434343;   
+   }
+   a:link { color: #af3636; font-weight: 900; text-decoration: underline }
+   a:visited { color: #af3636; font-weight: 900; text-decoration: underline }
+   a:hover { color: #000; }
+}
+
+.nested-list ul > li{
+    margin-left: 6.0rem
+}
+
+.code-indent { 
+   position: relative;
+   left: 4.0rem
+}
+
+.off-canvas-fixed {
+  -webkit-transition: -webkit-transform 500ms ease;
+  transition: transform 500ms ease;
+}
+
+.move-right > .off-canvas-fixed {
+  /*height: 100%; */
+  -webkit-transform: translate3d(15.625rem, 0, 0);
+  transform: translate3d(15.625rem, 0, 0);
+}
+
+.left-off-canvas-menu {
+  -webkit-transform: none;
+  /* -webkit-transform: translate(0%, 0); */
+  transform: none;
+  margin-left: -15.625rem;
+  /* vh UNITS NICER THAN JS LISTENER */
+  height: 100vh; 
+  /* (BUT LESS SUPPORTED) */
+}
+
+
+ul.off-canvas-list li a {
+    font-size: 1.2rem;
+    color: #FFF;
+}
+
+
+
+h2.blog-title {
+    color: #AF3636;
+    width: 80%;
+    margin: 0 auto;
+    font-weight: 700;
+    font-family: "calibri, arial"
+}
+
+hr {
+   border: solid 1px #000;
+}
+
+.code-blue {
+    font-family: Georgia, "Times New Roman",  serif;
+    font-size: 1.125rem;
+    color: #0000ff
+}
+
+.code-shift {
+    margin-left: 2.0rem; 
+}
+
+.code-em {
+    font-size: 1.5rem;
+    font-weight: 500
+}
+
+.code-red {
+    font-family: Georgia, "Times New Roman",  serif;
+    font-size: 1.325rem;
+    font-weight: 700;
+    color: #af3636
+}
+
+.code-green {
+    color: #39751c
+}
+
+p.iron-horse {
+   text-align: center;
+   font-size: 1.8rem;
+   padding: .8rem 0;
+    background-color: #4d494a;
+    a:link { color: #FFF }
+    a:visited { color: #FFF; font-weight: 900; text-decoration: underline }
+    a:hover { color: #af3636; }
+ 
+}
+
+hr.rule-blog { width: 66%; }
+
+.theme, .theme td, .theme th { 
+    background: url("/assets/school_book.png") no-repeat;
+}
+td {
+    border: 1px solid #dddddd;
+}
+
+p.author {
+   text-align: center;
+   font-weight: 500;
+   font-size: 1.5rem
+}
+
+p.copyright {
+    a:link { color: #000; font-weight: 700; text-decoration: none }
+    a:visited { color: #000; font-weight: 700; text-decoration: underline }
+    a:hover { color: #af3636; }
+    
+}
+
+.index-editor {
+   margin-top: 3.0rem;
+}
+
+.new-post {
+    margin-left: 3.0rem;
+}
+
+.index-blog {
+   p {
+    color: #FFF;
+    }
+}
+
+div.index-blog-left-panel {
+    background-color: #af3636; 
+    height: 100%;
+    width: 32%;
+    p { text-align: center;}
+    margin-top: 0px
+}
+
+.et-pic {
+   text-align: center;
+}
+
+.center { 
+    text-align: center; color: #FFF;
+    a:link { color: #FFF; font-weight: 700; text-decoration: none }
+    a:visited { color: #FFF; font-weight: 700; text-decoration: underline }
+    a:hover { color: #000; }
+
+ }
+p.post-description {
+   color: #bebebe;
+   font-size: 1.0rem;
+   line-height: 1.5rem;
+   margin: 0 5.0rem;
+   a:link { color: #bebebe; font-weight: 700; text-decoration: none }
+   a:visited { color: #bebebe; font-weight: 700; text-decoration: underline }
+   a:hover { color: #af3636; }
+
+}
+
+p.test {
+   color: #FFF;
+}
+
+.columns {margin-top: 4.0rem}
+

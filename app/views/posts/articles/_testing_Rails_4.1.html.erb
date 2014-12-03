@@ -1,0 +1,1581 @@
+<span id="top"></span>
+<h2 class="blog-title right" >
+  Rails 4.1 Testing with</h2>
+<h2 class="blog-title right">
+  Test::Unit, MiniTest, and Rspec</h2>
+<hr class=".rule"/>
+<p class="author">Jerry Thompson | 22 November 2014</p>
+<p>
+<BR>
+</p>
+<H1>
+What is this Testing All About?</H1>
+<P >Testing in Ruby on
+Rails was built in from the very beginning.</p>
+<p>There are 3
+environments you can run your application in</p>
+<UL>
+	<li>Development</LI>
+	<li>Production</LI> 
+	<li>Test</LI> 
+</UL>
+<P >
+</p>
+
+<p>All 3 are configured
+in <I>config/database.yml  </I>and in the relevant</p>
+<P ><I>config/environments/development.rb,
+config/environments/production.rb,</I></p>
+<p>or
+<I>config/environments/test.rb.</I></p>
+<p>
+</p>
+<p><FONT color="#38761d"><B>Tests
+    ensure that your code adheres to the desired <br/>functionality, even after major refactoring.</B></FONT></p>
+<H1 id="testingframeworks"> Testing Frameworks</H1>
+<p>At this time there are 3 main frameworks for testing in Rails:<br /></p>
+<OL>
+	<li>Test::Unit.
+	This has been the default Rails test framework in Rails
+	versions up to v.4.0.
+	<li>MiniTest Test
+	Suite. Focus on a minimal, fast, clean framework. This has replaced
+	Test::Unit as of v.4.0. 
+</OL>
+<span class="nested-list">
+<UL>
+  <li>minitest/unit. Small and incredibly fast with rich set of assertions.</LI>
+	<li>minitest/spec. Functionally complete spec engine. Hooks onto minitest/unit and
+  seamlessly bridges test assertions to spec expectations.</LI>
+	<li>minitest/benchmark. Provides a way to assert the performance of your algorithms.</LI>
+	<li>minitest/mock. Tiny mock/stub object framework.</LI>
+	<li>minitest/pride. Color test output.</LI>
+</UL>
+</span>
+<OL>
+	<li>Rspec. Focus on
+	Behavior Driven Development, and tests which describe domain
+	specific functions.</LI>
+</OL>
+<span class="nested-list">
+<UL>
+	<li>Textual description of examples.</LI>
+	<li>Extensible expectation language.</LI>
+	<li>Built-in mocking/stubbing line program.</LI>
+	<li>Flexible and customizable reporting.</LI>
+</UL>
+</span>
+<H1 id="typestest">Types of Tests</H1>
+<p>What do we test in a Rails app? Ideally, everything: Models, Controllers, Views, 
+Helpers, Routing. However, the following list may be more typical,
+the nomenclature starts with Test::Unit or MiniTest followed by
+Rspec:</p>
+<OL>
+	<li>Unit test models,  model specs.</LI>
+	<li>Unit test helpers,  helper specs.</LI>
+	<li>Functional tests of controllers/mailers,  controller/mailer specs.</LI>
+  <li>Integration tests (Rails) Test the entire stack.</LI> 
+	<li>Acceptance testing (this can be feature, integration, or other testing).</LI>
+	<li>Performance testing.</LI>
+	<li>Rspec specific.</LI>
+</OL>
+<span class="nested-list">
+<UL>
+	<li>Request Spec. 
+	Built on top of Rails Integration tests. Access to API methods that
+	mirror what you find in HTTP: “get”, “put”, “post”,
+	“patch”, etc, and gives you a “response object to make your
+	assertions against, test entire stack.</LI>
+	<li>Feature Spec. Built on top of Capybara, whose goal is to ‘simulate user
+	behavior’. Attempts to use language in a natural fashion.</LI>
+</UL>
+</span>
+<pre>
+<code "ruby">
+    visit '/sessions/new'
+    fill_in 'Login', with: 'user@example.com'
+    fill_in 'Password', with: 'secret'
+    click_link 'Sign in'
+</code>
+</pre>
+<p></p>
+<H3 id="examplestestunit">Examples for Test::Unit / Minitest:</H3>
+<p></p>
+<pre>
+<code class="ruby">
+#  test/test_helper.rb
+
+ENV["RAILS_ENV"] ||= "test"
+require File.expand_path('../../config/environment', __FILE__)
+require 'rails/test_help'
+
+class ActiveSupport::TestCase
+  ActiveRecord::Migration.check_pending!
+  # Setup fixtures in test/fixtures/*.yml for all tests
+  # in alphabetical order.
+  # Note: You'll currently still have to declare
+  # Fixtures explicitly in integration tests
+  fixtures :all
+  # Add more helper methods to be used by all tests here…
+end
+</code>
+</pre>
+<p></p>
+
+<p>The above helper
+file will need to be customized according to your needs. The example is the
+generated file from Rails. You will ‘require’ this file in your
+unit test. Here is an example of the stub created by Rails for a User model:</p>
+
+<pre>
+<code class="ruby">
+#test/models/user_test.rb
+
+require 'test_helper'
+class UserTest < ActiveSupport::TestCase
+  # test "the truth" do
+    # assert true, "Should be Truthy"
+  # end
+end
+</code>
+</pre>
+<p></p>
+			<p>Note the the following:</p>
+			<UL>
+				<li>In the above example, Rails
+				generates a test case that inherits from ActiveSupport::TestCase.
+				This gives us access to HashWithIndifferentAccess along with
+				other methods and some syntactic sugar. Your actual test case may
+				very well need to inherit from some other class depending on what
+        you are doing.</LI>
+        <li>The “Should be Truthy” string is optional, but it gives you important information about what exactly failed in a test.</LI>
+			</UL>
+			<p><BR>
+			</p>
+			<p>The simplest form of a unit test,
+			without a test_helper.rb file would look like this:</p>
+
+      <pre>
+      <code class="ruby">
+# mytest_test.rb
+
+require "test/case"  #Included in ruby
+
+class Mytest < Test::Unit::TestCase
+  def test_what-we-are-testing
+    #assert 
+  end
+end
+      </code>
+      </pre>
+      <p></p>
+			<p>Basically you will want to test
+			every method in your model with assertions.</p>
+			</p>
+<H4>Test Unit Style Assertions </H4>
+
+<p>Most of these you are able to toggle between assert for positive assertions <br/>and refute for negative assertions. 'msg' is optional, but if you want informative messages when your test fails, it is best to create them.</p>
+<table width=816 cellpadding=7 cellspacing=0>
+<col width=141>
+<col width=675>
+<tr valign=top>
+  <td width=141 >
+    <p><span>Assertion</span></p>
+  </td>
+  <td width=675 >
+    <p><span>Examples</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=141 >
+    <p><span>assert</span></p>
+  </td>
+  <td width=675 >
+    <p><span>(test, msg = nil)<br/><br/>Fails unless test is truthy<br/><br/>assert object.try(:any?), &quot;object empty or nil&quot;</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=141 >
+    <p><span>assert_empty</span></p>
+  </td>
+  <td width=675 >
+    <p><span>(objects, msg = nil)<br/><br/>Fails unless objects empty<br/><br/>assert_empty objects</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=141 >
+    <p><span>assert_equal</span></p>
+  </td>
+  <td width=675 >
+    <p><span>(expected, actual, msg=nil)<br/><br/>
+      Fails unless expected == actual<br/><br/>assert_equal 3, [4,2,6].size</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=141 >
+    <p><span>assert_in_delta</span></p>
+  </td>
+  <td width=675 >
+    <p><span>(expected, actual, delta, msg = nil)<br/><br/>Floating point comparison of objects. Fails unless expected and actual are within delta of each other<br/><br/>assert_in_delta Math::Pi, (22.0 / 7), 0.01</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=141 >
+    <p><span>assert_in_epsilon</span></p>
+  </td>
+  <td width=675 >
+    <p><span>(expected, actual, epsilon, msg = nil)<br/><br/>epsilon tolerance is the measure of relalative error in floating point calculations. The epsilon is based on the magnitude of the smallest times the epsilon value given<br/><br/>assert_in_epsilon 4.83, object.diameter, .01</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=141 >
+    <p><span>assert_includes</span></p>
+  </td>
+  <td width=675 >
+    <p><span>(collection, object, msg = nil)<br/><br/>
+      assert_includes [&quot;carol&quot;,&quot;bob&quot;],
+    &quot;bob&quot;</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=141 >
+    <p><span>assert_instance_of</span></p>
+  </td>
+  <td width=675 >
+    <p><span>(klass, object, msg = nil)<br/><br/>assert_instance_of String,
+    &quot;Africa&quot;</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=141 >
+    <p><span>assert_kind_of</span></p>
+  </td>
+  <td width=675 >
+    <p><span>(klass, object, msg = nil)<br/><br/>Accounts for inheritance<br/><br/>assert_kind_of Array, [1,2,3]
+    </span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=141 >
+    <p><span>assert_match</span></p>
+  </td>
+  <td width=675 >
+    <p><span>(regexp, str, msg = nil)<br/><br/>assert_match /w+/,
+    person.name</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=141 >
+    <p><span>assert_nil</span></p>
+  </td>
+  <td width=675 >
+    <p><span>(object, msg = nil)<br/><br/>assert_nil [].first</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=141 >
+    <p><span>assert_operator</span></p>
+  </td>
+  <td width=675 >
+    <p><span>(obj1, :operator, obj2, msg = nil)<br/><br/>
+      Applies the given operator to the objects and returns the result<br/><br/>assert_operator person.age, :== , 29</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=141 >
+    <p><span>assert_output</span></p>
+  </td>
+  <td width=675 >
+    <p><span>(stdout = nil, stdin = nil) {...}<br/><br/>
+              Runs block and captures the stdout and stderr streams, then
+              matches them to given stdout and stderr values.<br/><br/>
+              Pass in nil for a stream you wish to ignore. 
+              Pass in &quot;&quot; if you wish it to be silent. 
+              Pass in a  regexp if you wish to pattern match.<br/><br/>               assert_output(&quot;Hello\n&quot;){puts &quot;Hello&quot;}</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=141 >
+    <p><span>assert_raises</span></p>
+  </td>
+  <td width=675 >
+    <p><span>(*exception){...}<br/><br/>
+      Fails unless the block raises one of the exceptions in argument list.<br/><br/>assert_raises(NoMethodError)
+    { object.foo }</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td widthq141 >
+    <p><span>assert_respond_to</span></p>
+  </td>
+  <td width=675 >
+    <p><span>(object, :method, msg = nil)<br/><br/>
+      Fails unless object responds to method<br/><br/>
+      assert_respond_to person,
+    :age</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=141 >
+    <p><span>assert_same</span></p>
+  </td>
+  <td width=675 >
+    <p><span>(expected, actual, msg = nil)<br/><br/>
+      Fails if expected and actual are not equal, by using expected.equal?(actual). What this means depends on types of expected and actual.<br/><br/>assert_same :bar :bar</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=141 >
+    <p><span>assert_send</span></p>
+  </td>
+  <td width=675 >
+    <p><span>(arr, msg = nil)<br/><br/>
+      arr is an array of [object, :msg, *args]<br/><br/>
+      assert_send [person, :age, 24]</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=141 >
+    <p><span>assert_silent</span></p>
+  </td>
+  <td width=675 >
+    <p><span>(){...}<br/><br/>
+      Fails if block prints to stdout or stderr<br/><br/>
+      assert_silent { &quot;no output from this code&quot;}</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=141 >
+    <p><span>assert_throws</span></p>
+  </td>
+  <td width=675 >
+    <p><span>(:sym, msg = nil){...}<br/><br/>Fails if the block does not throw :sym<br/><br/> 
+              assert_throws(:mandatory) {throw :mandatory if person.age.blank?}</span></p>
+  </td>
+</tr>
+</table>
+
+<H3 id="examplesrspec">Examples for Rspec:</H3>
+<p></p>
+<p>rspec-rails 3
+generates rails_helper.rb and spec_helper.rb. 
+</p>
+<p>
+</p>
+<p>rails_helper.rb is
+for specs which depend on Rails, spec_helper.rb is for specs which
+don't depend on Rails (such as specs for classes in the lib
+directory).</p>
+<p>
+</p>
+<p> rails_helper.rb requires spec_helper.rb. 
+</p>
+
+<pre>
+<code>
+# spec/rails_helper.rb
+
+ENV["RAILS_ENV"] ||= 'test'
+require File.expand_path("../../config/environment", __FILE__)
+require 'rspec/rails'
+
+Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
+
+RSpec.configure do |config|
+  # config.mock_with :mocha
+  # config.mock_with :flexmock
+  # config.mock_with :rr
+
+  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
+  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+
+  # If true, the base class of anonymous controllers will be inferred
+  # automatically. This will be the default behavior in future versions of
+  # rspec-rails.
+  config.infer_base_class_for_anonymous_controllers = false
+
+  # Run specs in random order to surface order dependencies. If you find an
+  # order dependency and want to debug it, you can fix the order by providing
+  # the seed, which is printed after each run.
+  #     --seed 1234
+  config.order = "random"
+
+  # RSpec Rails can automatically mix in different behaviours to your tests
+  # based on their file location, for example enabling you to call `get` and
+  # `post` in specs under `spec/controllers`.
+  # You can disable this behaviour by removing the line below, and instead
+  # explictly tag your specs with their type, e.g.:
+  #
+  #     describe UsersController, :type => :controller do
+  #       # ...
+  #     end
+  #
+  # The different available types are documented in the features, such as in
+  # https://relishapp.com/rspec/rspec-rails/v/3-0/docs
+  config.infer_spec_type_from_file_location!
+ end
+
+</code>
+</pre>
+
+<p></p>
+<p>Given a model:</p>
+<pre>
+<code class="ruby">
+class Post < ActiveRecord::Base
+  validates :title, presence: true
+end
+</code>
+</pre>
+<p></p>
+<p>
+A Post model spec could resemble the following:</p>
+<p></p>
+<pre>
+<code class="ruby">
+require 'spec_helper'
+describe Post do
+  describe "title validation" do
+    context "title is present" do
+      before(:each) do
+        @post = Post.new(title: "My first post")
+      end
+      it "does not add an error on the 'title' attribute" do
+        @post.should have(0).error_on(:title)
+      end
+    end
+    context "title is not present" do
+      before(:each) do
+        @post = Post.new
+      end
+      it "adds an error on the 'title' attribute" do
+        @post.should have(1).error_on(:title)
+      end
+    end
+ end 
+
+</code>
+</pre>
+<p></p>
+<p>...and the same test
+with shoulda-matchers gem:</p>
+<p></p>
+<pre>
+<code class="ruby">
+require 'spec_helper'
+
+describe Post do
+  it { should validate_presence_of(:title) }
+end
+</code>
+</pre>
+<p></p>
+<p>
+  Semaphore provides good instructions for setting up a Rails 4 BDD
+stack, including rspec-rails, shoulda-matchers, factory_girl,
+cucumber-rails (capybara is dependency), and selenium-webdriver.</p>
+<p>
+<A HREF="https://semaphoreapp.com/blog/2013/08/14/setting-up-bdd-stack-on-a-new-rails-4-application.html"><FONT colOR="#880000"><u>Semaphore Rails 4 BDD Stack</u></A></p>
+<H1 id="settingupdata">Setting Up Your Data</H1>
+<p>
+</p>
+<p>Just about every Rails application depends on heavy interaction with the database and as a result it is necessary to know how to setup the database for the test environment and populate it with data. It is useful to know the standard ways to setup the database for development and production so as to know how these may 
+be different from setup for the test environment.</p>
+<p><BR>
+</p>
+<H3 >SEED DATA</H3>
+<p>
+</p>
+<p>The seed file should only contain the minimal amount of data for your application
+to function properly. In your application Rails will create a file <I>db/seeds.rb</I>. Rails also creates a rake task</p>
+<p><span class="code-blue code-shift">rake db:seed</span></p>
+<p>
+</p>
+<p>which will parse the
+seed file and populate the database. You customize the seeds file and add any data that is critical to the functionality of your data.</p>
+<p>
+</p>
+<p>As a side note, in
+your views you may wish to internationalize your data for forms or on
+a page by using <B>I18N
+</B>internationalization. This is mentioned here because you could also create templates for form data and store them in the database using seed data. This is all
+dependent on your design criteria.</p>
+<p>
+</p>
+<p>Here are a couple of
+resources on these topics:</p>
+<p>
+</p>
+<UL>
+  <li><A HREF="http://www.xyzpub.com/en/ruby-on-rails/3.2/seed_rb.html"><FONT colOR="#880000"><U>Seed	Data</U></FONT></A></li>
+	<li><A HREF="http://railscasts.com/episodes/138-i18n-revised"><FONT colOR="#880000"><U>Ryan Bates Railscast on Internationalization</U></FONT></A></li>
+</UL>
+<p></p>
+<p>Before seeding your
+test database you must prep your app:</p>
+<p></p>
+<p><span class="code-blue code-shift">bundle exec rake db:drop RAILS_ENV=test</span> 
+</p>
+<p><span class="code-blue code-shift">bundle exec rake db:create RAILS_ENV=test</span> 
+</p>
+<p><span class="code-blue code-shift">bundle exec rake db:schema:load RAILS_ENV=test</span></p>
+<p>
+</p>
+<p>Or the following can
+be used for preparing your test db:</p>
+<p>
+</p>
+<p>	<span class="code-blue code-shift">bundle exec rake db:test:prepare</span></p>
+<P style="margin-bottom: 0.11in; line-height: 150%">...which checks
+for migrations and loads your schema.</p>
+<p>The above is
+deprecated in Rails v.4.1.</p>
+<p>
+</p>
+<p>Following are example methods for loading seed data in your test environment.</p>
+<p>
+</p>
+<p>Create a file
+<FONT FACE="Georgia, Times New Roman, serif"><I><B>lib/tasks/test_seed.rake</B></I></FONT>
+with the following in it:</p>
+<p></p>
+<pre>
+<code class="ruby">
+# tasks/test_seed.rake
+namespace:db do
+  namespace :test do
+    task :prepare => :environment do
+      Rake::Task[“db:seed”].invoke
+    end
+  end
+end
+</code>
+</pre>
+<p></p>
+<p> In Rails 4.x adding the following to test/test_helper.rb or spec/spec_helper.rb:         
+</p>
+<pre>
+<code-blue class="code-shift">
+   Rails.application.load_seed
+</code-blue>
+</pre>
+<p></p>
+<p>There are also a couple of Gems that may increase your productivity when you are 
+managing your seed data:</p>
+<p>
+</p>
+<UL>
+  <li><A HREF="http://viget.com/extend/smarter-rails-seeding-with-sprig">Sprig</A> <A HREF="https://github.com/vigetlabs/sprig">github</A></li>
+	<li><A HREF="http://engineering.harrys.com/2014/06/09/seed-migrations.html">Seed	Migrations</A> <A HREF="https://github.com/harrystech/seed_migration">github</A></li>
+  <li><A HREF="http://richonrails.com/articles/seeding-your-database-with-seed-fu">Seed Fu</A> <A HREF="https://github.com/mbleigh/seed-fu">github</A></li>
+	<li><A HREF="https://github.com/james2m/seedbank">Seed Bank</A> 
+	</li>
+</UL>
+<H3 >FIXTURES OR FACTORIES?</H3>
+<p>
+</p>
+<p>...And that is the
+question!  A question in many minds of the Ruby on Rails community:</p>
+<p>
+</p>
+<p>To
+Fixture or to Factory?</p>
+<p>
+</p>
+<H1 id="fixtures">FIXTURES</H1>
+<p>
+</p>
+<p>Years of
+manufacturing store/display/presentation fixtures in a cabinet shop 
+broadened my understanding of the variety of forms physical fixtures could take.</p> 
+<p>In Rails this is
+possible too. For what is a <FONT colOR="#b45f06"><I><B>.yml </B></I></FONT>(YAML
+ Ain’t  Markup Language) file if not a place to use some
+Ruby? This leverages the generation of your test data by enabling custom fixture
+generation and simplifies the creation process.</p>
+<p>With fixtures you end up writing several definitions for the same object. They 
+encourage repetition and the use of unique examples. This is one of the strengths of using fixtures. By creative use of fixtures the story of your app is
+revealed in a memorable fashion. Fixtures can be difficult in the beginning of a project, but become easier to use as the project progresses. It is suggested to write 3 fixtures for each model, which will allow you some wiggle room when you need it. Using descriptive names which help you identify the flow of the story is also very useful.</p>
+<p>
+</p>
+<p>Pros of Fixtures:</p>
+<p>
+<UL>
+	<li>They encourage you to be as complex as possible as early as possible.</li>
+	<li>Provide opportunity to regard your application in the real world, vs just
+	being just a bunch of classes.  The story you build in fixtures reflects the story of your app.</li>
+	<li>Amazingly fast. Fixtures are directly inserted into the database when Rails boots up the test environment. Object creation is bypassed entirely, as are callbacks and validation</li>
+	<li>Simplified Integration Testing. Since fixtures insert data into the database at the beginning of running a test, that data is available to all threads. This removes the problem encountered when using a javascript enabled driver like selenium, which runs browser actionsin a separate thread. Thus data set up in another thread is not visible.</li>
+</UL>
+</p>
+<p>      <A HREF="http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html#method-c-context_class">Rails Fixture Reference</A></p>
+<p><BR>
+</p>
+<H1 id="factories">FACTORIES</H1>
+<p>
+</p>
+<p>From the Rolling
+Stones, to <span class="code-em">GoF</span>, and</p>
+<p>
+</p>
+<p>     thoughtbot</p>
+<div>
+  <p> <span ><%= image_tag ( "thoughtbot_robot.png" ) %></span>
+</p>
+</div>
+<p>
+</p>
+<p>there are factories and there is <A HREF="https://github.com/thoughtbot/factory_girl">Factory Girl</A></p>
+<p>
+</p>
+<p>There is also<FONT colOR="#800000"><B>
+</B></FONT><A HREF="https://github.com/paulelliott/fabrication"><FONT colOR="#880000"><U><B>Fabrication</B></U></FONT></A></p>
+<p>
+</p>
+<H3 CLASS="western" style="line-height: 150%"><A NAME="h.tn9g6y7w7ub5"></A>
+ThoughtBot on Factory Girl:</H3>
+
+<p><FONT FACE="Georgia, serif">&quot We
+prefer factories (with FactoryGirl) over Rails fixtures, because
+fixtures are a form of Mystery Guest. Fixtures make it hard to see
+cause and effect, because part of the logic is defined in a file far
+away from the context in which you are using it. Because fixtures are
+implemented so far away from your tests, they tend to be hard to
+control.</FONT></p>
+
+<p><FONT FACE="Georgia, serif">Factories, on the other hand, put the logic right in the test. They make it easy to see what is happening at a glance and are more flexible to different scenarios you may want to set up. While factories are slower than fixtures, we think the benefits in flexibility and readability outweigh the costs.&quot</FONT></p>
+<p><A HREF="http://robots.thoughtbot.com/how-we-test-rails-applications">How ThoughtBot Tests Applications</A></p>
+<p>
+</p>
+<H1 id="minitest">MiniTest with Capybara and Fixtures</H1>
+<p>
+</p>
+<p>Mike Moore has created the ‘minitest-rails-capybara’ gem, which is a wrapper to
+provide integration of Capybara and MiniTest in Rails.</p>
+<p>     
+<A HREF="https://github.com/blowmage/minitest-rails-capybara">minitest-rails-capybara gem</A></p>
+<p>
+</p>
+<p>Here is one approach for setting up for feature testing  with MiniTest and Capybara. Add the following to your Gemfile:</p>
+<pre>
+<code class="ruby">
+group :test do
+  gem 'minitest-rails-capybara'
+  gem 'minitest-reporters'
+  gem 'simplecov'
+end
+
+group :development do
+  # Unhandled exception raised but not rescued 
+  # will open pry automatically
+  gem 'pry-rescue'
+  gem 'pry-stack_explorer'
+  # causes rails console to open  pry 
+  gem 'pry-rails'
+end
+
+</code>
+</pre>
+<p>
+</p>
+<p>
+  <span class="code-blue code-shift">
+  bundle install<br/></span> 
+  <span class="code-blue code-shift">
+  bundle exec rails generate minitest:install
+  </span>
+</p>
+<p></p>
+<p>To force the spec
+style syntax, add the following block to <I>config/application.rb</I>:</p>
+<p></p>
+<pre>
+<code class="ruby">
+# Use Minitest for generating new tests.
+config.generators do |g|
+  g.test_framework :minitest, spec: true
+end
+</code>
+</pre>
+<p></p>
+<p>
+  Run minitest installer:
+</p>
+  <p>
+  	<span class="code-blue code-shift">
+bundle exec rails g minitest:install
+  </span>	
+  </p>
+<p></p>
+<p>Modify
+<I>test/test_helper.rb </I> as
+indicated below:</p>
+<p><BR>
+</p>
+<pre>
+<code class="ruby">
+# test/test_helper.rb
+ENV["RAILS_ENV"] = "test"
+require File.expand_path("../../config/environment", __FILE__)
+require "rails/test_help"
+require "minitest/rails"
+require "minitest/rails/capybara"
+require "simplecov"
+
+require "minitest/reporters"
+Minitest::Reporters.use!(
+  Minitest::Reporters::SpecReporter.new,
+  ENV,
+  Minitest.backtrace_filter
+)
+class ActiveSupport::TestCase
+  ActiveRecord::Migration.check_pending!
+  fixtures :all
+end
+class ActionDispatch::IntegrationTest
+  extend MiniTest::Spec::DSL
+  include Capybara::DSL
+end
+</code>
+</pre>
+<p></p>
+<p>Capybara is
+different than Rails Integration tests, so you must use:</p>
+<p>
+	<span class="code-blue">
+Capybara::Rails::TestCase
+</span>	
+</p>
+<p>for your feature
+tests.</p>
+<p>You can use the minitest generator to create your tests:</p>
+<p><span class="code-blue code-shift">bundle exec rails generate minitest:feature CheckForZurb</span></p>
+<p>
+</p>
+<p><span class="code-red">Warning! All instructions are for Rails 4.1, above would be</span></p>
+<p><span class="code-blue code-shift">bundle exec rails generate mini_test:feature CheckForZurb</span></p>
+<p><span class="code-red">for minitest-rails v1.x</span></p>
+<p><br/></p>
+<h3 id="examplefeaturetest">Example Feature Test</h3>
+
+<pre>
+	<code class="ruby">
+# test/features/check_for_zurb_test.rb
+require 'test_helper'
+
+class CheckForZurbTest < Capybara::Rails::TestCase
+  def  zurb_is_installed
+    visit root_path
+    assert page.has_content?('foundation')
+  end
+end
+</code>	
+</pre>
+<p></p>
+
+<p>Use Capybara’s
+spec DSL by providing the --spec option</p>
+<p></p>
+
+<p><span class="code-blue code-shift">bundle exec rails generate minitest:feature CheckForZurb --spec</span></p>
+<p>This will create a feature test using Capybara spec DSL:</p>
+<p></p>
+<pre>
+<code class="ruby">
+# test/feature/check_for_zurb_test.rb
+require "test_helper"
+feature "CheckForZurb" do
+  scenario "When visiting the page Zurb Foundation will be installed" do
+    visit root_path
+    page.source.must_include("foundation") 
+    page.wont_have_content "Goodbye All!"
+  end
+end
+</code>
+</pre>
+<p></p>
+<p>Setting the metadata to specify a driver:</p>
+<pre>
+<code class="ruby">
+feature "Can Access Home" do
+  scenario "has content", js: true do
+    visit root_path # Visited with JavaScript driver
+    page.must_have_content "Home#index"
+  end
+end
+</code>
+</pre>
+<p></p>
+<p>To generate a
+test other than</p>
+<p>
+<span class="code-blue code-shift">
+rails generate minitest:feature CheckForZurb
+</span>	
+</p>
+<p></p>
+<p>a feature test as above, just substitute</p>
+<UL>
+<li>controller</li>
+<li>integration</li>
+<li>mailer</li>
+<li>model</li>
+</UL>
+<p>
+</p>
+<p>for feature, and if
+you wish it to be spec style add the <FONT colOR="#0000ff">--spec
+</FONT>flag.</p>
+<p>
+</p>
+<H1 id="mixingitup">Mixing It Up with Feature Tests and Capybara</H1>
+<p>
+</p>
+<p>One of the purposes
+of feature tests is to use the full Rails stack,  from the GUI to the
+backend and back again. This thorough workout of a specific slice of
+functionality ensures that the code works when exposed to all levels
+of the stack. Also, it can be desirable to do feature testing in a
+‘black box’ environment  which is API agnostic,  thus removing
+any dependency on hard-wired relationships.</p>
+<p>Capybara is used for automating your browser for feature tests, and has its own DSL. The setup is different for MiniTest and Rspec so they will be covered separately .</p>
+<p>      <A HREF="http://www.rubydoc.info/github/jnicklas/capybara/master"><FONT colOR="#880000"><U>Capybara
+Reference Manual</U></FONT></A></p>
+<p>
+</p>
+<H1>MiniTest with Capybara and Factory Girl</H1>
+<p>If you are using a javascript capable
+driver like Selenium for integration testing, browser actions are run
+in another thread. This prevents you from seeing the data which was
+set up elsewhere. Since Factory Girl uses a database transaction for
+data setup, it is necessary to resort to a truncation strategy. Here
+is an example of <I>test/test_helper.rb </I>set up to handle the
+transactions used by Factory Girl in an integration test:</p>
+<p>
+</p>
+<pre>
+<code class="ruby">
+# test/test_helper.rb
+require 'minitest-rails'
+# Add gem "minitest-rails-capybara" to the test group of your Gemfile
+# and uncomment the following if you want Capybara feature tests
+require "capybara/rails"
+require "capybara/rspec/matchers"
+require "minitest/rails/capybara"
+
+
+ENV["RAILS_ENV"] ||= "test"
+require File.expand_path('../../config/environment', __FILE__)
+require 'rails/test_help'
+
+Dir[Rails.root.join('test', 'support', '*.rb')].each do |file|
+require file
+end
+
+class ActiveSupport::TestCase
+  ActiveRecord::Migration.check_pending!
+  include FactoryGirl::Syntax::Methods
+  include AllTestHelper
+  DatabaseCleaner.strategy = :truncation
+  before { DatabaseCleaner.start }
+  after  { DatabaseCleaner.clean } 
+end
+
+class MiniTest::Spec
+  include FactoryGirl::Syntax::Methods
+  include AllTestHelper
+end
+
+class Capybara::Rails::TestCase
+  include Rails.application.routes.url_helpers 
+  include Capybara::DSL
+  include Capybara::Assertions
+  include IntegrationTestHelper
+  include FactoryGirl::Syntax::Methods
+  DatabaseCleaner.strategy = :truncation
+  before { DatabaseCleaner.start }
+  after  { DatabaseCleaner.clean } 
+end
+</code>
+</pre>
+<p></p>
+<H3>Compatibility</H3>
+<p>Minitest and Rspec spec DSL are not compatible so do not load both of them. If
+your tests using the spec DSL are not running, be sure and check the dependencies to be sure that Rspec DSL is not loaded.</p>
+<p></p>
+<H2 id="minitestspec">MiniTest::Spec</H2>
+<p>Provides RSpec-like matchers and contexts right out of the box.</p>
+<H4>Expectation Matchers </H4>
+<p>You are able to switch between 'must' for positive  <br/>expectations and
+'wont' for negative expectations with <br/>the majority of these matchers.</p>
+<table width=816 cellpadding=7 cellspacing=0>
+<col width=171>
+<col width=645>
+<tr valign=top>
+  <td width=171 >
+    <p><span>Expectation</span></p>
+  </td>
+  <td width=645 >
+    <p><span>Examples</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=171 >
+    <p><span>must_be</span></p>
+  </td>
+  <td width=645 >
+    <p><span>(operator, expected)<br/><br/>obj.color.must_be :==, "red"<br/>(using a predicate)<br/>obj.must_be :empty?</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=171 >
+    <p><span>must_be_close_to</span></p>
+  </td>
+  <td width=645 >
+    <p><span>(for floating point object comparison)<br/><br/>n.must_be_close_to m [, delta]</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=171 >
+    <p><span>must_be_empty</span></p>
+  </td>
+  <td width=645 >
+    <p><span>(fails if collection is not empty)<br/><br/>objects.must_be_empty</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=171 >
+    <p><span>must_be_instance_of</span></p>
+  </td>
+  <td width=645 >
+    <p><span>(fails unless obj.class == klass)<br/><br/>obj.must_be_instance_of
+    klass</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=171 >
+    <p><span>must_be_kind_of</span></p>
+  </td>
+  <td width=645 >
+    <p><span>(fails unless obj is of class klass or klass is one of its super classes)<br/><br/>obj.must_be_kind_of(klass)</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=171 >
+    <p><span>must_be_nil</span></p>
+  </td>
+  <td width=645 >
+    <p><span>obj.must_be_nil</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=171 >
+    <p><span>must_be_same_as</span></p>
+  </td>
+  <td width=645 >
+    <p><span>(tests for true object equality)<br/><br/>obj.must_be_same_as obj</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=171 >
+    <p><span>must_be_silent</span></p>
+  </td>
+  <td width=645 >
+    <p><span>proc { &quot;no stdout or
+    stderr&quot; }.must_be_silent</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=171 >
+    <p><span>must_be_within_epsilon</span></p>
+  </td>
+  <td width=645 >
+    <p><span>(floating point measure of relative error)<br/><br/>n.must_be_within_epsilon m [, epsilon]</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=171 >
+    <p><span>must_equal</span></p>
+  </td>
+  <td width=645 >
+    <p><span>obj.color.must_equal "red"</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=171 >
+    <p><span>must_include</span></p>
+  </td>
+  <td width=645 >
+    <p><span>(fails unless collection includes obj)<br/><br/>objects.must_include &quot;radio&quot;</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=171 >
+    <p><span>must_match</span></p>
+  </td>
+  <td width=645 >
+    <p><span>(regexp, str)<br/><br/>&quot;Memphis&quot;.must_match
+    /w+/</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=171 >
+    <p><span>must_output</span></p>
+  </td>
+  <td width=645 >
+    <p><span>(fails if block does not have specified output to stdout or stderr.  )<br/><br/>proc{ puts &quot;hello&quot; }.must_output &quot;hello\n&quot;<br/><br/>Stderr Example:<br/><br/>lambda{puts &quot;hello&quot;}.must_output nil, &quot;hello\n &quot;</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=171 >
+    <p><span>must_respond_to</span></p>
+  </td>
+  <td width=645 >
+    <p><span>(object, :method)<br/><br/>obj.must_respond_to :present?</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=171 >
+    <p><span>must_raise</span></p>
+  </td>
+  <td width=645 >
+    <p><span>(block, exception)<br/><br/>proc{ obj.nil
+    }.must_raise NoMethodError</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=171 >
+    <p><span>must_send</span></p>
+  </td>
+  <td width=645 >
+    <p><span>(ensures result is true?)<br/><br/>object.must_send [object,:my_msg, *args]</span></p>
+  </td>
+</tr>
+<tr valign=top>
+  <td width=171 >
+    <p><span>must_throw</span></p>
+  </td>
+  <td width=645 >
+    <p><span>(verify block throws a :symbol)<br/><br/>proc { throw :exception if
+    object.empty? }.must_throw :exception</span></p>
+  </td>
+</tr>
+</table>
+<p><BR>
+</p>
+<p><BR>
+</p>
+<H2 id="rspecwithcapybara">Rspec with Capybara and Factory Girl</H2>
+<p>Start out by configuring your Gemfile:</p>
+
+<pre>
+<code class="ruby">
+group :development, :test do
+gem 'rspec-rails', '~> 3.0.0' 
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'database_cleaner'
+end
+</code>
+</pre>
+<p></p>
+<p>Run Rspec generator to create initial framework:</p>
+
+
+<p>
+	<span class="code-blue code-shift">
+bundle exec rails generate rspec:install
+</span>	
+</p>
+<p>Add the following to  <I>rails_helper.rb </I> to  make Capybara available within 
+Rspec:</p>
+<p></p>
+<pre>
+<code class="ruby">
+# spec/rails_helper.rb
+require 'capybara/rails'
+# Insert the following additions into the Rspec configure block
+RSpec.configure do |config|
+  require 'database_cleaner'  # setting up for Capybara/Selenium testing
+  # disable Rails implicit wrapping of test in database transaction
+  # essential to disable this if testing with Capybara/Selenium
+  # and you wish to eliminate poundage of head against wall
+  config.use_transactional_fixtures = false
+  # Set up for Capybara/Selenium feature tests:
+  config.before(:suite) do
+     DatabaseCleaner.clean_with(:truncation)
+  end
+  config.before(:each) do
+     DatabaseCleaner.strategy = :transaction
+  end
+  config.before(:each, :js => true) do
+     DatabaseCleaner.strategy = :truncation
+  end
+  config.before(:each) do
+     DatabaseCleaner.start
+  end
+  config.after(:each) do
+     DatabaseCleaner.clean
+  end
+end
+
+</code>
+</pre>
+<p></p>
+<p>Be warned:  The
+database_cleaner strategy is a monkey-patched kludge which depends
+upon ActiveRecord refraining from changing its connection-sharing
+internals. It is reported to have created race conditions with
+postgresql in combination with certain Ruby VM’s.</p>
+</p>
+<p>Create a
+directory for your features:</p>
+<p><span class="code-blue code-shift">mkdir spec/features</span></p>
+<p>Now when you run 
+</p>
+<p><span class="code-blue code-shift">bundle exec rails g resource post title content:text published:boolean</span></p>
+<p>you should get
+output similar to:</p>
+<p>
+	<span class="code-blue">
+invoke
+ active_record<BR>create   
+db/migrate/20140630160246_create_posts.rb<BR>create   
+app/models/post.rb<BR>invoke    rspec<BR>create     
+spec/models/post_spec.rb<BR>invoke      factory_girl<BR>create       
+spec/factories/posts.rb<BR>invoke  controller<BR>create   
+app/controllers/posts_controller.rb<BR>invoke    erb<BR>create     
+app/views/posts<BR>invoke    rspec<BR>create     
+spec/controllers/posts_controller_spec.rb<BR>invoke    helper<BR>create
+     app/helpers/posts_helper.rb<BR>invoke      rspec<BR>create      
+ spec/helpers/posts_helper_spec.rb<BR>invoke    assets<BR>invoke     
+coffee<BR>create        app/assets/javascripts/posts.js.coffee<BR>invoke
+     scss<BR>create       
+app/assets/stylesheets/posts.css.scss<BR>invoke  resource_route<BR>route
+   resources :posts
+</span>	
+</p>
+<p>Now you will be able to write feature tests like the following:</p>
+<p></p>
+<pre>
+<code class="ruby">
+# spec/features/user_creates_a_foobar_spec.rb
+feature 'User visits Posts Index' do
+  scenario 'Navigating to Post Index, a list of posts is seen' do
+    visit posts_path
+    expect(page).to have_content posts(:wave).title
+  end
+end
+</code>
+</pre>
+<p></p>
+<H1 id="mockingstubbing">Mocking and Stubbing</H1>
+<p>Testing should be simple, fast, and indempotent. The purpose of stubbing is to replace classes or components that may be complex or slow the test down
+but still preserve the interface.</p>
+<p>For instance, you can create a stub that will return false records but still satisfy the needs of the test. The caveat of using stubs is that you have to be careful not to remove too much of the real world. You really do need to interact with your database at some point to see if all is well.</p>
+<p>With a stub you want to accomplish 2
+things:</p>
+<UL>
+	<li>Replace a part of the real system in your test case with a stub.</li>
+	<li>Have the stub duplicate behavior of the real system part you replace.</li>
+</UL>
+<p>A mock object is similar to a stub
+object. However, it has the added functionality of checking how the
+client code actually uses the object. It does this with behavior verification, to ensure that the mock object is interacting with the client code in the
+manner we expect, it is fullfilling our expectations.</p>
+<p>Following is a list of popular mocking
+and stubbing solutions in Rails:</p>
+<UL>
+	<li><A HREF="https://github.com/seattlerb/minitest">MiniTest Mock</A></li>
+	<li><A HREF="http://gofreerange.com/mocha/docs/">Mocha</A>
+	<li><A HREF="https://github.com/jimweirich/flexmock">FlexMock</li>
+	<li><A HREF="https://github.com/rspec/rspec-mocks">Rspec Mocks</A></li>
+</UL>
+<H1 id="pageobject">Page Object Pattern</H1>
+
+<p>The concept of a page object is to wrap an HTML page or fragment in order to manipulate page elements without digging into the HTML. Tests that manipulate page elements directly are brittle to changes in the UI.</p>
+<p>Objectives in creating a page object:</p>
+<UL>
+	<li>Allow a software client to do
+	anything a human looking at the page can do</>
+	<li>Provide interface that hides
+	underlying widgetry of window and is easy to use</li>
+	<li>Encapsulate mechanics required to
+	find and manipulate the data in the GUI control.</li>
+	<li>Model the structure in the page
+	that makes sense to the user of the application, complex UI
+	structures should not be revealed by the page object.</li>
+	<li>Page objects are not usually built
+	for each page, but rather significant elements of a page such as
+	header, footer, contact form, etc.</li>
+	<li>If you navigate to another page,
+	initial page object should return another page object for the new
+	page.</li>
+	<li>Page objects should return
+	fundamental types [string date] or other page objects.</li>
+</UL>
+<p>“Page objects are commonly used for testing, but should not make assertions
+themselves. Their responsibility is to provide access to the state of
+the underlying page. It's up to test clients to carry out the
+assertion logic.” ---Martin Fowler</p>
+<p>Please read the excellent
+article on page objects by Martin Fowler if you are interested in
+this topic.</p>
+<p><A HREF="http://martinfowler.com/bliki/PageObject.html">Page Object by Martin Fowler</A></p>
+<p>Gems to enhance the use of
+Page Object.</p>
+<UL>
+	<li><A HREF="http://www.rubydoc.info/gems/site_prism/frames">Site Prism Wiki</A> <A HREF="https://github.com/natritmeyer/site_prism">Github</A>
+</li>
+	<li><A HREF="https://github.com/cheezy/page-object/wiki/page-object">Page-Object
+	Wiki</A>  
+	<A HREF="https://github.com/cheezy/page-object">Github</A></li>
+</UL>
+<p></p>
+<H1 id="debugging">Debugging: Opinionated Programming</H1>
+<p>What to do when your test fails?</p>
+<UL>
+	<li>Check for syntax errors</li>
+	<li>Review test data</li>
+	<li>Analyze your logic and algorithms</li>
+	<li>Fire up Pry</li>
+</UL>
+<p>You can start up the Rails console which
+uses irb, then use debugger to inspect your code, set breakpoints,
+etc.  But why would you want to do this when the most excellent pry
+gem is available? If you have not tried pry, you owe it to yourself
+to give it a road test. Who knows? Besides finding yourself in a
+state of bliss you may also save humanity from imminent destruction.</p>
+</p>
+<H2>Pry</H2>
+<UL>
+	<li><A HREF="https://github.com/pry/pry">Pry</A></li>
+	<li><A HREF="https://github.com/pry/pry/wiki"><FONT colOR="#aa0000">Pry Wiki</A></li>
+</UL>
+<p>
+</p>
+<p>Easily set a breakpoint by entering</p>
+<p>
+</p>
+<p><span class="code-blue code-shift">binding.pry</span></p>
+<p>in a model or controller. You can also
+enter</p>
+<p>
+</p>
+<p> <span class="code-blue code-shift">&lt;% require ‘pry’; binding.pry %&gt;</span>  
+</p>
+<p>
+</p>
+<p>in a view to set a break point.</p>
+<p>
+</p>
+<H2>Pry-rescue gem</H2>
+<p>
+</p>
+<p>Whenever something goes wrong, e.g.
+there is an unhandled exception, pry-rescue will automatically open pry
+for you.</p>
+<p>
+</p>
+<p>Add the following to your Gemfile.</p>
+<p>
+</p>
+<pre>
+<code class="ruby">
+group :development do
+ gem 'pry-rescue'
+ gem 'pry-stack_explorer'
+end
+</code>
+</pre>
+<p></p>
+<H2 id="git">Git</H2>
+<p>
+</p>
+<p>Search using regex for all differences in added or removed<br/> lines matching the given regular expression.</p>
+<p>
+</p>
+<p>
+	<span class="code-blue code-shift">
+git log -G'^[a-zA-Z0-9_-]*_widget$' --pretty=oneline</p>
+</span>	
+</p>
+<p>
+</p>
+<p>Compare current state of file with that of a specific commit.</p>
+<p>
+</p>
+<p><span class="code-blue code-shift">git diff 4dc72 -- app/models/user.rb</span></p>
+<p>
+</p>
+<p>When a bug is current and you know it was not in the past,<br/> pick a commit in the past where your code was good. <br/>Now you need to</p>
+<p>
+</p>
+<p><span class="code-blue code-shift">git bisect start</span></p>
+<p>
+</p>
+<p>You will then proceed with setting the status of the current commit.</p>
+<p>
+</p>
+<p><span class="code-blue code-shift">git bisect bad</span></p>
+<p>
+</p>
+<p>Next you select a commit where you know the code<br/> functioned properly and set the status for that.</p>
+<p>
+</p>
+<p><span class="code-blue code-shift">git bisect good &lt;sha&gt;</span></p>
+<p>
+</p>
+<p>You proceed with this process until you have identified <br/>where the bad code was introduced.</p>
+<p><A HREF="http://hashrocket.com/blog/posts/finding-failure-git-bisect">Finding Failure: Git Bisect</A></p>
+<p>
+</p>
+<H2>Debugging Opportunities in Rails.</H2>
+<p>
+</p>
+<p>See what routes are really available.</p>
+	<p><A HREF="http://localhost:3000/rails/info/routes">http://localhost:3000/rails/info/routes</A></p>
+<p>
+</p>
+<p>Gem for style, lint, metrics, and Rails
+specific checking.</p>
+<p><A HREF="https://github.com/bbatsov/rubocop">Rubocop</A></p>
+<p>
+</p>
+<p>Vim specific plugin for syntax
+checking.</p>
+<p><A HREF="https://github.com/scrooloose/syntastic">Syntastic</A></p>
+<p>
+</p>
+<p>Check all available Rake tasks</p>
+<p><span class="code-blue code-shift">bundle exec rake -T</span></p>
+<p>
+</p>
+<p>Check what middleware is in use.</p>
+<p><span class="code-blue code-shift">bundle exec rake middleware</span></p>
+<p>
+</p>
+<p>See all gems actually used, and version
+numbers.</p>
+<p><span class="code-blue code-shift">less Gemfile.lock</span></FONT></p>
+<p></p>
+<H1 id="speeding">Speeding Up your Test Environment</H1>
+<p>
+</p>
+<p>Ryan Bates has compiled various methods of optimizing <br/>your test environment in this Railscast, including use of the ‘parallelize_me’ <br/>method in minitest.</p>
+<p><A HREF="http://railscasts.com/episodes/413-fast-tests?view=comments">Fast Tests</A></p>
+<p>
+</p>
+<H1><span class="code-green">Prenascent Test Paradigm</span></H1>
+<p>
+</p>
+<p>It is most beneficial in testing when the code itself <br/>is clarity, integrity,
+simplicity.</p>
+<p>
+</p>
+<p>&quotOften, when you can express an idea in a single sentence, you have a good
+shot at implementing that idea in a single line or two of Ruby code.&quot</p>
+<P style="margin-bottom: 0.17in; line-height: 150%"><FONT FACE="Consolas, serif">						---Bruce
+Tate</FONT></p>
+<p>
+</p>
+<H2 id="addendum">Addendum - Helpful Information</H2>
+<H3>Testing Pundit Authorization Policies with Minitest</H3>
+<p>
+</p>
+<p>An example of Pundit policy testing on
+Stack Overflow using Minitest and factories. The example could be
+adjusted for use with fixtures.</p>
+<p>
+</p>
+<p><A HREF="http://stackoverflow.com/questions/20256893/how-to-test-pundit-policies-with-minitest">Pundit Policy Testing</a></p>
+<p>
+</p>
+<H3>Factory Girl</H3>
+<p>
+</p>
+<p>Complicated relationships in factories
+on RailsGuide.net, solved using ignore/transient.</p>
+<p>
+</p>
+<p><A HREF="http://railsguides.net/integral-factories-in-tests-with-factory-girl/">Integral Factories</A></p>
+<p>
+</p>
+<H3>Rspec Example of testing factories first using spec syntax.</H3>
+<p>
+</p>
+<pre>
+<code class="ruby">
+# spec/factories_spec.rb
+
+FactoryGirl.factories.map(&:name).each do |factory_name|
+  describe "The #{factory_name} factory" do
+     it 'is valid' do
+      build(factory_name).should be_valid
+     end
+  end
+end
+
+# lib/tasks/factory.rake
+
+if defined?(RSpec)
+  desc 'Run factory specs.'
+  RSpec::Core::RakeTask.new(:factory_specs) do |t|
+    t.pattern = './spec/factories_spec.rb'
+  end
+end
+
+task spec: :factory_specs
+</code>
+</pre>
+<p></p>
+<H4>MiniTest Spec Example</H4>
+<p>
+</p>
+<pre>
+<code class="ruby">
+# spec/factories_spec.rb
+require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
+
+describe FactoryGirl do
+  EXCEPTIONS = %w( bad_user_address shipping_method your_errors etc)
+  FactoryGirl.factories.each do |factory|
+    next if EXCEPTIONS.include?(factory.name.to_s)
+    describe "The #{factory.name} factory" do
+      it 'is valid' do
+        instance = build(factory.name)
+        instance.must_be :valid?
+      end
+    end
+  end
+end
+
+# lib/tasks/factory.rake
+# assuming you are using spec style
+
+desc 'Run factory specs.'
+Rake::TestTask.new(:factory_specs) do |t|
+  t.pattern = './spec/factories_spec.rb'
+end
+
+task test: :factory_specs
+</code>
+</pre>
+<p></p>
+<H4>MiniTest without Spec example</H4>
+<p></p>
+<pre>
+<code class="ruby">
+# test/factories_test.rb
+require File.expand_path(File.dirname(__FILE__) + '/test_helper') 
+
+class FactoriesTest < ActiveSupport::TestCase 
+  EXCEPTIONS = %w(user_address user_email) 
+  FactoryGirl.factories.map(&:name).each do  |factory_name|
+     next if factory_name.to_s.in?(EXCEPTIONS) 
+     context "The #{factory_name} factory" do 
+        should 'be valid' do 
+           assert_equal true, build(factory_name).valid? 
+        end 
+     end 
+  end 
+end
+
+# lib/tasks/factory.rake
+namespace :test do 
+   desc 'Test factories' Rake::TestTask.new(:factories) do |t| 
+      t.pattern = './test/factories_test.rb' 
+   end 
+end 
+
+task minitest: 'test:factories'
+</code>
+</pre>
+<p></p>
+<H3>Guard configuration for MiniTest</H3>
+<p>
+</p>
+<p>Guard is a command line tool to handle
+events when changes occur in your file system, and can be configured
+to run tests when changes occur. Here is a sample configuration that
+will ignore tmp and other non-related files (including lib! ...may
+not be what you want).</p>
+<p>
+</p>
+<UL>
+	<li><A HREF="https://github.com/guard/guard">Guard on Github</A></li>
+	<li><A HREF="https://github.com/guard/guard/wiki">Guard Wiki</A></li>
+	<li><A HREF="http://railscasts.com/episodes/264-guard">Railscasts	Guard</A></li>
+</UL>
+<p>
+</p>
+<p>This is an example of setting up a <i>.guard.rb </i>file.  </p>
+<p>
+	<pre>
+    <code class="ruby">
+# .guard.rb in app root
+# Rails 4 ignores:
+ignore([%r{^bin/*}, %r{^config/*}, %r{^db/*}, %r{^lib/*}, %r{^log/*}, %r{^public/*}, %r{^tmp/*}])
+
+guard :minitest, all_on_start: false, zeus: true, bundler: false do
+  # Rails 4 watch:
+  watch(%r{^app/(.+)\.rb})              { |m| "test/#{m[1]}_test.rb" }
+  watch(%r{^test/.+_test\.rb})
+  watch(%r{^test/test_helper\.rb})      { 'test' }
+end
+    </code>
+	</pre>
+</p>
+<H1 id="references">References</H1>
+<p>
+</p>
+<UL>
+  <li><A HREF="http://guides.rubyonrails.org/testing.html">Guide to Testing Rails Applications</a></li>
+
+  <li><A HREF="http://mikewilliamson.wordpress.com/2013/06/12/the-difference-between-feature-specs-and-request-specs/">Difference	Between Feature Specs and Request Specs</a></li>
+
+  <li><A HREF="https://whatdoitest.com/getting-friendly-with-fixtures">Factories or Fixtures</a></li>
+  <li><A HREF="http://www.hiringthing.com/2012/08/02/rails-testing-demystifying-test-unit.html">Demystifying Test::Unit</a></li>
+  <li><A HREF="https://semaphoreapp.com/blog/2014/01/14/rails-testing-antipatterns-fixtures-and-factories.html">Rails Testing Antipatterns: Factories and Fixtures</a></li>
+  <li><A HREF="http://brandonhilkert.com/blog/7-reasons-why-im-sticking-with-minitest-and-fixtures-in-rails/">7 Reasons Why I am Sticking with Minitest and Fixtures in Rails</a></li> 
+  <li><A HREF="http://thoughts.wallproductions.com/2014/02/fixtures-vs-factories/">Factories	vs Fixtures</a></li> 
+  <li><A HREF="http://thoughts.wallproductions.com/2014/02/fixtures-vs-factories/">Mocking	and Stubbing in Rails</a></li> 
+  <li><A HREF="http://www.mattsears.com/articles/2011/12/10/minitest-quick-reference">MiniTest	Quick Reference</a></li> 
+  <li><A HREF="https://github.com/seattlerb/minitest">Seattlerb-MiniTest</a></li>
+  <li><A HREF="https://github.com/blowmage/minitest-rails-capybara">MiniTest-Rails-Capybara</a></li>
+	<li><A HREF="https://semaphoreapp.com/blog/2013/08/14/setting-up-bdd-stack-on-a-new-rails-4-application.html">Setting	up the BDD stack on a new Rails 4 app</a></li>
+  <li><A HREF="https://github.com/rspec/rspec-rails">rspec-rails</a></li>
+	<li><A HREF="http://devblog.avdi.org/2012/08/31/configuring-database_cleaner-with-rails-rspec-capybara-and-selenium/">Configuring	database_cleaner with Capybara, Rspec and Selenium</a></li>
+	<li><A HREF="http://everydayrails.com/2012/03/19/testing-series-rspec-models-factory-girl.html">Model Specs Testing</a></li>
+	<li><A HREF="http://guides.rubyonrails.org/testing.html#available-assertions">Rails	Assertions</a></li>
+	<li><A HREF="http://martinfowler.com/articles/mocksArentStubs.html">Mocks aren’t Stubs</a></li>
+	<li><A HREF="http://blog.berylliumwork.com/2013/07/rails-4-devise-3-minitest-and-capybara.html">MiniTest, Capybara, and Factory Girl</a></li>
+	<li><A HREF="http://railscasts.com/episodes/327-minitest-with-rails">Railscasts
+	MiniTest with Rails</a></li>
+	<li><A HREF="http://robots.thoughtbot.com/how-we-test-rails-applications">How	We Test Rails ---ThoughtBot</a></li>
+	<li><A HREF="http://chriskottom.com/blog/2014/10/4-fantastic-ways-to-set-up-state-in-minitest/">MiniTest:	Setting up before a Test</a></li>
+	<li><A HREF="http://chriskottom.com/blog/2014/10/exploring-minitest-concurrency/">Parallelize	Me! MiniTest Concurrency</a></li>
+	<li><A HREF="http://chriskottom.com/blog/2014/08/customize-minitest-assertions-and-expectations/">Customize	MiniTest Assertions and Expectations</a></li>
+	<li><A HREF="http://www.mattsears.com/articles/2013/12/17/a-guide-for-writing-maintainable-rails-tests">Guide for Writing Maintainable Rails Tests</a></li>
+	<li><A HREF="http://brandonhilkert.com/blog/managing-login-passwords-for-capybara-with-minitest-and-rails-fixtures/">Password Helper for Minitest and Capybara</a></li>
+	<li><A HREF="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-logs.html">Debugging	Rails with Logs</a></li>
+	<li><A HREF="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-custom-instrumentation.html">Debugging	with Custom Instrumentation</a></li>
+	<li><A HREF="https://developer.chrome.com/devtools/docs/javascript-debugging">Debugging Javascript</a></li>
+	<li><A HREF="http://www.jackkinsella.ie/2014/06/06/debugging-rails-with-operating-system-tools.html">Debugging	with OS Tools</a></li>
+  <li>
+  	<a href="http://blog.arvidandersson.se/2012/03/28/minimalicous-testing-in-ruby-1-9">Minimalicious testing in Ruby 1.9 with MiniTest</a>
+  </li>
+  <li>
+  	<a href="http://ruby.about.com/od/testdrivendevelopment/ss/Unit-Testing-With-Minitest-More-Assertions.htm">Unit Testing with Minitest: More Assertions</a>
+  </li>
+</UL>
+<p>
+</p>
+<hr class="rule-blog"/>
+<p></p>
+<p class="copyright">
+	<a href="http://jet.mit-license.org/">&copy; Jerrold R Thompson</a>
+</p> 
+<%= render "comments" %>
+

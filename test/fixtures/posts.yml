@@ -1,0 +1,26 @@
+# well Jet, you ended up with fixtures, like it or not!
+
+wave:
+  id: 1
+  title: Riding the Wave
+  description:  How I learned to surf the ethersphere
+  content:  It is essential when cosmos surfing to have a board with a spherical skeg.
+  published: true
+  author_id: 1
+
+being:
+  id: 2
+  title: Being There
+  description: How to invent stuff that helps you survive
+  content:  Always start out with a clear head, solid sturdy boots, and a pair of nail clippers.
+  author_id: 1
+
+life:
+  id: 3
+  title: A Day in the Life of Peter Yanovich
+  description:  How to develop insights into nearly anything
+  content: Goodnight and Good Luck!
+  published: true
+  author_id: 2
+
+

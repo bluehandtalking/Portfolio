@@ -1,0 +1,21 @@
+<table>
+  <thead>
+    <tr>
+      <th>Author</th>
+      <th>Author Email</th>
+      <th>Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% unless @comments.blank? %>
+      <% @comments.each do |comment| %>
+        <tr>
+          <td><%= comment.author %></td>
+          <td><%= comment.author_email %></td>
+          <td><%= comment.comment %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<br />

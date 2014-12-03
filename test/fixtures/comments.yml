@@ -1,0 +1,6 @@
+# all comments
+surf:
+  commentable_id: 1
+  commentable_type: "Post"
+  author: users(:guest)
+  comment: "Riding the wave to cosmic understanding is just way cool!"

@@ -1,0 +1,53 @@
+<% content_for :body do %>
+  <div class="small-9 columns" role="content">
+    <ul  data-orbit >
+      <li >
+      <a href="http://cloudleather.bosonfoundry.com" target="_blank"><%= image_tag 'cloudleather_sm.png' %></a>
+      </li>
+      <li class="active">
+      <a href="http://padhouses.heroku.com" target="_blank" ><%= image_tag 'padhouses_sm.png' %></a>
+      </li>
+      <li class="active">
+      <a href="http://cf-schwag-store.herokuapp.com" target="_blank" ><%= image_tag 'swag-store.png' %></a>
+      </li>
+       
+      <li>
+      <a href="http://inmylifevideo.com" target="_blank" ><%= image_tag 'inmylifevideo_sm.png' %></a>
+      </li>
+      <li class="active">
+      	<a href="http://housewright.bosonfoundry.com" target="_blank" ><%= image_tag 'housewright.jpg' %></a>
+      </li>
+      <li class="active">
+      	<a href="http://www.ironhorserails.com" target="_blank" ><%= image_tag 'iron_horse_rails.png' %></a>
+      </li>
+
+    </ul>  
+
+  </div>
+<% end %>
+
+<% content_for :panel do %>
+    <aside class="small-3 columns">
+      <div class="panel">
+        <h3>DESIGN AND TECHNOLOGY</h3>
+        <p class="design-tech">I have either been completely or partially the creator of the graphic design in these featured sites. The technology implemented includes Ruby on Rails, Postgresql database, Hobo gem, Omniauth-twitter, jQuery, Pundit, Flash action script, Devise gem, Spree e-commerce, my Spree Tax Cloud gem, Mail Chimp, AWS-S3, Route 53, Capistrano gem, Sass, Compass, Paperclip, Foundation Orbit, Unicorn, Nginx, openSSL, Minitest-Rails, and Capybara.
+        </p>
+        <a href="#">Read More ¿</a>
+      </div>
+
+    </aside>
+    <script type="text/javascript">
+      $(document).foundation({
+        orbit: {
+          animation: 'slide',
+          timer_speed: 3000,
+          pause_on_hover: true,
+          animation_speed: 500,
+          navigation_arrows: true,
+          bullets: true
+       }
+      });
+    
+    </script>
+<% end %>
+

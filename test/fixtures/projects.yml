@@ -1,0 +1,10 @@
+fishing:
+  name: Coho in Washington State
+  description: Washington still has a vigorous run of Coho
+  content: The Coho or Silver Salmon is one of the most sought after fish during the summmer months.
+
+sailing:
+  name: Gunkholing in the San Juans
+  description: Where to drop your lunch hook in our N.W. Archipelago
+  content: You are about to discover some of the most beautiful islands on the planet earth
+  author_id: 1
