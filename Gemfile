@@ -34,7 +34,7 @@ end
 group :development do
   gem 'sqlite3'
   gem 'binding_of_caller', github: "banister/binding_of_caller" # This needs to go in before better_errors
-  gem 'better_errors'
+  # gem 'better_errors'
   gem 'meta_request', '0.2.1'
   # Below version of pry must be used for pry-editline to work
   gem 'pry', github: 'pry/pry', tag: "v0.9.12.6"
@@ -42,6 +42,9 @@ group :development do
   gem 'pry-doc', github: 'pry/pry-doc'
   gem 'pry-editline', github: "tpope/pry-editline"
   gem 'pry-theme', github: "kyrylo/pry-theme", tag: "v1.1.3"
+  gem 'pry-debugger', github: 'nixme/pry-debugger'
+  gem 'pry-rescue'
+  gem 'pry-stack_explorer'
   gem 'hirb'
   gem 'thin'
   # enable ctags to find methods in gems
@@ -58,10 +61,8 @@ group :test do
   gem 'turn'
   gem 'simplecov', :require => false
   gem 'debugger', "1.6.5"
-  gem 'pry-debugger', github: 'nixme/pry-debugger'
-  gem 'pry-rescue'
 end
 
 # Below create a Seg Fault when using pry and attempting to open editor
 # Uncomment before pushing to Heroku
-# ruby '2.1.0'
+ruby '2.1.0'

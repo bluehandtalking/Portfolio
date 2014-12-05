@@ -1247,11 +1247,20 @@ to give it a road test. Who knows? Besides finding yourself in a
 state of bliss you may also save humanity from imminent destruction.</p>
 </p>
 <H2>Pry</H2>
+<p>
+Pry is a REPL tool (read-eval-play-loop) which you can use to evaluate your code.<br/>
+However, it is also very valuable to inspect your classes, find out what your<br/>
+vars are, look up documentation, check your routing, and much more.
+</p>
 <UL>
 	<li><A HREF="https://github.com/pry/pry">Pry</A></li>
 	<li><A HREF="https://github.com/pry/pry/wiki"><FONT colOR="#aa0000">Pry Wiki</A></li>
 </UL>
 <p>
+</p>
+<p>Install   
+<span class="code-blue"> gem 'pry-rails'</span>
+ in your Gemfile. Now startup your rails console and you will be using pry.
 </p>
 <p>Easily set a breakpoint by entering</p>
 <p>
@@ -1266,13 +1275,354 @@ enter</p>
 <p>
 </p>
 <p>in a view to set a break point.</p>
-<p>
+
+<p>List public, protected, and private instance methods only defined on object.singleton_class <br />
+  and object.class:
 </p>
+<pre>
+  <code>
+~/Code_Fellows/project/portfolio (PostsController) > ls -pqM
+PostsController#methods: 
+  _callback_before_11  auth_post  destroy  index  post_params  resolve_layout  show  
+  _layout              create     edit     new    publish      set_post        update
+
+  </code>
+</pre>
+<p></p>
+<p>
+You may need to change the colors that <span class="code-blue">ls</span> uses.<br/>
+Making sure that you are in 'main' and not a class, do the following:
+</p>
+<pre>
+<code>
+~/Code_Fellows/project/portfolio (main) > Pry.config.ls
+=>  heading_color=:bright_blue, public_method_color=:default, private_method_color=:blue, protected_method_color=:blue, method_missing_color=:bright_red, local_var_color=:yellow, pry_var_color=:default, instance_var_color=:blue, class_var_color=:bright_blue, global_var_color=:default, builtin_global_color=:cyan, pseudo_global_color=:cyan, constant_color=:default, class_constant_color=:blue, exception_constant_color=:magenta, unloaded_constant_color=:yellow, separator="  ", ceiling=[Object, Module, Class]>
+~/Code_Fellows/project/portfolio (main) > 
+~/Code_Fellows/project/portfolio (main) > Pry.config.ls.private_method_color= :bright_red
+=> :bright_red
+~/Code_Fellows/project/portfolio (main) >
+</code>
+</pre>
+<p></p>
+<p>In the above example I changed my private_method_color to red.<br />
+Also, it was necessary to edit actual output, as the js parser had trouble with OpenStruct.
+</p>
+<p>While inside a model view the code of one of your methods using <span class="code-blue">$</span></p>
+<pre>
+<code>
+~/Code_Fellows/project/portfolio (PostsController) > $ post_params
+
+From: /home/jet/Code_Fellows/project/portfolio/app/controllers/posts_controller.rb @ line 84:
+Owner: PostsController
+Visibility: private
+Number of lines: 8
+
+def post_params
+  safe_attributes = [
+    commentable_attributes: [ 
+      :id, :commentable_id, :commentable_type, :author, :comment
+    ]
+  ]
+  params.require(:post).permit(:title, :description, :content, :author_id,  (:published if current_user.role == 'editor'), *safe_attributes)
+end
+~/Code_Fellows/project/portfolio (PostsController) > 
+</code>
+</pre>
+<p></p>
+<p>Show 10 lines of history from the Tail:</p>
+<pre>
+<code> 
+~/Code_Fellows/project/portfolio (PostsController) > hist -T 10
+~/Code_Fellows/project/portfolio (main) > hist -T 10
+7587: end
+7588: test
+7589: ? test
+7590: cd ..
+7591: def test
+7592:   arr = ["Fred", "Jan", "Ivar"]
+7593:   arr.map {|n| puts "#{n}"}
+7594: end
+7595: test
+7596: hist -h
+~/Code_Fellows/project/portfolio (main) > 
+</code>
+</pre>
+<p>
+<p>Replay a segment of history:</p>
+<pre>
+<code>
+~/Code_Fellows/project/portfolio (main) > hist --replay 7591..7594
+=> :test
+~/Code_Fellows/project/portfolio (main) > 
+</code>
+</pre>
+<p></p>
+<p>
+See the documentation on a method:
+</p>
+</p>
+<pre>
+  <code>
+~/Code_Fellows/project/portfolio (main) > show-doc Object#method_missing
+
+From: vm_eval.c (C Method):
+Owner: BasicObject
+Visibility: private
+Signature: method_missing(*arg1)
+Number of lines: 27
+
+Invoked by Ruby when obj is sent a message it cannot handle.
+symbol is the symbol for the method called, and args
+are any arguments that were passed to it. By default, the interpreter
+raises an error when this method is called. However, it is possible
+to override the method to provide more dynamic behavior.
+If it is decided that a particular method should not be handled, then
+super should be called, so that ancestors can pick up the
+missing method.
+The example below creates
+a class Roman, which responds to methods with names
+consisting of roman numerals, returning the corresponding integer
+values.
+
+   class Roman
+     def roman_to_int(str)
+       # ...
+     end
+     def method_missing(methId)
+       str = methId.id2name
+       roman_to_int(str)
+     end
+   end
+
+   r = Roman.new
+   r.iv      #=> 4
+   r.xxiii   #=> 23
+   r.mm      #=> 2000
+    
+  </code>
+</pre>
+<p></p>
+<p>cd into a class, then examine it:</p>
+<pre>
+  <code>
+~/Code_Fellows/project/portfolio (main) > cd Post
+~/Code_Fellows/project/portfolio (Post) > self
+=> class Post < ActiveRecord::Base {
+             :id => :integer,
+          :title => :string,
+    :description => :text,
+        :content => :text,
+     :created_at => :datetime,
+     :updated_at => :datetime,
+      :published => :boolean,
+      :author_id => :integer,
+           :menu => :string,
+        :article => :string
+}
+
+  </code>
+</pre>
+<p></p>
+<p>Show all of your models:</p>
+<pre>
+<code>
+~/Code_Fellows/project/portfolio (main) > show-models
+Comment
+  id: integer
+  author: string
+  author_email: string
+  comment: text
+  created_at: datetime
+  updated_at: datetime
+  author_url: string
+  user_ip: string
+  user_agent: string
+  referrer: string
+  approved: boolean
+  commentable_id: integer
+  commentable_type: string
+  belongs_to :commentable
+Impression
+  id: integer
+  impressionable_type: string
+  impressionable_id: integer
+  user_id: integer
+  controller_name: string
+  action_name: string
+  view_name: string
+  request_hash: string
+  ip_address: string
+  session_hash: string
+  message: text
+  referrer: text
+  created_at: datetime
+  updated_at: datetime
+  belongs_to :impressionable
+Post
+  id: integer
+  title: string
+  description: text
+  content: text
+  created_at: datetime
+  updated_at: datetime
+  published: boolean
+  author_id: integer
+  menu: string
+  article: string
+  belongs_to :author
+  has_many :comments
+  has_many :impressions
+
+</code>
+</pre>
+<p></p>
+<p>Show routes, filtering with --grep:</p>
+<pre>
+<code>
+~/Code_Fellows/project/portfolio (main) > show-routes --grep blogs
+                   blogs GET      /blogs(.:format)                                  posts#index
+                         POST     /blogs(.:format)                                  posts#create
+                new_blog GET      /blogs/new(.:format)                              posts#new
+               edit_blog GET      /blogs/:id/edit(.:format)                         posts#edit
+                         GET      /blogs/:id(.:format)                              posts#show
+                         PATCH    /blogs/:id(.:format)                              posts#update
+                         PUT      /blogs/:id(.:format)                              posts#update
+                         DELETE   /blogs/:id(.:format)                              posts#destroy
+~/Code_Fellows/project/portfolio (main) > 
+
+</code>
+</pre>
+<p></p>
+<p>Output of last command is stored in <span class="code-blue">_</span> . You can then use this in assignment:</p>
+<pre>
+<code>
+~/Code_Fellows/project/portfolio (main) > [1,2,3,4,5]
+=> [
+    [0] 1,
+    [1] 2,
+    [2] 3,
+    [3] 4,
+    [4] 5
+]
+~/Code_Fellows/project/portfolio (main) > arr = _
+=> [
+    [0] 1,
+    [1] 2,
+    [2] 3,
+    [3] 4,
+    [4] 5
+]
+~/Code_Fellows/project/portfolio (main) > arr
+=> [
+    [0] 1,
+    [1] 2,
+    [2] 3,
+    [3] 4,
+    [4] 5
+]
+~/Code_Fellows/project/portfolio (main) > 
+
+</code>
+</pre>
+<p></p>
+<p>If you wish to run a shell command from within Pry, enter a period <span class="code-blue">.</span> and then enter your command:</p>
+<pre>
+<code>
+~/Code_Fellows/project/portfolio (main) > .ps aux|grep thin
+jet      11714  0.0  0.0   4136   632 pts/1    S+   23:47   0:00 sh -c ps aux|grep thin
+jet      11716  0.0  0.0   7788   920 pts/1    S+   23:47   0:00 grep thin
+~/Code_Fellows/project/portfolio (main) > 
+</code>
+</pre>
+<p></p>
+<p> Clear the input buffer with a bang: <span class="code-blue">!</span><br/><br/>
+When you are in Pry and have entered a lot of lines into the input buffer:
+</p>
+<p></p>
+<pre>
+<code>
+~/Code_Fellows/project/portfolio (main) *   !
+Input buffer cleared!
+~/Code_Fellows/project/portfolio (main) > def tell_stories tales
+~/Code_Fellows/project/portfolio (main) *   tales.map do |story|
+~/Code_Fellows/project/portfolio (main) *     puts "Once upon a dream, it happened that #{story}"
+~/Code_Fellows/project/portfolio (main) *     puts "..of course that was quite a long time ago and"
+~/Code_Fellows/project/portfolio (main) *     show-input
+1: def tell_stories tales
+2:   tales.map do |story|
+3:     puts "Once upon a dream, it happened that #{story}"
+4:     puts "..of course that was quite a long time ago and"
+~/Code_Fellows/project/portfolio (main) *     
+</code>
+</pre>
+<p></p>
+<p>...you can use the <span class="code-blue">show-input</span> command to display what you have in the buffer, and what the line numbers are.  This can be useful when combined with the <span class="code-blue">amend-line</span> command to correct a mistake you have made earlier:</p>
+<p></p>
+<pre>
+<code>
+~/Code_Fellows/project/portfolio (main) *     amend-line 1 def tell_stories(tales)
+1: def tell_stories(tales)
+2:   tales.map do |story|
+3:     puts "Once upon a dream, it happened that #{story}"
+4:     puts "..of course that was quite a long time ago and"
+~/Code_Fellows/project/portfolio (main) *     end  
+~/Code_Fellows/project/portfolio (main) *   end  
+=> :tell_stories
+~/Code_Fellows/project/portfolio (main) > 
+</code>
+</pre>
+<h3>Pry Play</h3>
+<p>Play is very useful feature. There is an excellent demo of it on the Pry Wiki, so I am just going to provide a link to that if you are interested. I will show you the output of <span class="code-blue">play --help</span> so you have an idea of what is possible:</p>
+<p></p>
+<pre>
+<code>
+~/Code_Fellows/project/portfolio (main) > play --help
+Usage: play [OPTIONS] [--help]
+
+The play command enables you to replay code from files and methods as if they
+were entered directly in the Pry REPL.
+
+play --lines 149..153
+play -i 20 --lines 1..3
+play Pry#repl --lines 1..-1
+play Rakefile --lines 5
+
+https://github.com/pry/pry/wiki/User-Input#wiki-Play
+
+    -l, --lines      Restrict to a subset of lines. Takes a line number or range (default: 1..-1)
+    -o, --out        Select lines from Pry's output result history. Takes an index or range (default: -5..-1)
+    -i, --in         Select lines from Pry's input expression history. Takes an index or range (default: -5..-1)
+    -s, --super      Select the 'super' method. Can be repeated to traverse the ancestors
+    -d, --doc        Select lines from the code object's documentation
+        --open       Plays the select content except except the last line. Useful for replaying methods and leaving the method definition "open". `amend-line` can then be used to modify the method.
+    -h, --help       Show this message.
+~/Code_Fellows/project/portfolio (main) > 
+</code>
+</pre>
+<p></p>
+<p>
+	<a href="https://github.com/pry/pry/wiki/User-Input#wiki-Play">Pry Play Wiki</a>
+</p>
+<p></p>
+<h3>Hirb</h3>
+<p>Install the Hirb gem in your Gemfile for formatted query output: <span class="code-blue">gem 'hirb'</span></p>
+<pre>
+<code>
+~/Code_Fellows/project/portfolio (main) > Post.first
+  Post Load (1.0ms)  SELECT "posts".* FROM "posts" ORDER BY "posts"."id" ASC LIMIT 1
++----+-----------+----------+---------+----------+-----------+----------+----------+----------+----------+
+| id | title     | descr... | content | creat... | update... | publi... | autho... | menu     | article  |
++----+-----------+----------+---------+----------+-----------+----------+----------+----------+----------+
+| 33 | Rails ... | The g... |         | 2014-... | 2014-1... | true     | 2        | testi... | testi... |
++----+-----------+----------+---------+----------+-----------+----------+----------+----------+----------+
+1 row in set
+</code>
+</pre>
+<p></p>
 <H2>Pry-rescue gem</H2>
 <p>
 </p>
-<p>Whenever something goes wrong, e.g.
-there is an unhandled exception, pry-rescue will automatically open pry
+<p>Whenever something goes wrong, e.g. there is an unhandled exception, pry-rescue will automatically open pry
 for you.</p>
 <p>
 </p>
@@ -1285,8 +1635,138 @@ group :development do
  gem 'pry-rescue'
  gem 'pry-stack_explorer'
 end
+>/code>
+</pre>
+<p></p>
+<p>Following is a sequence of using the <span class="code-blue">pry-rescue</span> gem. 
+It works best when used with the <span class="code-blue">pry-stack_explorer</span> gem.
+ You will need to start up your server using:</p>
+<p>
+<span class="code-blue">bundle exec rescue rails server</span>
+</p>
+<p>This is assuming you are using bundler. I have created an error in my PostsController. 
+pry-rescue is an implementation of "break on unhandled exception" and will stop execution where
+the error occurs:</p>
+
+<pre>
+<code>
+jet@chinook:~/Code_Fellows/project/portfolio$ be rescue rails s
+=> Booting Thin
+=> Rails 4.0.2 application starting in development on http://0.0.0.0:3000
+=> Run `rails server -h` for more startup options
+=> Ctrl-C to shutdown server
+Thin web server (v1.6.1 codename Death Proof)
+Maximum connections set to 1024
+Listening on 0.0.0.0:3000, CTRL+C to stop
 </code>
 </pre>
+<p>
+The server has started up. Next, a GET /posts/33 request is made. Program execution is stopped at 
+the line where the error occurs:
+</p>
+<pre>
+<code>
+Started GET "/posts/33" for 127.0.0.1 at 2014-12-04 21:05:39 -0800
+  ActiveRecord::SchemaMigration Load (0.8ms)  SELECT "schema_migrations".* FROM "schema_migrations"
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"33"}
+  Post Load (1.4ms)  SELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", "33"]]
+  Impression Exists (1.4ms)  SELECT 1 AS one FROM "impressions" WHERE "impressions"."session_hash" = '04e6268382e2d29ef8d2af6eb5750f60' LIMIT 1
+Completed 500 Internal Server Error in 89ms
+
+Frame number: 0/82
+Frame type: method
+
+From: /home/jet/Code_Fellows/project/portfolio/app/controllers/posts_controller.rb @ line 20 PostsController#show:
+
+    19: def show
+ => 20:   junk
+    21:   @post = Post.find(params[:id])
+    22:   @commentable = @post
+    23:   @comments = @commentable.comments
+    24:   @comment = Comment.new
+    25: end
+
+NameError: undefined local variable or method `junk' for #<PostsController:0x00000006b17fa0>
+from /home/jet/Code_Fellows/project/portfolio/app/controllers/posts_controller.rb:20:in `show'
+~/Code_Fellows/project/portfolio (#<PostsController:0x00000006b17fa0>) > 
+</code>
+</pre>
+<p></p>
+<p>Pry has a <span class="code-blue">wtf?</span> command to give us the stack trace and cause of the exception</p>
+<p></p>
+<pre>
+<code>
+~/Code_Fellows/project/portfolio (#<PostsController:0x00000006abb5e8>) > wtf?
+Exception: NameError: undefined local variable or method `junk' for #<PostsController:0x00000006abb5e8>
+--
+0: /home/jet/Code_Fellows/project/portfolio/app/controllers/posts_controller.rb:20:in `show'
+1: /home/jet/.rvm/gems/ruby-2.1.0@portfolio/gems/actionpack-4.0.2/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+2: /home/jet/.rvm/gems/ruby-2.1.0@portfolio/gems/actionpack-4.0.2/lib/abstract_controller/base.rb:189:in `process_action'
+3: /home/jet/.rvm/gems/ruby-2.1.0@portfolio/gems/actionpack-4.0.2/lib/action_controller/metal/rendering.rb:10:in `process_action'
+4: /home/jet/.rvm/gems/ruby-2.1.0@portfolio/gems/actionpack-4.0.2/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+5: /home/jet/.rvm/gems/ruby-2.1.0@portfolio/gems/activesupport-4.0.2/lib/active_support/callbacks.rb:453:in `_run__1097825872149156545__process_action__callbacks'
+6: /home/jet/.rvm/gems/ruby-2.1.0@portfolio/gems/activesupport-4.0.2/lib/active_support/callbacks.rb:80:in `run_callbacks'
+7: /home/jet/.rvm/gems/ruby-2.1.0@portfolio/gems/actionpack-4.0.2/lib/abstract_controller/callbacks.rb:17:in `process_action'
+8: /home/jet/.rvm/gems/ruby-2.1.0@portfolio/gems/actionpack-4.0.2/lib/action_controller/metal/rescue.rb:29:in `process_action'
+9: /home/jet/.rvm/gems/ruby-2.1.0@portfolio/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+~/Code_Fellows/project/portfolio (#<PostsController:0x00000006abb5e8>) > 
+
+</code>
+</pre>
+<p></p>
+<p>Next, we issue a command for pry to edit the method where the error occurs:</p>
+<pre>
+<code>
+~/Code_Fellows/project/portfolio (#<PostsController:0x00000006b17fa0>) > edit show
+</code>
+</pre>
+<p></p>
+<p>This results in pry opening our editor (you must configure pry to let it know what your editor is)
+and bringing up the method where the error occurs:</p>
+<pre>
+  <code>
+class PostsController < ApplicationController
+  # rescue_from Pundit::NotAuthorizedError, :with => :record_not_found
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :auth_post, only: [:update, :destroy, :publish]
+  before_filter :authenticate_user!, except: [:index, :show]
+  
+  impressionist actions: [:show], unique: [:session_hash]
+
+  layout :resolve_layout
+
+  def new
+    @post = Post.new
+  end
+
+  def index
+    @posts = policy_scope(Post.scoped) 
+  end
+
+  def show
+    junk
+    @post = Post.find(params[:id])
+    @commentable = @post
+    @comments = @commentable.comments
+    @comment = Comment.new
+  end
+
+  def edit
+  end
+  </code>
+</pre>
+<p></p>
+<P>We fix the errror, save, and we are returned to pry, type in <span class="code-blue">try-again</span> and program execution is resumed if the error was corrected. </P>
+<p></p>
+<pre>
+<code>
+~/Code_Fellows/project/portfolio (#<PostsController:0x00000006b17fa0>) > try-again
+</code>
+</pre>
+<p></p>
+<p>pry-rescue also has a <span class="code-blue">cd-cause</span> command to enter into a section of code that was run from  within Pry. If that exception was in turn caused by a previous exception you can use <span class="code-blue">cd-cause</span> again. To return from whence you came you can use <<span class="code-blue">Ctrl+d></span> or <span class="code-blue">cd ..</span></p>
+
 <p></p>
 <H2 id="git">Git</H2>
 <p>
@@ -1566,6 +2046,9 @@ end
   </li>
   <li>
   	<a href="http://ruby.about.com/od/testdrivendevelopment/ss/Unit-Testing-With-Minitest-More-Assertions.htm">Unit Testing with Minitest: More Assertions</a>
+  </li>
+  <li>
+  	<a href="http://robots.thoughtbot.com/testing-and-environment-variables">Testing and Environment Variables</a>
   </li>
 </UL>
 <p>
