@@ -1571,6 +1571,46 @@ Input buffer cleared!
 ~/Code_Fellows/project/portfolio (main) > 
 </code>
 </pre>
+<p></p>
+<p>If you are in the input buffer, you can also just enter the <span class="code-blue">edit</span> command and it will bring you into your editor with the contents of the input buffer:</p>
+<p></p>
+<pre>
+<code>
+~/Code_Fellows/project/portfolio (main) > hash = [[:first_name, 'Alex'], [:last_name, 'Rhenda']].inject({}) do |result, element|
+~/Code_Fellows/project/portfolio (main) *   result[element.first] = element.last
+~/Code_Fellows/project/portfolio (main) *   edit
+</code>
+</pre>
+<P></P>
+<P>In the above snippet, 2 lines were entered. The <span class="code-blue">*</span> indicates we are in the input buffer. On the next line the <span class="code-blue">edit</span> command is entered. This brings us into our default editor where we edit our code:</P>
+<p></p>
+<pre>
+<code>
+hash = [[:first_name, 'Fred'], [:last_name, 'Martha']].inject({}) do |result, element|
+  result[element.first] = element.last
+</code>
+</pre>
+<p></p>
+<p>After saving and quiting our editor we are returned to Pry. I issue a <span class="code-blue">show-input</span> command to confirm that the edit had indeed been saved and brought into our buffer:</p>
+<p></p>
+<pre>
+<code>
+~/Code_Fellows/project/portfolio (main) *   show-input
+1: hash = [[:first_name, 'Fred'], [:last_name, 'Martha']].inject({}) do |result, element|
+2:   result[element.first] = element.last
+~/Code_Fellows/project/portfolio (main) *  
+</code>
+</pre>
+<p></p>
+<p>Some miscellaneous commands:</p>
+<p>
+</p>
+<p>Edit a file: <span class="code-blue">edit app/controllers/posts_controller.rb</span> </p>
+<p>cd into a gem: <span class="code-blue">gem-cd impressionist</span> Exit from here with <span class="code-blue">quit</span></p>
+<p>cat a file: <span class="code-blue">cat Gemfile -l -s 20</span> This will show line numbers and start at line 20.</p>
+<p>Display source code of a method (same as <span class="code-blue">$</span> ) <span class="code-blue">show-source Array#inject</span></p>
+<P>Set up your default editor in <span class="code-blue">.pryrc</span>: <span class="code-blue">Pry.config.editor = 'vim'</span></P>
+<p>Analyze stack traces with <span class="code-blue">cat --ex</span> This will take you to the line that threw an exception. It will also take a number as an argument which will walk you up the stack</p>
 <h3>Pry Play</h3>
 <p>Play is very useful feature. There is an excellent demo of it on the Pry Wiki, so I am just going to provide a link to that if you are interested. I will show you the output of <span class="code-blue">play --help</span> so you have an idea of what is possible:</p>
 <p></p>
@@ -1618,6 +1658,12 @@ https://github.com/pry/pry/wiki/User-Input#wiki-Play
 1 row in set
 </code>
 </pre>
+<p></p>
+<h3>Pry-theme</h3>
+<p>pry-theme will add some color to your life!</p>
+<p>
+	<a href="https://github.com/kyrylo/pry-theme">Pry Theme</a>
+</p>
 <p></p>
 <H2>Pry-rescue gem</H2>
 <p>
@@ -1693,7 +1739,7 @@ from /home/jet/Code_Fellows/project/portfolio/app/controllers/posts_controller.r
 </code>
 </pre>
 <p></p>
-<p>Pry has a <span class="code-blue">wtf?</span> command to give us the stack trace and cause of the exception</p>
+<p>Pry has a <span class="code-blue">wtf?</span> command to give us the stack trace and cause of the exception. <span class="code-blue">wtf???</span> will yield 30 lines, fun huh!</p>
 <p></p>
 <pre>
 <code>
