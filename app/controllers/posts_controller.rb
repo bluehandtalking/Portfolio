@@ -17,7 +17,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    # junk
     @post = Post.find(params[:id])
     @commentable = @post
     @comments = @commentable.comments

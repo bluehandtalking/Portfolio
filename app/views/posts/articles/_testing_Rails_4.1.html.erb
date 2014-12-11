@@ -1612,6 +1612,29 @@ hash = [[:first_name, 'Fred'], [:last_name, 'Martha']].inject({}) do |result, el
 <p>Display source code of a method (same as <span class="code-blue">$</span> ) <span class="code-blue">show-source Array#inject</span></p>
 <P>Set up your default editor in <span class="code-blue">.pryrc</span>: <span class="code-blue">Pry.config.editor = 'vim'</span></P>
 <p>Analyze stack traces with <span class="code-blue">cat --ex</span> This will take you to the line that threw an exception. It will also take a number as an argument which will walk you up the stack.</p>
+<p>Find out where you are in the current code with <span class="code-blue">whereami</span>:
+</p>
+<p></p>
+<pre>
+<code>
+~/Code_Fellows/project/portfolio (#<PostsController:0x00000009b959e8>) > whereami
+
+Frame number: 0/77
+
+From: /home/jet/Code_Fellows/project/portfolio/app/controllers/posts_controller.rb @ line 20 PostsController#show:
+
+    19: def show
+ => 20:   binding.pry
+    21:   @post = Post.find(params[:id])
+    22:   @commentable = @post
+    23:   @comments = @commentable.comments
+    24:   @comment = Comment.new
+    25: end
+
+~/Code_Fellows/project/portfolio (#<PostsController:0x00000009b959e8>) >  
+</code>
+</pre>
+<p></p>
 <h3>Pry Play</h3>
 <p>Play is very useful feature. There is an excellent demo of it on the Pry Wiki, so I am just going to provide a link to that if you are interested. I will show you the output of <span class="code-blue">play --help</span> so you have an idea of what is possible:</p>
 <p></p>
