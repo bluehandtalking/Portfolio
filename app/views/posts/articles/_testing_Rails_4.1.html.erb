@@ -1907,6 +1907,78 @@ checking.</p>
 <p>See all gems actually used, and version
 numbers.</p>
 <p><span class="code-blue code-shift">less Gemfile.lock</span></FONT></p>
+<h2>Ruby Tools</h2>
+<p>When instrumenting code and inserting variables to inspect values, the flow of code can be disturbed or impeded from its normal flow substantially enough to affect the quality of the testing.
+</p>
+<p>Using <span class="code-blue">Object#tap</span> can be useful in situations where it is important not to disturb the flow of data. The below is a descriptive example of how
+ <span class="code-blue">tap</span> is implemented:</p>
+ <pre>
+ <code>
+class Object 
+  def tap 
+    yield self 
+    self 
+  end 
+end 
+</code>
+ </pre>
+<p></p>
+<p>Actual implementation of <span class="code-blue">Object#tap</span> (C method)</p>
+<pre>
+<code>
+VALUE
+rb_obj_tap(VALUE obj)
+{
+    rb_yield(obj);
+    return obj;
+}
+
+</code>
+</pre>
+<p></p>
+<p>The benefit of tap is that it always returns the object it's called on, so
+you can insert a tap block in a chain of methods and it will not disturb the normal
+flow, even if the block itself returns a different result</p>
+<p>Here is an example of a traditional approach for debugging by printing a value:</p>
+<pre>
+<code>
+friends = %w(Mary Emory Violet Regnor).sort.grep /.+y$/
+p friends
+# continue with what we intended to do originally
+friends.map {|f| f.length}
+</code>
+</pre>
+<p></p>
+<p>Now the same example using tap:</p>
+<pre>
+  <code>
+%w(Mary Emory Violet Regnor).sort.grep(/.+y$/).tap {|friends| p friends }.map {|f| f.length} 
+  </code>
+</pre>
+<p></p>
+<p>Quickly identify associations of a model with <br/><span class="code-blue">ActiveRecord::Reflection::ClassMethods#reflect_on_all_associations</span>.</p>
+<p>Here is an example to get all associations of a model:</p>
+<p></p>
+<pre>
+<code>
+User.reflect_on_all_associations.map {|a| a.name}
+</code>
+</pre>
+<p></p>
+<p>List all <span class="code-blue">belongs_to</span> associations:</p>
+<pre>
+<code>
+User.reflect_on_all_associations(:belongs_to).map {|a| a.name }
+</code>
+</pre>
+<p></p>
+<p>Used with an instance variable</p>
+<pre>
+  <code>
+@user.class.reflect_on_all_associations.map {|a| a.name }
+  </code>
+</pre>
+</pre>
 <p></p>
 <H1 id="speeding">Speeding Up your Test Environment</H1>
 <p>
