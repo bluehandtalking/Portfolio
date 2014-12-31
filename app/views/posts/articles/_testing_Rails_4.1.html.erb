@@ -1952,7 +1952,7 @@ friends.map {|f| f.length}
 <p>Now the same example using tap:</p>
 <pre>
   <code>
-%w(Mary Emory Violet Regnor).sort.grep(/.+y$/).tap {|friends| p friends }.map {|f| f.length} 
+friends = %w(Mary Emry Violet Regnor).sort.grep(/.*y$/).tap {|f|  f.map {|name| p name.length }}
   </code>
 </pre>
 <p></p>
