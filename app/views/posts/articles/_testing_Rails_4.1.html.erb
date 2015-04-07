@@ -682,8 +682,15 @@ end
 <p>
   <span class="code-blue code-shift">
   bundle install<br/></span> 
+</p>
+<p>Generate test_helper.rb:<br />
   <span class="code-blue code-shift">
   bundle exec rails generate minitest:install
+  </span>
+</p>
+<p>Note: some versions (e.g. minitest-rails) may use the following command:
+  <span class="code-blue code-shift">
+  bundle exec rails generate mini_test:install
   </span>
 </p>
 <p></p>
@@ -698,15 +705,6 @@ config.generators do |g|
 end
 </code>
 </pre>
-<p></p>
-<p>
-  Run minitest installer:
-</p>
-  <p>
-  	<span class="code-blue code-shift">
-bundle exec rails g minitest:install
-  </span>	
-  </p>
 <p></p>
 <p>Modify
 <I>test/test_helper.rb </I> as
