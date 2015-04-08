@@ -20,6 +20,10 @@ gem 'json', '1.8.1'
 gem 'komments'
 gem 'impressionist'
 
+gem 'mini_magick'
+gem 'refile', require: ["refile/rails", "refile/image_processing", "refile/backend/s3"]
+gem 'aws-sdk', '< 2'
+
 group :doc do
   gem 'sdoc', require: false # bundle exec rake doc:rails generates the API under doc/api. 
 end
