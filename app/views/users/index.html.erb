@@ -1,0 +1,6 @@
+<% content_for :body do %>
+  <<% @users.each do |user| %>
+    <p style="color:white"><%= user.name %><br/><%= user.email %><br/>Role: <%= user.role %></p><p></p>
+  <% end %>
+>
+<% end %>
