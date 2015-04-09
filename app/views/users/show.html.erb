@@ -5,4 +5,7 @@
   <p style="color: #fff">
     <%= @user.email %>
   </p>
+  <p>
+    <%= image_tag attachment_url(@user, :image, :fill, 300, 300) %>
+  </p>
 <% end %>
