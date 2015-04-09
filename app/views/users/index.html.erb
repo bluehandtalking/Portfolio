@@ -1,5 +1,8 @@
 <% content_for :body do %>
   <% @users.each do |user| %>
-    <p style="color:white"><%= user.name %><br/><%= user.email %><br/>Role: <%= user.role %></p>
+    <p style="color:white"><%= user.name %><br/><br/><%= user.email %><br/><br/>Role: <%= user.role %></p>
+    <p>
+      <%= image_tag attachment_url(user, :image, :fill, 300, 300) %>
+    </p>
   <% end %>
 <% end %>
