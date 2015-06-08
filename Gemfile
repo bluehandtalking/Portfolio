@@ -46,7 +46,7 @@ group :development do
   # gem 'rb-readline'
 end
  
-gem 'minitest', '4.7.5'
+gem 'minitest', '~> 4.7.5'
 
 group :test do 
   gem 'minitest-rails'
